@@ -9,27 +9,26 @@
 
   <title>Jewel City Draft Tool</title>
 
-  <link rel="stylesheet" href="styles.css?v=3.0.0" />
+  <link rel="stylesheet" href="styles.css?v=4.0.0" />
   <link rel="manifest" href="manifest.json" />
 </head>
 
 <body>
   <main class="app-shell">
     <section id="draftView" class="app-view active">
-      <div id="engineStatus" class="engine-status loading">Engine loading…</div>
+      <button id="engineStatus" class="engine-status loading" type="button">Engine loading…</button>
+
       <header class="topbar">
         <div>
           <p class="eyebrow">Jewel City League V</p>
           <h1>Draft Board</h1>
         </div>
 
-        <button id="undoButton" class="secondary-button compact-button">
-          Undo
-        </button>
+        <button id="undoButton" class="secondary-button compact-button">Undo</button>
       </header>
 
       <section class="draft-status card">
-        <button id="setDraftSlotButton" class="status-item status-button">
+        <button id="setDraftSlotButton" class="status-item status-button" type="button">
           <span class="label">Draft Slot</span>
           <strong id="draftSlotDisplay">Set Slot</strong>
         </button>
@@ -40,7 +39,12 @@
         </div>
 
         <div class="status-item">
-          <span class="label">Next Pick</span>
+          <span class="label">Overall Pick</span>
+          <strong id="overallPickDisplay">1</strong>
+        </div>
+
+        <div class="status-item">
+          <span class="label">Next Mine</span>
           <strong id="nextPickDisplay">—</strong>
         </div>
 
@@ -48,6 +52,17 @@
           <span class="label">Picks Away</span>
           <strong id="picksAwayDisplay">—</strong>
         </div>
+      </section>
+
+      <section id="recentPicksCard" class="recent-picks-card card">
+        <button id="recentPicksToggle" class="recent-picks-toggle" type="button">
+          <div class="recent-picks-copy">
+            <span class="label">Last Pick</span>
+            <strong id="lastPickDisplay">No picks recorded yet</strong>
+          </div>
+          <span id="recentChevron" class="recent-chevron">⌄</span>
+        </button>
+        <div id="recentPicksList" class="recent-picks-list hidden"></div>
       </section>
 
       <section class="search-section">
@@ -62,13 +77,13 @@
       </section>
 
       <nav class="position-filters" aria-label="Position filters">
-        <button class="filter-button active" data-position="ALL">ALL</button>
-        <button class="filter-button" data-position="RB">RB</button>
-        <button class="filter-button" data-position="WR">WR</button>
-        <button class="filter-button" data-position="TE">TE</button>
-        <button class="filter-button" data-position="QB">QB</button>
-        <button class="filter-button" data-position="DEF">DEF</button>
-        <button class="filter-button" data-position="K">K</button>
+        <button class="filter-button active" data-position="ALL" type="button">ALL</button>
+        <button class="filter-button" data-position="RB" type="button">RB</button>
+        <button class="filter-button" data-position="WR" type="button">WR</button>
+        <button class="filter-button" data-position="TE" type="button">TE</button>
+        <button class="filter-button" data-position="QB" type="button">QB</button>
+        <button class="filter-button" data-position="DEF" type="button">DEF</button>
+        <button class="filter-button" data-position="K" type="button">K</button>
       </nav>
 
       <section id="searchResultsCard" class="card hidden">
@@ -125,6 +140,10 @@
     </section>
 
     <section id="teamView" class="app-view">
+      <button class="engine-status ready static-status" type="button" data-view="draftView">
+        Draft Engine v4
+      </button>
+
       <header class="topbar">
         <div>
           <p class="eyebrow">Jewel City League V</p>
@@ -149,12 +168,12 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Primary navigation">
-    <button class="bottom-nav-button active" data-view="draftView">
+    <button class="bottom-nav-button active" data-view="draftView" type="button">
       <span class="nav-icon">⌁</span>
       <span>Draft</span>
     </button>
 
-    <button class="bottom-nav-button" data-view="teamView">
+    <button class="bottom-nav-button" data-view="teamView" type="button">
       <span class="nav-icon">★</span>
       <span>My Team</span>
     </button>
@@ -164,16 +183,16 @@
     <div class="modal-backdrop" data-close-player-modal></div>
 
     <div class="modal-sheet">
-      <button class="modal-close" data-close-player-modal aria-label="Close">×</button>
+      <button class="modal-close" data-close-player-modal aria-label="Close" type="button">×</button>
 
       <div id="modalPlayerContent"></div>
 
       <div class="modal-actions">
-        <button id="draftedByOtherButton" class="danger-button">
+        <button id="draftedByOtherButton" class="danger-button" type="button">
           Drafted By Other
         </button>
 
-        <button id="myPickButton" class="primary-button">
+        <button id="myPickButton" class="primary-button" type="button">
           My Pick
         </button>
       </div>
@@ -184,15 +203,27 @@
     <div class="modal-backdrop" data-close-slot-modal></div>
 
     <div class="modal-sheet">
-      <button class="modal-close" data-close-slot-modal aria-label="Close">×</button>
+      <button class="modal-close" data-close-slot-modal aria-label="Close" type="button">×</button>
 
       <h2>Set Draft Position</h2>
-      <p class="modal-copy">Choose your snake-draft slot. You can change it later.</p>
+      <p class="modal-copy">Choose your 14-team snake-draft slot. You can change it later.</p>
 
       <div id="draftSlotGrid" class="slot-grid"></div>
     </div>
   </div>
 
-  <script src="app.js?v=3.0.0"></script>
+  <div id="debugModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-debug-modal></div>
+
+    <div class="modal-sheet debug-sheet">
+      <button class="modal-close" data-close-debug-modal aria-label="Close" type="button">×</button>
+
+      <p class="eyebrow">Diagnostics</p>
+      <h2>Draft Engine Health</h2>
+      <div id="debugContent" class="debug-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js?v=4.0.0"></script>
 </body>
 </html>
