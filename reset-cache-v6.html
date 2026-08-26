@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reset Draft Tool Cache</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f3f4f6;margin:0;padding:30px 16px}
+main{max-width:480px;margin:auto;background:#fff;border:1px solid #e6e7e9;border-radius:18px;padding:20px}
+h1{font-size:22px;margin:0 0 8px}
+p{line-height:1.45;color:#5f6469}
+</style>
+</head>
+<body>
+<main>
+<h1>Cleaning old draft-tool cache…</h1>
+<p id="status">Removing previous service workers and cached files.</p>
+</main>
+<script>
+(async()=>{
+  try{
+    if("serviceWorker" in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r=>r.unregister()));
+    }
+    if("caches" in window){
+      const keys=await caches.keys();
+      await Promise.all(keys.map(k=>caches.delete(k)));
+    }
+    document.getElementById("status").textContent="Clean. Opening V6…";
+    setTimeout(()=>location.replace("./index-v6.html?clean="+Date.now()),600);
+  }catch(err){
+    document.getElementById("status").textContent="Could not clean automatically: "+err.message;
+  }
+})();
+</script>
+</body>
+</html>

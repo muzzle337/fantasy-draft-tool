@@ -2,22 +2,25 @@
   "player_count": 208,
   "missing_js_html_ids": [],
   "syntax": {
-    "app-v5-2.js": {
+    "app-v6.js": {
       "ok": true,
       "stderr": ""
     },
-    "service-worker-v5-2.js": {
+    "service-worker-v6.js": {
       "ok": true,
       "stderr": ""
     }
   },
-  "offline_shell_files": [
-    "index.html",
-    "index-v5-2.html",
-    "styles-v5-2.css",
-    "app-v5-2.js",
-    "draft-brain-v5-2.json",
-    "manifest.json",
-    "service-worker-v5-2.js"
-  ]
+  "feature_checks": {
+    "rolling_backups": true,
+    "save_verification": true,
+    "startup_recovery": true,
+    "manual_backup": true,
+    "restore_backup": true,
+    "export_state": true,
+    "import_state": true,
+    "reset_current": true,
+    "clear_all": true,
+    "offline_sw": true
+  }
 }
