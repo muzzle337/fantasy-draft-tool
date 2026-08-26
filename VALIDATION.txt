@@ -1,13 +1,23 @@
 {
   "player_count": 208,
-  "css_bytes": 13846,
   "missing_js_html_ids": [],
-  "bad_positions": [],
-  "duplicate_names": [],
   "syntax": {
-    "app-v5-1.js": {
+    "app-v5-2.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "service-worker-v5-2.js": {
       "ok": true,
       "stderr": ""
     }
-  }
+  },
+  "offline_shell_files": [
+    "index.html",
+    "index-v5-2.html",
+    "styles-v5-2.css",
+    "app-v5-2.js",
+    "draft-brain-v5-2.json",
+    "manifest.json",
+    "service-worker-v5-2.js"
+  ]
 }
