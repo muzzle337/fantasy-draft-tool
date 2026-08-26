@@ -6,25 +6,32 @@
   <meta name="theme-color" content="#111111" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
   <title>Jewel City Draft Tool</title>
-
-  <link rel="stylesheet" href="styles.css?v=4.0.0" />
+  <link rel="stylesheet" href="styles.css?v=5.0.0" />
   <link rel="manifest" href="manifest.json" />
 </head>
-
 <body>
   <main class="app-shell">
     <section id="draftView" class="app-view active">
-      <button id="engineStatus" class="engine-status loading" type="button">Engine loading…</button>
+      <div class="status-line">
+        <button id="engineStatus" class="engine-status loading" type="button">Engine loading…</button>
+        <span id="datasetStatus" class="dataset-status">Dataset loading…</span>
+      </div>
+
+      <section id="modeBanner" class="mode-banner live">
+        <div>
+          <span class="label">Mode</span>
+          <strong id="modeDisplay">LIVE DRAFT</strong>
+        </div>
+        <button id="mockModeButton" class="secondary-button compact-button" type="button">Start Mock</button>
+      </section>
 
       <header class="topbar">
         <div>
           <p class="eyebrow">Jewel City League V</p>
           <h1>Draft Board</h1>
         </div>
-
-        <button id="undoButton" class="secondary-button compact-button">Undo</button>
+        <button id="undoButton" class="secondary-button compact-button" type="button">Undo</button>
       </header>
 
       <section class="draft-status card">
@@ -32,29 +39,26 @@
           <span class="label">Draft Slot</span>
           <strong id="draftSlotDisplay">Set Slot</strong>
         </button>
-
-        <div class="status-item">
-          <span class="label">Round</span>
-          <strong id="roundDisplay">1</strong>
-        </div>
-
-        <div class="status-item">
-          <span class="label">Overall Pick</span>
-          <strong id="overallPickDisplay">1</strong>
-        </div>
-
-        <div class="status-item">
-          <span class="label">Next Mine</span>
-          <strong id="nextPickDisplay">—</strong>
-        </div>
-
-        <div class="status-item">
-          <span class="label">Picks Away</span>
-          <strong id="picksAwayDisplay">—</strong>
-        </div>
+        <div class="status-item"><span class="label">Round</span><strong id="roundDisplay">1</strong></div>
+        <div class="status-item"><span class="label">Overall Pick</span><strong id="overallPickDisplay">1</strong></div>
+        <div class="status-item"><span class="label">Next Mine</span><strong id="nextPickDisplay">—</strong></div>
+        <div class="status-item"><span class="label">Picks Away</span><strong id="picksAwayDisplay">—</strong></div>
       </section>
 
-      <section id="recentPicksCard" class="recent-picks-card card">
+      <section id="mockControlCard" class="card mock-control-card hidden">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mock Draft</p>
+            <h2 id="mockStatusTitle">Ready to simulate</h2>
+          </div>
+          <span id="mockStatusNote" class="section-note"></span>
+        </div>
+        <button id="simulateToNextPickButton" class="primary-button full-width-button" type="button">
+          Simulate to My Pick
+        </button>
+      </section>
+
+      <section class="recent-picks-card card">
         <button id="recentPicksToggle" class="recent-picks-toggle" type="button">
           <div class="recent-picks-copy">
             <span class="label">Last Pick</span>
@@ -66,14 +70,7 @@
       </section>
 
       <section class="search-section">
-        <input
-          id="playerSearch"
-          type="search"
-          placeholder="Search player..."
-          autocomplete="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
+        <input id="playerSearch" type="search" placeholder="Search player..." autocomplete="off" autocapitalize="off" spellcheck="false" />
       </section>
 
       <nav class="position-filters" aria-label="Position filters">
@@ -102,47 +99,40 @@
           </div>
           <span id="recommendationContext" class="section-note"></span>
         </div>
-
-        <div id="recommendationPanel">
-          <p class="muted">Loading recommendations...</p>
-        </div>
+        <div id="recommendationPanel"><p class="muted">Loading recommendations...</p></div>
       </section>
 
-      <section id="cliffCard" class="alert-card hidden">
-        <div id="cliffPanel"></div>
-      </section>
+      <section id="cliffCard" class="alert-card hidden"><div id="cliffPanel"></div></section>
 
       <section class="card">
         <div class="section-heading">
           <h2>Best Available</h2>
           <span id="bestAvailableContext" class="section-note">ALL</span>
         </div>
-
-        <div id="bestAvailableList">
-          <p class="muted">Loading players...</p>
-        </div>
+        <div id="bestAvailableList"><p class="muted">Loading players...</p></div>
       </section>
 
       <section class="card board-card">
         <div class="section-heading">
           <h2>Player Board</h2>
-
           <label class="show-drafted-control">
             <input id="showDraftedToggle" type="checkbox" />
             Show Drafted
           </label>
         </div>
+        <div id="playerList"><p class="muted">Loading players...</p></div>
+      </section>
 
-        <div id="playerList">
-          <p class="muted">Loading players...</p>
-        </div>
+      <section class="card tools-card">
+        <button id="fullResetButton" class="reset-entry-button" type="button">Draft Tools & Reset</button>
       </section>
     </section>
 
     <section id="teamView" class="app-view">
-      <button class="engine-status ready static-status" type="button" data-view="draftView">
-        Draft Engine v4
-      </button>
+      <div class="status-line">
+        <button class="engine-status ready static-status" type="button" data-view="draftView">Draft Engine v5</button>
+        <span id="teamModeStatus" class="dataset-status">LIVE</span>
+      </div>
 
       <header class="topbar">
         <div>
@@ -153,77 +143,99 @@
       </header>
 
       <section class="card">
-        <div id="rosterSummary" class="roster-grid"></div>
+        <div class="section-heading">
+          <h2>Starting Lineup</h2>
+          <span class="section-note">Auto-filled</span>
+        </div>
+        <div id="starterRoster" class="lineup-list"></div>
       </section>
 
       <section class="card">
         <div class="section-heading">
-          <h2>My Players</h2>
+          <h2>Bench</h2>
+          <span id="benchCount" class="section-note">0/6</span>
         </div>
-        <div id="myRoster">
-          <p class="muted">No players drafted yet.</p>
+        <div id="benchRoster" class="lineup-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>IR</h2>
+          <span class="section-note">1 spot</span>
         </div>
+        <div id="irRoster" class="lineup-list"></div>
       </section>
     </section>
   </main>
 
   <nav class="bottom-nav" aria-label="Primary navigation">
-    <button class="bottom-nav-button active" data-view="draftView" type="button">
-      <span class="nav-icon">⌁</span>
-      <span>Draft</span>
-    </button>
-
-    <button class="bottom-nav-button" data-view="teamView" type="button">
-      <span class="nav-icon">★</span>
-      <span>My Team</span>
-    </button>
+    <button class="bottom-nav-button active" data-view="draftView" type="button"><span class="nav-icon">⌁</span><span>Draft</span></button>
+    <button class="bottom-nav-button" data-view="teamView" type="button"><span class="nav-icon">★</span><span>My Team</span></button>
   </nav>
 
   <div id="playerModal" class="modal hidden">
     <div class="modal-backdrop" data-close-player-modal></div>
-
     <div class="modal-sheet">
       <button class="modal-close" data-close-player-modal aria-label="Close" type="button">×</button>
-
       <div id="modalPlayerContent"></div>
-
       <div class="modal-actions">
-        <button id="draftedByOtherButton" class="danger-button" type="button">
-          Drafted By Other
-        </button>
-
-        <button id="myPickButton" class="primary-button" type="button">
-          My Pick
-        </button>
+        <button id="draftedByOtherButton" class="danger-button" type="button">Drafted By Other</button>
+        <button id="myPickButton" class="primary-button" type="button">My Pick</button>
       </div>
     </div>
   </div>
 
   <div id="slotModal" class="modal hidden">
     <div class="modal-backdrop" data-close-slot-modal></div>
-
     <div class="modal-sheet">
       <button class="modal-close" data-close-slot-modal aria-label="Close" type="button">×</button>
-
       <h2>Set Draft Position</h2>
       <p class="modal-copy">Choose your 14-team snake-draft slot. You can change it later.</p>
-
       <div id="draftSlotGrid" class="slot-grid"></div>
+    </div>
+  </div>
+
+  <div id="mockModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-mock-modal></div>
+    <div class="modal-sheet">
+      <button class="modal-close" data-close-mock-modal aria-label="Close" type="button">×</button>
+      <p class="eyebrow">Practice Mode</p>
+      <h2>Start Mock Draft</h2>
+      <p class="modal-copy">Mock mode uses the same rankings and draft brain, but simulated teams make realistic, slightly different picks each run. Your live draft state stays separate.</p>
+      <div class="mock-slot-note" id="mockSlotNote"></div>
+      <button id="confirmStartMockButton" class="primary-button full-width-button" type="button">Start Fresh Mock</button>
+      <button id="resumeLiveButton" class="secondary-button full-width-button top-gap" type="button">Return to Live Draft</button>
+    </div>
+  </div>
+
+  <div id="resetModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-reset-modal></div>
+    <div class="modal-sheet">
+      <button class="modal-close" data-close-reset-modal aria-label="Close" type="button">×</button>
+      <p class="eyebrow">Protected Action</p>
+      <h2>Full Reset</h2>
+      <p class="modal-copy">This clears the current mode's drafted players, your team, pick history, search and draft progress. Your player brain is not deleted.</p>
+      <button id="resetStepOneButton" class="danger-button full-width-button" type="button">Continue to Reset</button>
+      <div id="resetStepTwo" class="hidden">
+        <p class="reset-warning">Press and hold for 2 seconds to confirm.</p>
+        <button id="holdResetButton" class="hold-reset-button" type="button">
+          <span id="holdResetText">Hold to Reset</span>
+          <span id="holdResetProgress" class="hold-reset-progress"></span>
+        </button>
+      </div>
     </div>
   </div>
 
   <div id="debugModal" class="modal hidden">
     <div class="modal-backdrop" data-close-debug-modal></div>
-
     <div class="modal-sheet debug-sheet">
       <button class="modal-close" data-close-debug-modal aria-label="Close" type="button">×</button>
-
       <p class="eyebrow">Diagnostics</p>
       <h2>Draft Engine Health</h2>
       <div id="debugContent" class="debug-content"></div>
     </div>
   </div>
 
-  <script src="app.js?v=4.0.0"></script>
+  <script src="app.js?v=5.0.0"></script>
 </body>
 </html>
