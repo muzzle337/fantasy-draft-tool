@@ -1,0 +1,10 @@
+{
+  "name": "Jewel City Fantasy Draft Tool",
+  "short_name": "Draft Tool",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "theme_color": "#111111",
+  "description": "Offline live fantasy football draft tool for Jewel City League V.",
+  "icons": []
+}
