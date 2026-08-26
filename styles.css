@@ -544,3 +544,28 @@ h2 {
     max-width: 500px;
   }
 }
+
+
+.engine-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+.engine-status.loading {
+  background: #fff4d6;
+  color: #9a6700;
+}
+.engine-status.ready {
+  background: #eaf6ef;
+  color: #137a46;
+}
+.engine-status.error {
+  background: #fdecea;
+  color: #c7342e;
+}

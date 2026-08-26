@@ -1,3 +1,23 @@
+
+const BUILD_VERSION = "3.0.0";
+
+function setEngineStatus(kind, message) {
+  const status = document.getElementById("engineStatus");
+  if (!status) return;
+  status.className = `engine-status ${kind}`;
+  status.textContent = message;
+}
+
+window.addEventListener("error", (event) => {
+  console.error("App runtime error:", event.error || event.message);
+  setEngineStatus("error", `Engine Error v${BUILD_VERSION}`);
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Unhandled promise rejection:", event.reason);
+  setEngineStatus("error", `Engine Error v${BUILD_VERSION}`);
+});
+
 const STORAGE_KEY = "fantasyDraftToolStateV2";
 const TEAM_COUNT = 14;
 
@@ -35,7 +55,7 @@ function loadState() {
 
 async function loadPlayers() {
   try {
-    const response = await fetch("./players.json", { cache: "no-store" });
+    const response = await fetch("./players.json?v=3.0.0", { cache: "no-store" });
     if (!response.ok) throw new Error("players.json failed to load");
     players = await response.json();
   } catch (error) {
@@ -669,13 +689,17 @@ async function init() {
 
   bindStaticEvents();
   renderAll();
+  setEngineStatus("ready", `Engine Ready v${BUILD_VERSION}`);
 }
 
-init();
+init().catch((error) => {
+  console.error("Initialization failed:", error);
+  setEngineStatus("error", `Engine Error v${BUILD_VERSION}`);
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js").catch((error) => {
+    navigator.serviceWorker.register("./service-worker-v3.js").catch((error) => {
       console.error("Service worker registration failed:", error);
     });
   });
