@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#111111" />
+
+  <title>Fantasy Draft Tool</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Jewel City League V</p>
+        <h1>Fantasy Draft Tool</h1>
+      </div>
+
+      <button id="undoButton" class="secondary-button">
+        Undo
+      </button>
+    </header>
+
+    <section class="draft-status card">
+      <div>
+        <span class="label">Draft Slot</span>
+        <strong id="draftSlotDisplay">Not Set</strong>
+      </div>
+
+      <div>
+        <span class="label">Current Round</span>
+        <strong id="roundDisplay">1</strong>
+      </div>
+
+      <div>
+        <span class="label">Next Pick</span>
+        <strong id="nextPickDisplay">—</strong>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <input
+        id="playerSearch"
+        type="search"
+        placeholder="Search player..."
+        autocomplete="off"
+      />
+    </section>
+
+    <nav class="position-filters" aria-label="Position filters">
+      <button class="filter-button active" data-position="ALL">ALL</button>
+      <button class="filter-button" data-position="RB">RB</button>
+      <button class="filter-button" data-position="WR">WR</button>
+      <button class="filter-button" data-position="TE">TE</button>
+      <button class="filter-button" data-position="QB">QB</button>
+      <button class="filter-button" data-position="DEF">DEF</button>
+      <button class="filter-button" data-position="K">K</button>
+    </nav>
+
+    <section class="card">
+      <div class="section-heading">
+        <h2>Recommended</h2>
+      </div>
+
+      <div id="recommendationPanel">
+        <p class="muted">Recommendations will appear here.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <h2>Best Available</h2>
+      </div>
+
+      <div id="bestAvailableList">
+        <p class="muted">Player data will appear here.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <h2>My Team</h2>
+      </div>
+
+      <div id="myRoster">
+        <p class="muted">No players drafted yet.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <h2>Player Board</h2>
+
+        <label class="show-drafted-control">
+          <input id="showDraftedToggle" type="checkbox" />
+          Show Drafted
+        </label>
+      </div>
+
+      <div id="playerList">
+        <p class="muted">Player list will appear here.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="playerModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-sheet">
+      <button class="modal-close" data-close-modal>
+        ×
+      </button>
+
+      <div id="modalPlayerContent"></div>
+
+      <div class="modal-actions">
+        <button id="draftedByOtherButton" class="danger-button">
+          Drafted By Other
+        </button>
+
+        <button id="myPickButton" class="primary-button">
+          My Pick
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
