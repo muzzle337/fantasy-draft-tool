@@ -1,18 +1,13 @@
-Fantasy Draft Tool V5 Validation
-Players: 208
-Missing referenced HTML IDs: none
-Bad normalized positions: none
-Duplicate names: none
-Package files: app.js, draft-brain.json, index.html, manifest.json, service-worker-v5.js, styles.css
-
-Manual browser workflows to test:
-1. Engine Ready v5.0.0 and 208 PLAYERS visible
-2. Set slot 1-14
-3. Search Gibbs and open player
-4. My Pick fills correct roster slot
-5. Bench fills after starters/FLEX
-6. Start Mock -> Simulate to My Pick -> choose My Pick -> simulate again
-7. Recent Picks shows SIM and MY PICK
-8. Live and Mock states remain separate
-9. Undo affects current mode only
-10. Full Reset requires Continue + 2-second hold
+{
+  "player_count": 208,
+  "css_bytes": 13846,
+  "missing_js_html_ids": [],
+  "bad_positions": [],
+  "duplicate_names": [],
+  "syntax": {
+    "app-v5-1.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  }
+}
