@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111111" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-  <title>Fantasy Draft Tool</title>
+  <title>Jewel City Draft Tool</title>
 
   <link rel="stylesheet" href="styles.css" />
   <link rel="manifest" href="manifest.json" />
@@ -13,106 +15,155 @@
 
 <body>
   <main class="app-shell">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Jewel City League V</p>
-        <h1>Fantasy Draft Tool</h1>
-      </div>
+    <section id="draftView" class="app-view active">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Jewel City League V</p>
+          <h1>Draft Board</h1>
+        </div>
 
-      <button id="undoButton" class="secondary-button">
-        Undo
-      </button>
-    </header>
+        <button id="undoButton" class="secondary-button compact-button">
+          Undo
+        </button>
+      </header>
 
-    <section class="draft-status card">
-      <div>
-        <span class="label">Draft Slot</span>
-        <strong id="draftSlotDisplay">Not Set</strong>
-      </div>
+      <section class="draft-status card">
+        <button id="setDraftSlotButton" class="status-item status-button">
+          <span class="label">Draft Slot</span>
+          <strong id="draftSlotDisplay">Set Slot</strong>
+        </button>
 
-      <div>
-        <span class="label">Current Round</span>
-        <strong id="roundDisplay">1</strong>
-      </div>
+        <div class="status-item">
+          <span class="label">Round</span>
+          <strong id="roundDisplay">1</strong>
+        </div>
 
-      <div>
-        <span class="label">Next Pick</span>
-        <strong id="nextPickDisplay">—</strong>
-      </div>
+        <div class="status-item">
+          <span class="label">Next Pick</span>
+          <strong id="nextPickDisplay">—</strong>
+        </div>
+
+        <div class="status-item">
+          <span class="label">Picks Away</span>
+          <strong id="picksAwayDisplay">—</strong>
+        </div>
+      </section>
+
+      <section class="search-section">
+        <input
+          id="playerSearch"
+          type="search"
+          placeholder="Search player..."
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+      </section>
+
+      <nav class="position-filters" aria-label="Position filters">
+        <button class="filter-button active" data-position="ALL">ALL</button>
+        <button class="filter-button" data-position="RB">RB</button>
+        <button class="filter-button" data-position="WR">WR</button>
+        <button class="filter-button" data-position="TE">TE</button>
+        <button class="filter-button" data-position="QB">QB</button>
+        <button class="filter-button" data-position="DEF">DEF</button>
+        <button class="filter-button" data-position="K">K</button>
+      </nav>
+
+      <section id="searchResultsCard" class="card hidden">
+        <div class="section-heading">
+          <h2>Search Results</h2>
+          <span id="searchResultCount" class="section-note"></span>
+        </div>
+        <div id="searchResults"></div>
+      </section>
+
+      <section class="card recommendation-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Your Decision</p>
+            <h2>Recommended</h2>
+          </div>
+          <span id="recommendationContext" class="section-note"></span>
+        </div>
+
+        <div id="recommendationPanel">
+          <p class="muted">Loading recommendations...</p>
+        </div>
+      </section>
+
+      <section id="cliffCard" class="alert-card hidden">
+        <div id="cliffPanel"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>Best Available</h2>
+          <span id="bestAvailableContext" class="section-note">ALL</span>
+        </div>
+
+        <div id="bestAvailableList">
+          <p class="muted">Loading players...</p>
+        </div>
+      </section>
+
+      <section class="card board-card">
+        <div class="section-heading">
+          <h2>Player Board</h2>
+
+          <label class="show-drafted-control">
+            <input id="showDraftedToggle" type="checkbox" />
+            Show Drafted
+          </label>
+        </div>
+
+        <div id="playerList">
+          <p class="muted">Loading players...</p>
+        </div>
+      </section>
     </section>
 
-    <section class="search-section">
-      <input
-        id="playerSearch"
-        type="search"
-        placeholder="Search player..."
-        autocomplete="off"
-      />
-    </section>
+    <section id="teamView" class="app-view">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Jewel City League V</p>
+          <h1>My Team</h1>
+        </div>
+        <span id="teamPickCount" class="team-count">0 Picks</span>
+      </header>
 
-    <nav class="position-filters" aria-label="Position filters">
-      <button class="filter-button active" data-position="ALL">ALL</button>
-      <button class="filter-button" data-position="RB">RB</button>
-      <button class="filter-button" data-position="WR">WR</button>
-      <button class="filter-button" data-position="TE">TE</button>
-      <button class="filter-button" data-position="QB">QB</button>
-      <button class="filter-button" data-position="DEF">DEF</button>
-      <button class="filter-button" data-position="K">K</button>
-    </nav>
+      <section class="card">
+        <div id="rosterSummary" class="roster-grid"></div>
+      </section>
 
-    <section class="card">
-      <div class="section-heading">
-        <h2>Recommended</h2>
-      </div>
-
-      <div id="recommendationPanel">
-        <p class="muted">Recommendations will appear here.</p>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="section-heading">
-        <h2>Best Available</h2>
-      </div>
-
-      <div id="bestAvailableList">
-        <p class="muted">Player data will appear here.</p>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="section-heading">
-        <h2>My Team</h2>
-      </div>
-
-      <div id="myRoster">
-        <p class="muted">No players drafted yet.</p>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="section-heading">
-        <h2>Player Board</h2>
-
-        <label class="show-drafted-control">
-          <input id="showDraftedToggle" type="checkbox" />
-          Show Drafted
-        </label>
-      </div>
-
-      <div id="playerList">
-        <p class="muted">Player list will appear here.</p>
-      </div>
+      <section class="card">
+        <div class="section-heading">
+          <h2>My Players</h2>
+        </div>
+        <div id="myRoster">
+          <p class="muted">No players drafted yet.</p>
+        </div>
+      </section>
     </section>
   </main>
 
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="bottom-nav-button active" data-view="draftView">
+      <span class="nav-icon">⌁</span>
+      <span>Draft</span>
+    </button>
+
+    <button class="bottom-nav-button" data-view="teamView">
+      <span class="nav-icon">★</span>
+      <span>My Team</span>
+    </button>
+  </nav>
+
   <div id="playerModal" class="modal hidden">
-    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-backdrop" data-close-player-modal></div>
 
     <div class="modal-sheet">
-      <button class="modal-close" data-close-modal>
-        ×
-      </button>
+      <button class="modal-close" data-close-player-modal aria-label="Close">×</button>
 
       <div id="modalPlayerContent"></div>
 
@@ -125,6 +176,19 @@
           My Pick
         </button>
       </div>
+    </div>
+  </div>
+
+  <div id="slotModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-slot-modal></div>
+
+    <div class="modal-sheet">
+      <button class="modal-close" data-close-slot-modal aria-label="Close">×</button>
+
+      <h2>Set Draft Position</h2>
+      <p class="modal-copy">Choose your snake-draft slot. You can change it later.</p>
+
+      <div id="draftSlotGrid" class="slot-grid"></div>
     </div>
   </div>
 

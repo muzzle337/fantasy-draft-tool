@@ -1,0 +1,224 @@
+[
+  {
+    "id": "justin-jefferson",
+    "name": "Justin Jefferson",
+    "position": "WR",
+    "team": "MIN",
+    "overallRank": 1,
+    "positionRank": 1,
+    "tier": 1,
+    "adp": 2.1,
+    "tags": [
+      "SAFE",
+      "UPSIDE"
+    ],
+    "thesis": "Elite target volume and elite PPR floor.",
+    "injuryStatus": "healthy",
+    "aliases": [
+      "jj"
+    ]
+  },
+  {
+    "id": "bijan-robinson",
+    "name": "Bijan Robinson",
+    "position": "RB",
+    "team": "ATL",
+    "overallRank": 2,
+    "positionRank": 1,
+    "tier": 1,
+    "adp": 2.8,
+    "tags": [
+      "UPSIDE",
+      "SAFE"
+    ],
+    "thesis": "Three-down ceiling with premium receiving value.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "jamarr-chase",
+    "name": "Ja'Marr Chase",
+    "position": "WR",
+    "team": "CIN",
+    "overallRank": 3,
+    "positionRank": 2,
+    "tier": 1,
+    "adp": 3.4,
+    "tags": [
+      "UPSIDE",
+      "SAFE"
+    ],
+    "thesis": "Elite target and touchdown ceiling.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "saquon-barkley",
+    "name": "Saquon Barkley",
+    "position": "RB",
+    "team": "PHI",
+    "overallRank": 4,
+    "positionRank": 2,
+    "tier": 1,
+    "adp": 5.2,
+    "tags": [
+      "SAFE",
+      "RISK"
+    ],
+    "thesis": "Elite offense and workload with age and workload risk.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "garrett-wilson",
+    "name": "Garrett Wilson",
+    "position": "WR",
+    "team": "NYJ",
+    "overallRank": 12,
+    "positionRank": 6,
+    "tier": 2,
+    "adp": 16.0,
+    "tags": [
+      "UPSIDE",
+      "VALUE"
+    ],
+    "thesis": "High target-share ceiling at a potentially discounted price.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "brock-bowers",
+    "name": "Brock Bowers",
+    "position": "TE",
+    "team": "LV",
+    "overallRank": 28,
+    "positionRank": 1,
+    "tier": 1,
+    "adp": 25.0,
+    "tags": [
+      "SAFE",
+      "UPSIDE"
+    ],
+    "thesis": "Difference-making target volume at tight end.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "jonathan-brooks",
+    "name": "Jonathan Brooks",
+    "position": "RB",
+    "team": "CAR",
+    "overallRank": 38,
+    "positionRank": 16,
+    "tier": 4,
+    "adp": 49.0,
+    "tags": [
+      "UPSIDE",
+      "VALUE",
+      "TARGET"
+    ],
+    "thesis": "Receiving upside with a realistic lead-back path.",
+    "injuryStatus": "questionable",
+    "expectedReturn": "Week 1"
+  },
+  {
+    "id": "jayden-daniels",
+    "name": "Jayden Daniels",
+    "position": "QB",
+    "team": "WAS",
+    "overallRank": 45,
+    "positionRank": 3,
+    "tier": 2,
+    "adp": 48.0,
+    "tags": [
+      "UPSIDE",
+      "RISK"
+    ],
+    "thesis": "Rushing creates elite fantasy ceiling in four-point passing TD formats.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "quentin-johnston",
+    "name": "Quentin Johnston",
+    "position": "WR",
+    "team": "LAC",
+    "overallRank": 54,
+    "positionRank": 28,
+    "tier": 5,
+    "adp": 70.0,
+    "tags": [
+      "UPSIDE",
+      "VALUE",
+      "TARGET"
+    ],
+    "thesis": "Role and target profile may be stronger than market price.",
+    "injuryStatus": "healthy",
+    "aliases": [
+      "qj"
+    ]
+  },
+  {
+    "id": "bo-nix",
+    "name": "Bo Nix",
+    "position": "QB",
+    "team": "DEN",
+    "overallRank": 82,
+    "positionRank": 9,
+    "tier": 4,
+    "adp": 90.0,
+    "tags": [
+      "VALUE",
+      "UPSIDE"
+    ],
+    "thesis": "Later quarterback with rushing and scoring upside.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "dallas-goedert",
+    "name": "Dallas Goedert",
+    "position": "TE",
+    "team": "PHI",
+    "overallRank": 104,
+    "positionRank": 10,
+    "tier": 5,
+    "adp": 112.0,
+    "tags": [
+      "VALUE",
+      "SAFE"
+    ],
+    "thesis": "Late tight-end value with a stable role.",
+    "injuryStatus": "healthy"
+  },
+  {
+    "id": "denver-defense",
+    "name": "Denver Broncos",
+    "position": "DEF",
+    "team": "DEN",
+    "overallRank": 165,
+    "positionRank": 1,
+    "tier": 1,
+    "adp": 170.0,
+    "tags": [
+      "SAFE"
+    ],
+    "thesis": "Strong late-round defense target.",
+    "injuryStatus": "healthy",
+    "aliases": [
+      "broncos defense",
+      "den"
+    ]
+  },
+  {
+    "id": "brandon-aubrey",
+    "name": "Brandon Aubrey",
+    "position": "K",
+    "team": "DAL",
+    "overallRank": 175,
+    "positionRank": 1,
+    "tier": 1,
+    "adp": 180.0,
+    "tags": [
+      "SAFE"
+    ],
+    "thesis": "High-upside kicker in a strong scoring environment.",
+    "injuryStatus": "healthy",
+    "aliases": [
+      "aubrey"
+    ]
+  }
+]
