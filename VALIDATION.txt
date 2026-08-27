@@ -1,26 +1,27 @@
 {
+  "dataset_version": "1.1-user-final",
   "player_count": 208,
+  "yahoo_adp_available_count": 19,
+  "boone_rank_available_count": 27,
   "missing_js_html_ids": [],
   "syntax": {
-    "app-v6.js": {
+    "app-v6-1.js": {
       "ok": true,
       "stderr": ""
     },
-    "service-worker-v6.js": {
+    "service-worker-v6-1.js": {
       "ok": true,
       "stderr": ""
     }
   },
-  "feature_checks": {
+  "checks": {
+    "final_dataset": true,
+    "yahoo_mapping": true,
+    "no_proxy_logic": true,
+    "tight_round1_mock_window": true,
+    "offline_sw": true,
     "rolling_backups": true,
     "save_verification": true,
-    "startup_recovery": true,
-    "manual_backup": true,
-    "restore_backup": true,
-    "export_state": true,
-    "import_state": true,
-    "reset_current": true,
-    "clear_all": true,
-    "offline_sw": true
+    "startup_recovery": true
   }
 }
