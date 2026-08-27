@@ -1,24 +1,38 @@
 {
-  "dataset_version": "1.1-user-final",
-  "player_count": 208,
-  "yahoo_adp_available_count": 19,
-  "boone_rank_available_count": 27,
+  "dataset_version": "1.2-current-with-k-def",
+  "player_count": 254,
+  "position_counts": {
+    "DEF": 32,
+    "K": 31,
+    "QB": 27,
+    "RB": 65,
+    "TE": 25,
+    "WR": 74
+  },
+  "duplicate_names": [],
+  "bad_positions": [],
   "missing_js_html_ids": [],
   "syntax": {
-    "app-v6-1.js": {
+    "app-v6-2.js": {
       "ok": true,
       "stderr": ""
     },
-    "service-worker-v6-1.js": {
+    "service-worker-v6-2.js": {
       "ok": true,
       "stderr": ""
     }
   },
   "checks": {
-    "final_dataset": true,
-    "yahoo_mapping": true,
-    "no_proxy_logic": true,
-    "tight_round1_mock_window": true,
+    "dataset_v1_2": true,
+    "k_def_rule_present": true,
+    "dst_streaming_present": true,
+    "kicker_strategy_present": true,
+    "k_search_filter_present": true,
+    "def_search_filter_present": true,
+    "early_k_def_suppression": true,
+    "no_multiple_def": true,
+    "no_multiple_k": true,
+    "mock_k_def_suppression": true,
     "offline_sw": true,
     "rolling_backups": true,
     "save_verification": true,
