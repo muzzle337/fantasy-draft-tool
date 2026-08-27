@@ -1,33 +1,30 @@
 {
-  "build": "6.3.0-live-ux",
+  "build": "6.4.0-draft-flow",
   "dataset_version": "1.2-current-with-k-def",
   "player_count": 254,
   "missing_js_html_ids": [],
   "syntax": {
-    "app-v6-3.js": {
+    "app-v6-4.js": {
       "ok": true,
       "stderr": ""
     },
-    "service-worker-v6-3.js": {
+    "service-worker-v6-4.js": {
       "ok": true,
       "stderr": ""
     }
   },
   "checks": {
-    "one_tap_drafted": true,
-    "one_tap_my_pick": true,
-    "my_pick_confirmation": true,
-    "thesis_on_rows": true,
-    "injury_on_rows": true,
-    "important_inline_tags": true,
-    "roster_needs_bar": true,
-    "picks_until_turn": true,
-    "recommendation_explanations": true,
-    "focus_mode": true,
-    "auto_focus_1_to_3_picks": true,
-    "yahoo_only_when_available": true,
-    "dst_v12_mapping": true,
-    "kicker_v12_mapping": true,
+    "waiting_likely_next": true,
+    "likely_next_drafted_button": true,
+    "turn_recommended_for_you": true,
+    "best_available_turn_only": true,
+    "board_my_pick_confirm": true,
+    "recommended_my_pick_direct": true,
+    "modal_my_pick_direct": true,
+    "sticky_undo_tools": true,
+    "quick_reset": true,
+    "thesis_preserved": true,
+    "injury_preserved": true,
     "offline_sw": true,
     "rolling_backups": true,
     "save_verification": true
