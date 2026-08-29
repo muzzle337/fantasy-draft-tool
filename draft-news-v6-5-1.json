@@ -1,0 +1,209 @@
+{
+  "source": "Fantasy Football Today player-news transcript supplied by user",
+  "as_of": "2026-08-29",
+  "player_overrides": {
+    "Josh Jacobs": {
+      "injury_severity_0_5": 1,
+      "tags": ["SAFE", "RISK", "STATUS_MONITOR"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "GROIN - BACK AT PRACTICE / SUSPENSION RISK MONITOR",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Back at practice after groin issue. Packers discussed contingency planning in case of a suspension; no suspension had been announced in the transcript.",
+      "week1_availability": "EXPECTED_BUT_MONITOR_SUSPENSION",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Kyle Monangai": {
+      "injury_severity_0_5": 2,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "KNEE - EXPECTED WEEK 1",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Knee injury kept him out during camp, but transcript says he is expected to be ready for Week 1.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Chuba Hubbard": {
+      "injury_severity_0_5": 2,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "HAMSTRING - NOT PRACTICING",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Hamstring issue has kept Hubbard from practicing; analysts still see role value when healthy.",
+      "week1_availability": "VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Jacory Croskey-Merritt": {
+      "injury_severity_0_5": 1,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "LOWER_BODY - NOT EXPECTED SERIOUS",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Lower-body issue described as not expected to be serious.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Rachaad White": {
+      "injury_severity_0_5": 2,
+      "tags": ["SAFE", "VALUE", "PPR", "INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "HAMSTRING - RECENT PRACTICE ABSENCE",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Hamstring injury had kept White out for roughly a week. Passing-game versatility remains a key role edge.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Puka Nacua": {
+      "injury_severity_0_5": 2,
+      "tags": ["SAFE", "UPSIDE", "INJURY_WATCH", "STATUS_MONITOR"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "GROIN - MISSED SIGNIFICANT TIME / SUSPENSION MONITOR",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Missed significant time with a groin injury; transcript also mentioned possible suspension risk. Analysts had not moved him out of their elite WR tier yet.",
+      "rank_review_flag": true,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "rank_review_reason": "Elite rank retained for now, but groin/suspension status needs final pre-draft verification.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Emeka Egbuka": {
+      "injury_severity_0_5": 1,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "TOE - EXPECTED WEEK 1",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Toe injury is being monitored, but transcript reports little pessimism about Week 1 availability.",
+      "week1_availability": "EXPECTED",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Luther Burden III": {
+      "injury_severity_0_5": 1,
+      "tags": ["UPSIDE", "VALUE", "RISK", "HEALTH_TRENDING_UP"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "GROIN - RETURNED TO PRACTICE",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Returned to practice and is trending toward Week 1. One analyst had him in the middle/high Round 4 range after the positive health update.",
+      "week1_availability": "EXPECTED",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Josh Downs": {
+      "injury_severity_0_5": 2,
+      "tags": ["SAFE", "VALUE", "PPR", "INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "CALF - MONITOR",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Calf injury is active; analysts want him back on the field before treating his role/value as fully stable.",
+      "week1_availability": "VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Alec Pierce": {
+      "tags": ["UPSIDE", "VALUE", "RISK", "HEALTH_TRENDING_UP", "INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "OFF PUP - ANKLE RECOVERY / LIMITED RETURN",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Activated from PUP, but analysts want to see multiple team practices before treating him as fully healthy or fully integrated into the expanded route role.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Tyler Warren": {
+      "injury_severity_0_5": 2,
+      "tags": ["UPSIDE", "STRONG_TARGET", "BOONE_LEAGUE_WINNER", "INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "GROIN - MONITOR",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Battling a groin injury. Analysts still prefer Warren as the Colts passing-game piece/tight end to draft, but health needs final confirmation.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Sam LaPorta": {
+      "injury_severity_0_5": 1,
+      "tags": ["HEALTH_TRENDING_UP"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "HIP - RETURNED TO 11-ON-11 PRACTICE",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Back in a physical practice and 11-on-11 work after the hip issue; analyst expressed little injury concern.",
+      "week1_availability": "EXPECTED",
+      "status_active": false,
+      "last_intel_update": "2026-08-29"
+    },
+    "Tucker Kraft": {
+      "injury_severity_0_5": 1,
+      "tags": ["UPSIDE", "VALUE", "RISK", "HEALTH_TRENDING_UP"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "ACL RECOVERY - OFF PUP / SNAP LIMIT ENDING",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Activated from PUP and indicated snap restrictions are ending. Jonnu Smith signing was viewed as more relevant to Luke Musgrave/depth than to Kraft.",
+      "week1_availability": "EXPECTED",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "George Kittle": {
+      "injury_severity_0_5": 2,
+      "tags": ["UPSIDE", "RISK", "HEALTH_TRENDING_UP", "INJURY_WATCH"],
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "injury_status": "ACHILLES RECOVERY - OFF PUP",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Activated from PUP and trending positively, but Week 1 remains uncertain enough that analysts suggested a backup tight-end plan.",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "D'Andre Swift": {
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Beneficiary of Monangai camp absence; stable receiving role plus contingent rushing upside.",
+      "news_note": "Monangai knee absence has increased Swift early-season workload/contingent upside; analysts placed him in the Round 3-4 RB tier.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Jonathon Brooks": {
+      "analyst_conviction": "POSITIVE_WITH_ROLE_SPLIT",
+      "draft_intel_note": "Preferred long-term Carolina back if healthy, but avoid assuming an immediate full workhorse split.",
+      "news_note": "Chuba Hubbard hamstring absence improves Brooks near-term opportunity, though analysts still expect a meaningful split when both are healthy.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Terrance Ferguson": {
+      "analyst_conviction": "CONTINGENCY_TARGET",
+      "draft_intel_note": "Analysts specifically identified Ferguson as a late-round upside beneficiary if Puka Nacua misses time.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Rome Odunze": {
+      "analyst_conviction": "POSITIVE_BUT_TARGET_COMPETITION",
+      "draft_intel_note": "Luther Burden return to practice slightly reduces the clean target-share case; monitor two-WR personnel usage.",
+      "last_intel_update": "2026-08-29"
+    },
+    "MarShawn Lloyd": {
+      "analyst_conviction": "CONTINGENCY_TARGET",
+      "draft_intel_note": "Preferred contingency handcuff if drafting Josh Jacobs in a deep 14-team league; suspension/injury uncertainty raises immediate relevance.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Keenan Allen": {
+      "team": "IND",
+      "analyst_conviction": "ROLE_CONTEXT",
+      "draft_intel_note": "Keenan Allen presence adds target competition for Alec Pierce/Josh Downs and is part of the Colts role uncertainty.",
+      "news_note": "Fantasy Footballers transcript discusses Keenan Allen as part of the Colts receiving room; this corrects the stale LAC team field in the prior brain.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Chris Godwin Jr.": {
+      "tags": ["PPR", "ROLE_UP"],
+      "stance": "TARGET_AT_PRICE",
+      "short_thesis": "Fresh practice observation was positive: Godwin looked like his old slot self, was in sync with Baker Mayfield, and analysts see a path to 7+ targets per game alongside Egbuka.",
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Role stability is stronger than the prior baseline record suggested.",
+      "news_note": "Positive camp/practice report; role described as locked in with significant vacated Tampa target/red-zone opportunity.",
+      "last_intel_update": "2026-08-29"
+    }
+  },
+  "unmatched_or_not_in_current_pool": [
+    {"name": "Chris Bell", "note": "ACL-return mention; no current player record."},
+    {"name": "Luke Musgrave", "note": "Abdomen injury mention; no current player record."},
+    {"name": "Cedric Tillman", "note": "Release mention; no current player record."},
+    {"name": "Jonnu Smith", "note": "Packers signing mention; no current player record."}
+  ]
+}
