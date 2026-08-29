@@ -1,0 +1,22 @@
+{
+  "source": "User-provided current-status corrections",
+  "as_of": "2026-08-29",
+  "player_overrides": {
+    "Jahmyr Gibbs": {
+      "status_source": "USER_CORRECTION + FANTASY_FOOTBALLERS_MOCK",
+      "injury_status": "NO_ACTIVE_INJURY_OR_CONTRACT_ISSUE_TRACKED",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Contract hold-in resolved Aug. 6 per user-provided current-status correction. Fantasy Footballers mock treated Gibbs as the clear 1.01.",
+      "status_active": false,
+      "last_intel_update": "2026-08-29"
+    },
+    "Bijan Robinson": {
+      "status_source": "USER_CORRECTION + FANTASY_FOOTBALLERS_MOCK",
+      "injury_status": "NO_ACTIVE_INJURY_OR_CONTRACT_ISSUE_TRACKED",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Contract holdout/hold-in resolved Aug. 4 per user-provided current-status correction. Fantasy Footballers mock treated Bijan as the 1.02.",
+      "status_active": false,
+      "last_intel_update": "2026-08-29"
+    }
+  }
+}
