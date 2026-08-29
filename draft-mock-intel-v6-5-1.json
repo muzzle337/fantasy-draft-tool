@@ -1,0 +1,257 @@
+{
+  "source": "Fantasy Footballers mock-draft transcript dated 2026-08-27 supplied by user",
+  "as_of": "2026-08-29",
+  "player_overrides": {
+    "Kenneth Walker III": {
+      "tags": ["UPSIDE", "VALUE", "STRONG_TARGET", "BOONE_LEAGUE_WINNER", "ROUND1_REACH_OK"],
+      "mock_draft_evidence": "1.11 in 12-team half-PPR mock; analyst stated repeat first-round conviction.",
+      "analyst_conviction": "VERY_HIGH",
+      "draft_intel_note": "Fantasy Footballers analyst took Walker at 1.11 in this mock and said he also took him in Round 1 the prior day. Strong evidence that an end-of-R1 reach is acceptable when the turn is long.",
+      "rank_review_flag": false,
+      "target_round": "1-2",
+      "last_intel_update": "2026-08-29"
+    },
+    "Rico Dowdle": {
+      "tags": ["UPSIDE", "RISK", "ROLE_BATTLE", "GOAL_LINE_UPSIDE"],
+      "mock_draft_evidence": "Drafted in Round 7; one host marked him as a personal target.",
+      "analyst_conviction": "MIXED_POSITIVE",
+      "draft_intel_note": "Analyst split: one actively targets Dowdle and ranks him over Warren because of touchdown/lead-back upside; another prefers Warren for passing work and current depth-chart/preseason usage.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Steelers backfield remains unsettled; compare final depth-chart/practice evidence before moving rank.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Jaylen Warren": {
+      "role_confidence_1_10": 7,
+      "tags": ["PPR", "VALUE", "RISK", "ROLE_LEADER"],
+      "mock_draft_evidence": "Warren remained the first Pittsburgh RB off the board in the mock market discussion.",
+      "analyst_conviction": "MIXED_POSITIVE",
+      "draft_intel_note": "Current depth chart and preseason first snaps favored Warren; analysts expect the stronger passing-game role, while acknowledging Dowdle goal-line/upside competition.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Needs final split assessment versus Rico Dowdle.",
+      "last_intel_update": "2026-08-29"
+    },
+    "KC Concepcion": {
+      "acceptable_reach_note": "One-round reach is acceptable near a long turn when he is a preferred upside target.",
+      "tags": ["UPSIDE", "VALUE", "STRONG_TARGET", "CAMP_WATCH", "TURN_REACH_OK"],
+      "mock_draft_evidence": "8.03 in 12-team half-PPR mock; drafter explicitly justified a reach based on survival risk.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Taken at 8.03 specifically because the drafter had a long wait and expected another manager to take him before the next turn. This is direct turn/survival-risk evidence.",
+      "target_round": "8-10",
+      "last_intel_update": "2026-08-29"
+    },
+    "Blake Corum": {
+      "tags": ["UPSIDE", "CONTINGENCY", "LEAGUE_WINNER_IF_KYREN_OUT"],
+      "stance": "LATE_RB_TARGET",
+      "short_thesis": "High-upside contingency back. Fantasy Footballers explicitly described Corum as a league-winner type outcome if Kyren Williams misses time, making him an ideal RB4 stash.",
+      "mock_draft_evidence": "Selected as an upside RB4 stash in the mock.",
+      "analyst_conviction": "HIGH_CONTINGENCY",
+      "draft_intel_note": "Prioritize as an upside RB4 when starters are secured; value comes from contingent workhorse upside rather than current weekly role.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Rhamondre Stevenson": {
+      "mock_draft_evidence": "Taken immediately after TreVeyon Henderson in Round 6; analyst cited strong camp performance.",
+      "analyst_conviction": "HIGH_AT_PRICE",
+      "draft_intel_note": "Fresh camp report was cited positively and one analyst said he was all-in at the current price; supports the existing role-up/value thesis.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Jayden Daniels": {
+      "tags": ["UPSIDE", "RISK", "OL_RISK", "PRICE_SENSITIVE"],
+      "analyst_conviction": "NEGATIVE_AT_CURRENT_PRICE",
+      "draft_intel_note": "Analysts materially cooled on Daniels because of Washington OL losses and poor joint-practice reports.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Current our_rank may be too aggressive if the offensive-line concern persists into final practices.",
+      "risk_note": "Washington offensive-line deterioration is now a major contextual risk; Fantasy Footballers described the line/offense as potentially inoperable against competent fronts.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Breece Hall": {
+      "mock_draft_evidence": "Taken in Round 3 ahead of Jacobs in the analyst decision point.",
+      "analyst_conviction": "HIGH_IF_HEALTHY",
+      "draft_intel_note": "One analyst chose Hall over Josh Jacobs as an RB1 because of Jacobs suspension uncertainty and expressed strong confidence in Hall as a core Jets offensive piece.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Existing groin status still needs final health verification before any rank bump.",
+      "last_intel_update": "2026-08-29"
+    },
+    "A.J. Brown": {
+      "tags": ["UPSIDE", "ANALYST_CONVICTION"],
+      "stance": "TARGET_AT_PRICE",
+      "short_thesis": "Fantasy Footballers analyst said Brown has overall WR1/top-six WR upside if last season was merely a down year; strong second-round conviction in the mock.",
+      "mock_draft_evidence": "Selected at 2.02 in the mock with explicit top-six/WR1-upside conviction.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Analyst chose Brown at the 1/2 turn over Chase Brown and other options because of elite ceiling.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Justin Jefferson": {
+      "mock_draft_evidence": "Selected at 2.03; analyst framed early Round 2 as a comfortable price.",
+      "analyst_conviction": "HIGH_AT_DISCOUNT",
+      "draft_intel_note": "Analyst viewed 2.03 as an attractive talent discount and preferred Jefferson over Drake London despite quarterback uncertainty.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Bhayshul Tuten": {
+      "mock_draft_evidence": "Selected at 4.10 in the mock.",
+      "analyst_conviction": "HIGH_BUT_ROLE_UNPROVEN",
+      "draft_intel_note": "One analyst believes Tuten will become Jacksonville's majority back despite third-down/committee noise and drafted him aggressively in Round 4.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Strong analyst conviction conflicts with current PRICE_SENSITIVE stance; hold rank until role evidence is confirmed.",
+      "last_intel_update": "2026-08-29"
+    },
+    "TreVeyon Henderson": {
+      "mock_draft_evidence": "Selected at 6.02 as RB3 in the mock.",
+      "analyst_conviction": "UPSIDE_STASH",
+      "draft_intel_note": "Drafted as a sixth-round RB3 for upside rather than current depth-chart certainty. Analyst explicitly preferred ceiling because roster already had two RBs.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Marvin Harrison Jr.": {
+      "tags": ["VALUE"],
+      "stance": "TARGET_AT_PRICE",
+      "mock_draft_evidence": "Selected at 6.07 and immediately labeled a steal.",
+      "analyst_conviction": "POSITIVE_VALUE",
+      "draft_intel_note": "Analysts called his Round 6 availability a steal.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Dak Prescott": {
+      "tags": ["VALUE", "UPSIDE"],
+      "stance": "LATE_QB_TARGET",
+      "short_thesis": "Fantasy Footballers framed Dak as a cheaper Joe Burrow: strong receiving weapons, bad-defense shootout potential and recurring top-five QB upside when healthy.",
+      "mock_draft_evidence": "Selected at 8.02.",
+      "analyst_conviction": "HIGH_AT_PRICE",
+      "draft_intel_note": "Preferred over paying a higher price for Hurts in the analysts' discussion; strong late-QB value signal.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Jordyn Tyson": {
+      "tags": ["UPSIDE", "IR_STASH"],
+      "stance": "LATE_WR_STASH",
+      "short_thesis": "Aggressive late upside stash if the league has IR. Analyst preferred Tyson to other late rookie WRs because the eventual pathway is cleaner despite injury.",
+      "mock_draft_evidence": "Selected in Round 8 specifically because an IR spot was available.",
+      "analyst_conviction": "HIGH_STASH",
+      "draft_intel_note": "Use IR spot to preserve bench flexibility; do not draft as an immediate starter.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Quentin Johnston": {
+      "mock_draft_evidence": "Selected in Round 9 as an upside WR.",
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Selected as a high-upside WR late in the mock; reinforces existing strong-target/value stance.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Kyle Pitts Sr.": {
+      "tags": ["LATE_TE_VALUE"],
+      "stance": "LATE_TE_TARGET",
+      "short_thesis": "If the premium TE tier is missed, Fantasy Footballers were comfortable waiting and using Pitts as one of the late-tier options rather than forcing the position early.",
+      "analyst_conviction": "POSITIVE_AT_LATE_PRICE",
+      "draft_intel_note": "Part of the late-TE wait strategy; safer than Kincaid in the analysts' discussion.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Dalton Kincaid": {
+      "analyst_conviction": "HIGH_LATE_TE_UPSIDE",
+      "draft_intel_note": "Explicit late-round TE target with a path to a special season if healthy; analysts viewed Pitts as safer but Kincaid as higher-variance upside.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Isaiah Likely": {
+      "analyst_conviction": "POSITIVE_LATE_TE",
+      "draft_intel_note": "Named as a late-TE rip-cord option; supports waiting at tight end when the preferred premium tier is gone.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Juwan Johnson": {
+      "tags": ["LATE_TE_VALUE"],
+      "stance": "LATE_TE_TARGET",
+      "short_thesis": "Late-round tight-end option in a wait-on-TE build. Fantasy Footballers were comfortable opening the season with Johnson rather than forcing an earlier TE.",
+      "analyst_conviction": "POSITIVE_LATE_TE",
+      "draft_intel_note": "Part of the late TE cluster with Pitts/Likely/Kincaid/Goedert-style options.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Dontayvion Wicks": {
+      "tags": ["UPSIDE", "SLEEPER"],
+      "stance": "FINAL_ROUND_DART",
+      "short_thesis": "Fantasy Footballers identified Wicks as a very late sleeper with a path to start outside on a good offense; appropriate final-round upside dart.",
+      "analyst_conviction": "POSITIVE_LATE_SLEEPER",
+      "draft_intel_note": "Late sleeper signal; prioritize over low-ceiling veteran bench filler.",
+      "last_intel_update": "2026-08-29"
+    },
+    "J.K. Dobbins": {
+      "tags": ["ROLE_RISK"],
+      "analyst_conviction": "POSITIVE_BUT_ROLE_RISK",
+      "draft_intel_note": "Analyst remained interested but explicitly became more nervous about a larger Denver timeshare because of Jonah Coleman praise.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Monitor Denver committee split before final board.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Tony Pollard": {
+      "analyst_conviction": "FLOOR_VALUE",
+      "draft_intel_note": "Mock discussion noted 8-of-8 starter opportunities in the most recent game and a usable volume floor, but analysts still viewed him as low-upside compared with stash backs.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Parker Washington": {
+      "mock_draft_evidence": "Selected at 6.01 in 12-team half-PPR mock.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Selected at 6.01 in the mock, reinforcing that preferred upside WRs can disappear earlier than generic ADP suggests.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Davante Adams": {
+      "tags": ["VALUE", "TD_UPSIDE"],
+      "stance": "TARGET_AT_PRICE",
+      "short_thesis": "Fantasy Footballers are rising on Adams after positive McVay commentary. Even a diminished version has double-digit-TD upside in this Rams offense.",
+      "mock_draft_evidence": "Selected in Round 5.",
+      "analyst_conviction": "POSITIVE_AT_PRICE",
+      "draft_intel_note": "Analyst selected Adams over Rome Odunze in Round 5 and said his best-case outcome beats current price.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Isiah Pacheco": {
+      "injury_severity_0_5": 2,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "injury_status": "BACK INJURY - KNEE ISSUE NO LONGER CONCERN",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Mock-draft episode said the prior knee injury was no longer a concern, but Pacheco is now dealing with a back injury.",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Malik Nabers": {
+      "tags": ["STATUS_MONITOR"],
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "injury_status": "NO_CONFIRMED_NEW_INJURY - MONITOR EARLY PRACTICE EXIT",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Left practice early with a trainer, but the coach was quoted saying there was no injury. Given prior surgeries/offseason missed time, keep as monitor rather than active injury.",
+      "rank_review_flag": true,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
+      "status_active": false,
+      "rank_review_reason": "High-upside player with prior injury context; verify final practice participation.",
+      "last_intel_update": "2026-08-29"
+    },
+    "Zay Flowers": {
+      "injury_severity_0_5": 1,
+      "tags": ["UPSIDE", "VALUE", "STRONG_TARGET", "INJURY_WATCH"],
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "injury_status": "PRECAUTIONARY PRACTICE HOLDOUT",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Being held out for precautionary reasons and expected to be ready Week 1; final full-practice participation remains the clean confirmation point.",
+      "week1_availability": "EXPECTED",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "James Conner": {
+      "injury_severity_0_5": 2,
+      "tags": ["INJURY_WATCH"],
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "injury_status": "WEEK1 STATUS UNCERTAIN - ISSUE NOT SPECIFIED IN TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Fantasy Footballers said it was too early to tell whether Conner would play Week 1; transcript did not specify the underlying issue.",
+      "week1_availability": "UNCERTAIN",
+      "status_active": true,
+      "last_intel_update": "2026-08-29"
+    },
+    "Mike Evans": {
+      "injury_severity_0_5": 3,
+      "tags": ["INJURY", "DURABILITY_RISK"],
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "durability_risk_1_5": 5,
+      "injury_status": "MULTIPLE LOWER-BODY ISSUES - QUAD/GROIN/HAMSTRING",
+      "status_verified_date": "2026-08-29",
+      "news_note": "Evans plans to play Week 1, but analysts remain very concerned about accumulated quad/groin/hamstring issues and expect sporadic availability risk.",
+      "rank_review_flag": true,
+      "week1_availability": "PLANS_TO_PLAY_BUT_VERIFY",
+      "status_active": true,
+      "rank_review_reason": "Current rank should be re-evaluated against severe durability/availability concern before Sept. 2.",
+      "last_intel_update": "2026-08-29"
+    }
+  }
+}
