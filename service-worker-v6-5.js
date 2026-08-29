@@ -37,14 +37,25 @@ self.addEventListener("activate", (event) => {
   })());
 });
 
+async function networkOrCache(input) {
+  try {
+    const response = await fetch(input, { cache: "no-store" });
+    if (response && response.ok) return response;
+  } catch (_) {}
+  return caches.match(input);
+}
+
 async function mergedBrainResponse(request) {
   try {
     const [baseResponse, ...layerResponses] = await Promise.all([
-      fetch(request),
-      ...REFRESH_URLS.map((url) => fetch(url, { cache: "no-store" }))
+      networkOrCache(request),
+      ...REFRESH_URLS.map((url) => networkOrCache(url))
     ]);
 
-    if (!baseResponse.ok || layerResponses.some((response) => !response.ok)) return baseResponse;
+    if (!baseResponse || layerResponses.some((response) => !response)) {
+      const cached = await caches.match(request);
+      return cached || new Response("Brain unavailable", { status: 503 });
+    }
 
     const base = await baseResponse.json();
     const layers = await Promise.all(layerResponses.map((response) => response.json()));
@@ -72,7 +83,8 @@ async function mergedBrainResponse(request) {
       headers: { "Content-Type": "application/json" }
     });
   } catch (_) {
-    return caches.match(request) || fetch(request);
+    const cached = await caches.match(request);
+    return cached || new Response("Brain unavailable", { status: 503 });
   }
 }
 
