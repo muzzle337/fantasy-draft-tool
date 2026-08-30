@@ -1,7 +1,7 @@
 {
   "dataset_name": "Jewel City League V Draft Brain",
-  "version": "1.2-current-with-k-def",
-  "as_of": "2026-08-26",
+  "version": "1.2.1-transcript-refresh",
+  "as_of": "2026-08-29",
   "draft_date": "2026-09-02",
   "market_rule": "Yahoo Draft Analysis is the market-price source. yahoo_adp contains only values captured from Yahoo/Yahoo-linked data supplied or verified in this project. Missing Yahoo values are null; no substitute, consensus substitution, or estimated ADP is used.",
   "ranking_rule": "our_rank is the league-specific decision rank. Boone is an anchor; analyst transcripts, injury/role evidence, Yahoo price and 14-team full-PPR scarcity can move players away from Boone.",
@@ -144,7 +144,7 @@
         "SAFE",
         "UPSIDE"
       ],
-      "injury_status": "VERIFY CONTRACT/HOLD-IN",
+      "injury_status": "NO_ACTIVE_INJURY_OR_CONTRACT_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
@@ -153,8 +153,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Elite receiving/workload ceiling in a high-scoring offense. In a 14-team league, elite RB scarcity makes him an ideal anchor.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Contract hold-in resolved Aug. 6 per user-provided current-status correction. Fantasy Footballers mock treated Gibbs as the clear 1.01.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 1,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -162,7 +162,10 @@
       "yahoo_round_14team": 1,
       "our_round_14team": 1,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "USER_CORRECTION + FANTASY_FOOTBALLERS_MOCK",
+      "status_verified_date": "2026-08-29",
+      "status_active": false
     },
     {
       "name": "Bijan Robinson",
@@ -177,7 +180,7 @@
         "SAFE",
         "UPSIDE"
       ],
-      "injury_status": "VERIFY CONTRACT/HOLD-IN",
+      "injury_status": "NO_ACTIVE_INJURY_OR_CONTRACT_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
@@ -186,8 +189,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Elite all-purpose ceiling and workload; ideal early-slot anchor in this 14-team format.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Contract holdout/hold-in resolved Aug. 4 per user-provided current-status correction. Fantasy Footballers mock treated Bijan as the 1.02.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 2,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -195,7 +198,10 @@
       "yahoo_round_14team": 1,
       "our_round_14team": 1,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "USER_CORRECTION + FANTASY_FOOTBALLERS_MOCK",
+      "status_verified_date": "2026-08-29",
+      "status_active": false
     },
     {
       "name": "Ja'Marr Chase",
@@ -241,19 +247,21 @@
       "do_not_reach_before_round": "1",
       "tags": [
         "SAFE",
-        "UPSIDE"
+        "UPSIDE",
+        "INJURY_WATCH",
+        "STATUS_MONITOR"
       ],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "injury_status": "GROIN - MISSED SIGNIFICANT TIME / SUSPENSION MONITOR",
+      "injury_severity_0_5": 2,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 10,
       "stance": "STRONG_TARGET",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Repeatedly preferred over other elite WRs because of target dominance and McVay/Stafford environment.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Missed significant time with a groin injury; transcript also mentioned possible suspension risk. Analysts had not moved him out of their elite WR tier yet.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 4,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -261,7 +269,12 @@
       "yahoo_round_14team": 1,
       "our_round_14team": 1,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "rank_review_flag": true,
+      "status_active": true,
+      "rank_review_reason": "Elite rank retained for now, but groin/suspension status needs final pre-draft verification."
     },
     {
       "name": "Amon-Ra St. Brown",
@@ -415,7 +428,7 @@
       "short_thesis": "RotoWire and prior transcripts see a talent discount if Kyler stabilizes QB play; late R1/early R2 is attractive.",
       "risk_note": "Quarterback stability, not Jefferson talent, is the main concern.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -423,7 +436,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 1,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected at 2.03; analyst framed early Round 2 as a comfortable price.",
+      "analyst_conviction": "HIGH_AT_DISCOUNT",
+      "draft_intel_note": "Analyst viewed 2.03 as an attractive talent discount and preferred Jefferson over Drake London despite quarterback uncertainty."
     },
     {
       "name": "Jonathan Taylor",
@@ -527,18 +543,21 @@
       "tier": "T2",
       "target_round": "1",
       "do_not_reach_before_round": "1",
-      "tags": [],
+      "tags": [
+        "UPSIDE",
+        "ANALYST_CONVICTION"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "TARGET_AT_PRICE",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Fantasy Footballers analyst said Brown has overall WR1/top-six WR upside if last season was merely a down year; strong second-round conviction in the mock.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -546,7 +565,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 1,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected at 2.02 in the mock with explicit top-six/WR1-upside conviction.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Analyst chose Brown at the 1/2 turn over Chase Brown and other options because of elite ceiling."
     },
     {
       "name": "James Cook III",
@@ -585,13 +607,14 @@
       "our_rank": 15,
       "pos_rank": 8,
       "tier": "T2",
-      "target_round": "2",
+      "target_round": "1-2",
       "do_not_reach_before_round": "1",
       "tags": [
         "UPSIDE",
         "VALUE",
         "STRONG_TARGET",
-        "BOONE_LEAGUE_WINNER"
+        "BOONE_LEAGUE_WINNER",
+        "ROUND1_REACH_OK"
       ],
       "injury_status": "FOOT_ISSUE_MONITOR",
       "injury_severity_0_5": 2,
@@ -603,7 +626,7 @@
       "short_thesis": "Boone league-winner pick. Explosive lead back in Kansas City with receiving usage and workhorse upside; strong alignment across our research.",
       "risk_note": "Recent foot issue is the main reason not to push him higher.",
       "news_note": "Aug. 26 foot issue interrupted otherwise strong summer.",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 16,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": 15,
@@ -611,7 +634,11 @@
       "yahoo_round_14team": 2,
       "our_round_14team": 2,
       "yahoo_adp_available": true,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "mock_draft_evidence": "1.11 in 12-team half-PPR mock; analyst stated repeat first-round conviction.",
+      "analyst_conviction": "VERY_HIGH",
+      "draft_intel_note": "Fantasy Footballers analyst took Walker at 1.11 in this mock and said he also took him in Round 1 the prior day. Strong evidence that an end-of-R1 reach is acceptable when the turn is long.",
+      "rank_review_flag": false
     },
     {
       "name": "Nico Collins",
@@ -1224,7 +1251,7 @@
       "short_thesis": "Third-round value case remains, including receiving upside, but current groin issue requires confirmation before paying full price.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 33,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -1232,7 +1259,12 @@
       "yahoo_round_14team": 3,
       "our_round_14team": 3,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Taken in Round 3 ahead of Jacobs in the analyst decision point.",
+      "analyst_conviction": "HIGH_IF_HEALTHY",
+      "draft_intel_note": "One analyst chose Hall over Josh Jacobs as an RB1 because of Jacobs suspension uncertainty and expressed strong confidence in Hall as a core Jets offensive piece.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Existing groin status still needs final health verification before any rank bump."
     },
     {
       "name": "Zay Flowers",
@@ -1246,19 +1278,20 @@
       "tags": [
         "UPSIDE",
         "VALUE",
-        "STRONG_TARGET"
+        "STRONG_TARGET",
+        "INJURY_WATCH"
       ],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "injury_status": "PRECAUTIONARY PRACTICE HOLDOUT",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 9,
       "stance": "STRONG_TARGET",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Clear Baltimore target leader with excellent per-route play, favorable opening schedule and room for a passing-volume/TD increase under the new offense.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Being held out for precautionary reasons and expected to be ready Week 1; final full-practice participation remains the clean confirmation point.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 36,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -1266,7 +1299,10 @@
       "yahoo_round_14team": 3,
       "our_round_14team": 3,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Malik Nabers",
@@ -1277,18 +1313,20 @@
       "tier": "T3",
       "target_round": "3",
       "do_not_reach_before_round": "2",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
+      "tags": [
+        "STATUS_MONITOR"
+      ],
+      "injury_status": "NO_CONFIRMED_NEW_INJURY - MONITOR EARLY PRACTICE EXIT",
       "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Left practice early with a trainer, but the coach was quoted saying there was no injury. Given prior surgeries/offseason missed time, keep as monitor rather than active injury.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1296,7 +1334,12 @@
       "yahoo_round_14team": null,
       "our_round_14team": 3,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "rank_review_flag": true,
+      "status_active": false,
+      "rank_review_reason": "High-upside player with prior injury context; verify final practice participation."
     },
     {
       "name": "Joe Burrow",
@@ -1402,19 +1445,20 @@
       "do_not_reach_before_round": "2",
       "tags": [
         "SAFE",
-        "RISK"
+        "RISK",
+        "STATUS_MONITOR"
       ],
-      "injury_status": "LEGAL/SUSPENSION RISK",
-      "injury_severity_0_5": 0,
-      "week1_availability": "UNCERTAIN",
+      "injury_status": "GROIN - BACK AT PRACTICE / SUSPENSION RISK MONITOR",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED_BUT_MONITOR_SUSPENSION",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 9,
       "stance": "PRICE_SENSITIVE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Workhorse profile remains strong, but potential suspension risk must be resolved before final .",
       "risk_note": "",
-      "news_note": "Packers preparing for possible suspension scenario.",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Back at practice after groin issue. Packers discussed contingency planning in case of a suspension; no suspension had been announced in the transcript.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1422,7 +1466,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 3,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Tee Higgins",
@@ -1466,19 +1513,20 @@
       "tags": [
         "UPSIDE",
         "STRONG_TARGET",
-        "BOONE_LEAGUE_WINNER"
+        "BOONE_LEAGUE_WINNER",
+        "INJURY_WATCH"
       ],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "injury_status": "GROIN - MONITOR",
+      "injury_severity_0_5": 2,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 9,
       "stance": "STRONG_TARGET",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Boone league-winner pick. Already flashed elite TE production and YAC ability; personnel changes create a path to true difference-making target volume.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Battling a groin injury. Analysts still prefer Warren as the Colts passing-game piece/tight end to draft, but health needs final confirmation.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 45,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -1486,7 +1534,10 @@
       "yahoo_round_14team": 4,
       "our_round_14team": 3,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Javonte Williams",
@@ -1530,18 +1581,20 @@
       "tier": "T4",
       "target_round": "4",
       "do_not_reach_before_round": "3",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "TOE - EXPECTED WEEK 1",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Toe injury is being monitored, but transcript reports little pessimism about Week 1 availability.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1549,7 +1602,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 4,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Jeremiyah Love",
@@ -1658,18 +1714,21 @@
       "tier": "T4",
       "target_round": "4",
       "do_not_reach_before_round": "3",
-      "tags": [],
+      "tags": [
+        "VALUE",
+        "TD_UPSIDE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "TARGET_AT_PRICE",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Fantasy Footballers are rising on Adams after positive McVay commentary. Even a diminished version has double-digit-TD upside in this Rams offense.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1677,7 +1736,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 4,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected in Round 5.",
+      "analyst_conviction": "POSITIVE_AT_PRICE",
+      "draft_intel_note": "Analyst selected Adams over Rome Odunze in Round 5 and said his best-case outcome beats current price."
     },
     {
       "name": "Mike Evans",
@@ -1688,18 +1750,21 @@
       "tier": "T4",
       "target_round": "4",
       "do_not_reach_before_round": "3",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
-      "durability_risk_1_5": 2,
+      "tags": [
+        "INJURY",
+        "DURABILITY_RISK"
+      ],
+      "injury_status": "MULTIPLE LOWER-BODY ISSUES - QUAD/GROIN/HAMSTRING",
+      "injury_severity_0_5": 3,
+      "week1_availability": "PLANS_TO_PLAY_BUT_VERIFY",
+      "durability_risk_1_5": 5,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Evans plans to play Week 1, but analysts remain very concerned about accumulated quad/groin/hamstring issues and expect sporadic availability risk.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1707,7 +1772,12 @@
       "yahoo_round_14team": null,
       "our_round_14team": 4,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "rank_review_flag": true,
+      "status_active": true,
+      "rank_review_reason": "Current rank should be re-evaluated against severe durability/availability concern before Sept. 2."
     },
     {
       "name": "Jameson Williams",
@@ -1857,7 +1927,7 @@
       "short_thesis": "Explosive ceiling and positive camp signals, but goal-line/third-down competition makes role confidence the gating issue.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1865,7 +1935,12 @@
       "yahoo_round_14team": null,
       "our_round_14team": 4,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected at 4.10 in the mock.",
+      "analyst_conviction": "HIGH_BUT_ROLE_UNPROVEN",
+      "draft_intel_note": "One analyst believes Tuten will become Jacksonville's majority back despite third-down/committee noise and drafted him aggressively in Round 4.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Strong analyst conviction conflicts with current PRICE_SENSITIVE stance; hold rank until role evidence is confirmed."
     },
     {
       "name": "Parker Washington",
@@ -1892,7 +1967,7 @@
       "short_thesis": "Boone league-winner pick and one of the strongest camp/usage drumbeats in our research. Jacksonville's likely target leader at a market discount.",
       "risk_note": "Tough opening schedule and a crowded room create some weekly volatility, but role evidence is strong.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 77,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": 49,
@@ -1900,7 +1975,10 @@
       "yahoo_round_14team": 6,
       "our_round_14team": 4,
       "yahoo_adp_available": true,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "mock_draft_evidence": "Selected at 6.01 in 12-team half-PPR mock.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Selected at 6.01 in the mock, reinforcing that preferred upside WRs can disappear earlier than generic ADP suggests."
     },
     {
       "name": "Cam Skattebo",
@@ -1981,7 +2059,9 @@
       "do_not_reach_before_round": "4",
       "tags": [
         "UPSIDE",
-        "RISK"
+        "RISK",
+        "OL_RISK",
+        "PRICE_SENSITIVE"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -1991,9 +2071,9 @@
       "stance": "TARGET_AT_PRICE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Rushing plus improved play-action structure supports elite QB ceiling; durability is the main risk.",
-      "risk_note": "",
+      "risk_note": "Washington offensive-line deterioration is now a major contextual risk; Fantasy Footballers described the line/offense as potentially inoperable against competent fronts.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2001,7 +2081,11 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "NEGATIVE_AT_CURRENT_PRICE",
+      "draft_intel_note": "Analysts materially cooled on Daniels because of Washington OL losses and poor joint-practice reports.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Current our_rank may be too aggressive if the offensive-line concern persists into final practices."
     },
     {
       "name": "Rome Odunze",
@@ -2026,7 +2110,7 @@
       "short_thesis": "Pre-injury 2025 usage was excellent; DJ Moore exit creates high-value opportunity, but Bears target competition remains.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2034,7 +2118,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_BUT_TARGET_COMPETITION",
+      "draft_intel_note": "Luther Burden return to practice slightly reduces the clean target-share case; monitor two-WR personnel usage."
     },
     {
       "name": "Tucker Kraft",
@@ -2048,19 +2134,20 @@
       "tags": [
         "UPSIDE",
         "VALUE",
-        "RISK"
+        "RISK",
+        "HEALTH_TRENDING_UP"
       ],
-      "injury_status": "ACL RECOVERY - VERIFY FULL PRACTICE",
-      "injury_severity_0_5": 2,
-      "week1_availability": "EXPECTED BUT VERIFY",
+      "injury_status": "ACL RECOVERY - OFF PUP / SNAP LIMIT ENDING",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED",
       "durability_risk_1_5": 3,
       "role_confidence_1_10": 8,
       "stance": "TARGET_IF_HEALTHY",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Strong breakout profile and repeated analyst support. Health is the gating factor.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Activated from PUP and indicated snap restrictions are ending. Jonnu Smith signing was viewed as more relevant to Luke Musgrave/depth than to Kraft.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 63,
@@ -2068,7 +2155,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Luther Burden III",
@@ -2082,19 +2172,20 @@
       "tags": [
         "UPSIDE",
         "VALUE",
-        "RISK"
+        "RISK",
+        "HEALTH_TRENDING_UP"
       ],
-      "injury_status": "GROIN - LIGHT WORK AUG 26",
-      "injury_severity_0_5": 2,
-      "week1_availability": "EXPECTED BUT VERIFY",
+      "injury_status": "GROIN - RETURNED TO PRACTICE",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 7,
       "stance": "TARGET_IF_HEALTHY",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Excellent per-route profile and high-end role upside, but health and two-WR-set usage must be confirmed.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Returned to practice and is trending toward Week 1. One analyst had him in the middle/high Round 4 range after the positive health update.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 39,
@@ -2102,7 +2193,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "D'Andre Swift",
@@ -2126,8 +2220,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Recent camp praise plus Monangai injury improves an already stable receiving/workload profile.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Monangai knee absence has increased Swift early-season workload/contingent upside; analysts placed him in the Round 3-4 RB tier.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2135,7 +2229,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Beneficiary of Monangai camp absence; stable receiving role plus contingent rushing upside."
     },
     {
       "name": "Marvin Harrison Jr.",
@@ -2146,18 +2242,20 @@
       "tier": "T4",
       "target_round": "5",
       "do_not_reach_before_round": "4",
-      "tags": [],
+      "tags": [
+        "VALUE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "TARGET_AT_PRICE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 62,
@@ -2165,7 +2263,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "mock_draft_evidence": "Selected at 6.07 and immediately labeled a steal.",
+      "analyst_conviction": "POSITIVE_VALUE",
+      "draft_intel_note": "Analysts called his Round 6 availability a steal."
     },
     {
       "name": "Alec Pierce",
@@ -2179,19 +2280,21 @@
       "tags": [
         "UPSIDE",
         "VALUE",
-        "RISK"
+        "RISK",
+        "HEALTH_TRENDING_UP",
+        "INJURY_WATCH"
       ],
-      "injury_status": "ANKLE RECOVERY / LIMITED",
+      "injury_status": "OFF PUP - ANKLE RECOVERY / LIMITED RETURN",
       "injury_severity_0_5": 2,
-      "week1_availability": "EXPECTED BUT VERIFY",
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 7,
       "stance": "TARGET_IF_HEALTHY",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Contract/opportunity plus proven vertical efficiency creates breakout ceiling if route tree expands.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Activated from PUP, but analysts want to see multiple team practices before treating him as fully healthy or fully integrated into the expanded route role.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2199,7 +2302,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Bucky Irving",
@@ -2274,18 +2380,21 @@
       "tier": "T5",
       "target_round": "5",
       "do_not_reach_before_round": "4",
-      "tags": [],
+      "tags": [
+        "VALUE",
+        "UPSIDE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "LATE_QB_TARGET",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Fantasy Footballers framed Dak as a cheaper Joe Burrow: strong receiving weapons, bad-defense shootout potential and recurring top-five QB upside when healthy.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2293,7 +2402,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected at 8.02.",
+      "analyst_conviction": "HIGH_AT_PRICE",
+      "draft_intel_note": "Preferred over paying a higher price for Hurts in the analysts' discussion; strong late-QB value signal."
     },
     {
       "name": "Rhamondre Stevenson",
@@ -2320,7 +2432,7 @@
       "short_thesis": "Current Patriots usage points to early-down, short-yardage and goal-line work in roughly a 50/50 split. Market had been too aggressive on Henderson.",
       "risk_note": "Brutal early schedule and Henderson still owns more explosive-play upside.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2328,7 +2440,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 5,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Taken immediately after TreVeyon Henderson in Round 6; analyst cited strong camp performance.",
+      "analyst_conviction": "HIGH_AT_PRICE",
+      "draft_intel_note": "Fresh camp report was cited positively and one analyst said he was all-in at the current price; supports the existing role-up/value thesis."
     },
     {
       "name": "Jadarian Price",
@@ -2418,7 +2533,7 @@
       "short_thesis": "FantasyPros sees workhorse volume at RB3 price. Strong fit for a 14-team roster that needs dependable RB volume.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2426,7 +2541,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 6,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "FLOOR_VALUE",
+      "draft_intel_note": "Mock discussion noted 8-of-8 starter opportunities in the most recent game and a usable volume floor, but analysts still viewed him as low-upside compared with stash backs."
     },
     {
       "name": "Justin Herbert",
@@ -2516,7 +2633,7 @@
       "short_thesis": "Healthy-game usage, first-read share and red-zone role remain strong. Best-ball price rose, but Yahoo/season-long price still leaves value.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 111,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -2524,7 +2641,10 @@
       "yahoo_round_14team": 8,
       "our_round_14team": 6,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected in Round 9 as an upside WR.",
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Selected as a high-upside WR late in the mock; reinforces existing strong-target/value stance."
     },
     {
       "name": "Kyle Pitts Sr.",
@@ -2535,18 +2655,20 @@
       "tier": "T5",
       "target_round": "6",
       "do_not_reach_before_round": "5",
-      "tags": [],
+      "tags": [
+        "LATE_TE_VALUE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "LATE_TE_TARGET",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "If the premium TE tier is missed, Fantasy Footballers were comfortable waiting and using Pitts as one of the late-tier options rather than forcing the position early.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2554,7 +2676,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 6,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_AT_LATE_PRICE",
+      "draft_intel_note": "Part of the late-TE wait strategy; safer than Kincaid in the analysts' discussion."
     },
     {
       "name": "Jaylen Warren",
@@ -2568,19 +2692,20 @@
       "tags": [
         "PPR",
         "VALUE",
-        "RISK"
+        "RISK",
+        "ROLE_LEADER"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
-      "role_confidence_1_10": 6,
+      "role_confidence_1_10": 7,
       "stance": "TARGET_AT_PRICE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Useful receiving profile, but Pittsburgh 1A/1B uncertainty with Dowdle prevents a reach.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2588,7 +2713,12 @@
       "yahoo_round_14team": null,
       "our_round_14team": 6,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Warren remained the first Pittsburgh RB off the board in the mock market discussion.",
+      "analyst_conviction": "MIXED_POSITIVE",
+      "draft_intel_note": "Current depth chart and preseason first snaps favored Warren; analysts expect the stronger passing-game role, while acknowledging Dowdle goal-line/upside competition.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Needs final split assessment versus Rico Dowdle."
     },
     {
       "name": "Christian Watson",
@@ -2677,8 +2807,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "One of the strongest cross-source sleepers: receiving ability, explosiveness and a legitimate path to overtake Chuba.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Chuba Hubbard hamstring absence improves Brooks near-term opportunity, though analysts still expect a meaningful split when both are healthy.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 98,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -2686,7 +2816,9 @@
       "yahoo_round_14team": 7,
       "our_round_14team": 6,
       "yahoo_adp_available": true,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_WITH_ROLE_SPLIT",
+      "draft_intel_note": "Preferred long-term Carolina back if healthy, but avoid assuming an immediate full workhorse split."
     },
     {
       "name": "Brian Thomas Jr.",
@@ -2730,18 +2862,20 @@
       "tier": "T5",
       "target_round": "6",
       "do_not_reach_before_round": "5",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "KNEE - EXPECTED WEEK 1",
+      "injury_severity_0_5": 2,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Knee injury kept him out during camp, but transcript says he is expected to be ready for Week 1.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2749,7 +2883,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 6,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "TreVeyon Henderson",
@@ -2775,7 +2912,7 @@
       "short_thesis": "Explosive ceiling remains, but current evidence does not support an immediate takeover. Passing-down role may depend on pass protection.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2783,7 +2920,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 6,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected at 6.02 as RB3 in the mock.",
+      "analyst_conviction": "UPSIDE_STASH",
+      "draft_intel_note": "Drafted as a sixth-round RB3 for upside rather than current depth-chart certainty. Analyst explicitly preferred ceiling because roster already had two RBs."
     },
     {
       "name": "Harold Fannin Jr.",
@@ -2860,19 +3000,20 @@
       "tags": [
         "SAFE",
         "VALUE",
-        "PPR"
+        "PPR",
+        "INJURY_WATCH"
       ],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "injury_status": "HAMSTRING - RECENT PRACTICE ABSENCE",
+      "injury_severity_0_5": 2,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 8,
       "stance": "TARGET_AT_PRICE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Reliable receiving/pass-protection profile creates a strong PPR floor despite younger competition.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Hamstring injury had kept White out for roughly a week. Passing-game versatility remains a key role edge.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2880,7 +3021,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Michael Pittman Jr.",
@@ -2921,18 +3065,22 @@
       "tier": "T5",
       "target_round": "7",
       "do_not_reach_before_round": "6",
-      "tags": [],
+      "tags": [
+        "UPSIDE",
+        "CONTINGENCY",
+        "LEAGUE_WINNER_IF_KYREN_OUT"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "LATE_RB_TARGET",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "High-upside contingency back. Fantasy Footballers explicitly described Corum as a league-winner type outcome if Kyren Williams misses time, making him an ideal RB4 stash.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2940,7 +3088,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected as an upside RB4 stash in the mock.",
+      "analyst_conviction": "HIGH_CONTINGENCY",
+      "draft_intel_note": "Prioritize as an upside RB4 when starters are secured; value comes from contingent workhorse upside rather than current weekly role."
     },
     {
       "name": "Rico Dowdle",
@@ -2953,7 +3104,9 @@
       "do_not_reach_before_round": "6",
       "tags": [
         "UPSIDE",
-        "RISK"
+        "RISK",
+        "ROLE_BATTLE",
+        "GOAL_LINE_UPSIDE"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -2965,7 +3118,7 @@
       "short_thesis": "Recent RotoWire reports suggest possible Pittsburgh 1A status; needs usage confirmation before a major move.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2973,7 +3126,12 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Drafted in Round 7; one host marked him as a personal target.",
+      "analyst_conviction": "MIXED_POSITIVE",
+      "draft_intel_note": "Analyst split: one actively targets Dowdle and ranks him over Warren because of touchdown/lead-back upside; another prefers Warren for passing work and current depth-chart/preseason usage.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Steelers backfield remains unsettled; compare final depth-chart/practice evidence before moving rank."
     },
     {
       "name": "DK Metcalf",
@@ -3020,19 +3178,20 @@
       "tags": [
         "SAFE",
         "VALUE",
-        "PPR"
+        "PPR",
+        "INJURY_WATCH"
       ],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "injury_status": "CALF - MONITOR",
+      "injury_severity_0_5": 2,
+      "week1_availability": "VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 8,
       "stance": "TARGET_AT_PRICE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Reception floor plus opportunity growth; Pierce/Warren competition caps the clean breakout case.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Calf injury is active; analysts want him back on the field before treating his role/value as fully stable.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 81,
@@ -3040,7 +3199,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Jaxson Dart",
@@ -3117,18 +3279,21 @@
       "tier": "T6",
       "target_round": "7",
       "do_not_reach_before_round": "6",
-      "tags": [],
+      "tags": [
+        "PPR",
+        "ROLE_UP"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "TARGET_AT_PRICE",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Fresh practice observation was positive: Godwin looked like his old slot self, was in sync with Baker Mayfield, and analysts see a path to 7+ targets per game alongside Egbuka.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Positive camp/practice report; role described as locked in with significant vacated Tampa target/red-zone opportunity.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 71,
@@ -3136,7 +3301,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "analyst_conviction": "POSITIVE",
+      "draft_intel_note": "Role stability is stronger than the prior baseline record suggested."
     },
     {
       "name": "J.K. Dobbins",
@@ -3147,7 +3314,9 @@
       "tier": "T6",
       "target_round": "7",
       "do_not_reach_before_round": "6",
-      "tags": [],
+      "tags": [
+        "ROLE_RISK"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
@@ -3158,7 +3327,7 @@
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3166,7 +3335,11 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_BUT_ROLE_RISK",
+      "draft_intel_note": "Analyst remained interested but explicitly became more nervous about a larger Denver timeshare because of Jonah Coleman praise.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Monitor Denver committee split before final board."
     },
     {
       "name": "Stefon Diggs",
@@ -3254,7 +3427,7 @@
       "short_thesis": "Repeated breakout/late-TE signal in our digest; attractive if role remains substantial.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3262,7 +3435,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 7,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_LATE_TE",
+      "draft_intel_note": "Named as a late-TE rip-cord option; supports waiting at tight end when the preferred premium tier is gone."
     },
     {
       "name": "Dallas Goedert",
@@ -3562,10 +3737,12 @@
       "do_not_reach_before_round": "7",
       "tags": [
         "UPSIDE",
-        "RISK"
+        "RISK",
+        "HEALTH_TRENDING_UP",
+        "INJURY_WATCH"
       ],
-      "injury_status": "ACHILLES RECOVERY / PUP",
-      "injury_severity_0_5": 3,
+      "injury_status": "ACHILLES RECOVERY - OFF PUP",
+      "injury_severity_0_5": 2,
       "week1_availability": "POSSIBLE / VERIFY",
       "durability_risk_1_5": 5,
       "role_confidence_1_10": 8,
@@ -3573,8 +3750,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Still has elite TE ceiling, but age and Achilles recovery demand a meaningful discount.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Activated from PUP and trending positively, but Week 1 remains uncertain enough that analysts suggested a backup tight-end plan.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3582,7 +3759,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 8,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Deebo Samuel Sr.",
@@ -3621,13 +3801,14 @@
       "our_rank": 108,
       "pos_rank": 45,
       "tier": "T6",
-      "target_round": "9-11",
+      "target_round": "8-10",
       "do_not_reach_before_round": "9",
       "tags": [
         "UPSIDE",
         "VALUE",
         "STRONG_TARGET",
-        "CAMP_WATCH"
+        "CAMP_WATCH",
+        "TURN_REACH_OK"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -3639,7 +3820,7 @@
       "short_thesis": "JJ explicitly has Concepcion a tier or two above Denzel Boston and expects manufactured touches in a Zay Flowers-style role.",
       "risk_note": "Cleveland quarterback quality remains a meaningful ceiling limiter.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": 164,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": 113,
@@ -3647,7 +3828,11 @@
       "yahoo_round_14team": 12,
       "our_round_14team": 8,
       "yahoo_adp_available": true,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "acceptable_reach_note": "One-round reach is acceptable near a long turn when he is a preferred upside target.",
+      "mock_draft_evidence": "8.03 in 12-team half-PPR mock; drafter explicitly justified a reach based on survival risk.",
+      "analyst_conviction": "HIGH",
+      "draft_intel_note": "Taken at 8.03 specifically because the drafter had a long wait and expected another manager to take him before the next turn. This is direct turn/survival-risk evidence."
     },
     {
       "name": "Tyler Shough",
@@ -3783,18 +3968,20 @@
       "tier": "T6",
       "target_round": "8",
       "do_not_reach_before_round": "7",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "HEALTH_TRENDING_UP"
+      ],
+      "injury_status": "HIP - RETURNED TO 11-ON-11 PRACTICE",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Back in a physical practice and 11-on-11 work after the hip issue; analyst expressed little injury concern.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3802,7 +3989,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 8,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": false
     },
     {
       "name": "Juwan Johnson",
@@ -3813,18 +4003,20 @@
       "tier": "T6",
       "target_round": "8",
       "do_not_reach_before_round": "7",
-      "tags": [],
+      "tags": [
+        "LATE_TE_VALUE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "LATE_TE_TARGET",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Late-round tight-end option in a wait-on-TE build. Fantasy Footballers were comfortable opening the season with Johnson rather than forcing an earlier TE.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3832,7 +4024,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 8,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_LATE_TE",
+      "draft_intel_note": "Part of the late TE cluster with Pitts/Likely/Kincaid/Goedert-style options."
     },
     {
       "name": "Jared Goff",
@@ -3936,18 +4130,20 @@
       "tier": "T6",
       "target_round": "9",
       "do_not_reach_before_round": "8",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "HAMSTRING - NOT PRACTICING",
+      "injury_severity_0_5": 2,
+      "week1_availability": "VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Hamstring issue has kept Hubbard from practicing; analysts still see role value when healthy.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3955,7 +4151,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 9,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Jacory Croskey-Merritt",
@@ -3966,18 +4165,20 @@
       "tier": "T6",
       "target_round": "9",
       "do_not_reach_before_round": "8",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "LOWER_BODY - NOT EXPECTED SERIOUS",
+      "injury_severity_0_5": 1,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Lower-body issue described as not expected to be serious.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": 79,
@@ -3985,7 +4186,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 9,
       "yahoo_adp_available": false,
-      "boone_rank_available": true
+      "boone_rank_available": true,
+      "status_source": "FFT_PLAYER_NEWS_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Tyler Allgeier",
@@ -4224,7 +4428,7 @@
       "short_thesis": "Multiple sources still see top-five upside if healthy; price is finally more reasonable.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -4232,7 +4436,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 10,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "HIGH_LATE_TE_UPSIDE",
+      "draft_intel_note": "Explicit late-round TE target with a path to a special season if healthy; analysts viewed Pitts as safer but Kincaid as higher-variance upside."
     },
     {
       "name": "Chris Rodriguez Jr.",
@@ -4480,7 +4686,7 @@
     },
     {
       "name": "Keenan Allen",
-      "team": "LAC",
+      "team": "IND",
       "pos": "WR",
       "our_rank": 137,
       "pos_rank": 54,
@@ -4497,8 +4703,8 @@
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Fantasy Footballers transcript discusses Keenan Allen as part of the Colts receiving room; this corrects the stale LAC team field in the prior brain.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -4506,7 +4712,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 10,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "ROLE_CONTEXT",
+      "draft_intel_note": "Keenan Allen presence adds target competition for Alec Pierce/Josh Downs and is part of the Colts role uncertainty."
     },
     {
       "name": "Isiah Pacheco",
@@ -4517,18 +4725,20 @@
       "tier": "T7",
       "target_round": "10",
       "do_not_reach_before_round": "9",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "BACK INJURY - KNEE ISSUE NO LONGER CONCERN",
+      "injury_severity_0_5": 2,
+      "week1_availability": "EXPECTED_BUT_VERIFY",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Mock-draft episode said the prior knee injury was no longer a concern, but Pacheco is now dealing with a back injury.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -4536,7 +4746,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 10,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Xavier Worthy",
@@ -5354,18 +5567,21 @@
       "tier": "T8",
       "target_round": "12",
       "do_not_reach_before_round": "11",
-      "tags": [],
+      "tags": [
+        "UPSIDE",
+        "IR_STASH"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "LATE_WR_STASH",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Aggressive late upside stash if the league has IR. Analyst preferred Tyson to other late rookie WRs because the eventual pathway is cleaner despite injury.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -5373,7 +5589,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 12,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "mock_draft_evidence": "Selected in Round 8 specifically because an IR spot was available.",
+      "analyst_conviction": "HIGH_STASH",
+      "draft_intel_note": "Use IR spot to preserve bench flexibility; do not draft as an immediate starter."
     },
     {
       "name": "Kimani Vidal",
@@ -5540,18 +5759,20 @@
       "tier": "T8",
       "target_round": "13",
       "do_not_reach_before_round": "12",
-      "tags": [],
-      "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
-      "injury_severity_0_5": 0,
-      "week1_availability": "EXPECTED_UNLESS_UPDATED",
+      "tags": [
+        "INJURY_WATCH"
+      ],
+      "injury_status": "WEEK1 STATUS UNCERTAIN - ISSUE NOT SPECIFIED IN TRANSCRIPT",
+      "injury_severity_0_5": 2,
+      "week1_availability": "UNCERTAIN",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
       "stance": "BASELINE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "news_note": "Fantasy Footballers said it was too early to tell whether Conner would play Week 1; transcript did not specify the underlying issue.",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -5559,7 +5780,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 13,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "status_source": "FANTASY_FOOTBALLERS_MOCK_TRANSCRIPT",
+      "status_verified_date": "2026-08-29",
+      "status_active": true
     },
     {
       "name": "Ryan Flournoy",
@@ -5843,7 +6067,7 @@
       "short_thesis": "Explosive contingency back behind Josh Jacobs; suspension/injury to Jacobs could create immediate relevance.",
       "risk_note": "Lloyd's own availability history is poor.",
       "news_note": "Multiple transcript mentions as Green Bay contingent value.",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -5851,7 +6075,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 14,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "CONTINGENCY_TARGET",
+      "draft_intel_note": "Preferred contingency handcuff if drafting Josh Jacobs in a deep 14-team league; suspension/injury uncertainty raises immediate relevance."
     },
     {
       "name": "Jaylen Wright",
@@ -5941,7 +6167,7 @@
       "short_thesis": "Athletic Rams TE with unusually high downfield usage; could become a major pass-catching beneficiary if Rams WR injuries strike.",
       "risk_note": "Crowded TE room and uncertain weekly routes.",
       "news_note": "JJ/FantasyPros both identified him as a late upside TE.",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -5949,7 +6175,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 14,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "CONTINGENCY_TARGET",
+      "draft_intel_note": "Analysts specifically identified Ferguson as a late-round upside beneficiary if Puka Nacua misses time."
     },
     {
       "name": "Ted Hurst III",
@@ -6086,18 +6314,21 @@
       "tier": "T9",
       "target_round": "14",
       "do_not_reach_before_round": "13",
-      "tags": [],
+      "tags": [
+        "UPSIDE",
+        "SLEEPER"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "FINAL_ROUND_DART",
       "intel_level": "RANKING_BASELINE",
-      "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
+      "short_thesis": "Fantasy Footballers identified Wicks as a very late sleeper with a path to start outside on a good offense; appropriate final-round upside dart.",
       "risk_note": "",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-29",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -6105,7 +6336,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 14,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "POSITIVE_LATE_SLEEPER",
+      "draft_intel_note": "Late sleeper signal; prioritize over low-ceiling veteran bench filler."
     },
     {
       "name": "Emmett Johnson",
@@ -7739,5 +7972,19 @@
     "defenses": 32,
     "kickers": 31,
     "total_records": 254
+  },
+  "latest_intel_refresh": {
+    "date": "2026-08-29",
+    "type": "TRANSCRIPT_RECONCILIATION",
+    "sources": [
+      "User-provided current-status corrections",
+      "Fantasy Football Today player-news transcript supplied by user",
+      "Fantasy Footballers mock-draft transcript dated 2026-08-27 supplied by user"
+    ],
+    "rules": [
+      "Yahoo ADP is unchanged by transcript mock-draft positions.",
+      "our_rank and tier are unchanged in this refresh; rank-review flags are for Sept. 1 synthesis.",
+      "Resolved contract/holdout notes do not create an injury or recommendation penalty."
+    ]
   }
 }

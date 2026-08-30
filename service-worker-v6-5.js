@@ -1,12 +1,12 @@
-const CACHE_NAME = "fantasy-draft-tool-v6-5-1-intel-refresh";
+const CACHE_NAME = "fantasy-draft-tool-v6-5-1-first-load-fix";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./index-v6-5.html",
   "./styles-v6-5.css?v=6.5.0",
-  "./app-v6-5.js?v=6.5.0",
-  "./draft-brain-v6-5.json?v=6.5.0",
+  "./app-v6-5.js?v=6.5.1",
+  "./draft-brain-v6-5.json?v=6.5.1",
   "./draft-corrections-v6-5-1.json?v=20260829-1",
   "./draft-news-v6-5-1.json?v=20260829-1",
   "./draft-mock-intel-v6-5-1.json?v=20260829-1",

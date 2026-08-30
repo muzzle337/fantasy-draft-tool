@@ -1,10 +1,10 @@
-const BUILD_VERSION = "6.5.0-mobile-nav";
+const BUILD_VERSION = "6.5.1-transcript-refresh";
 const TEAM_COUNT = 14;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.0";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.1";
 
 let brainMeta = {};
 let leagueStrategy = {};
