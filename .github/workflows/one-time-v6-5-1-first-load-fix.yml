@@ -1,0 +1,89 @@
+name: One-time V6.5.1 first-load fix
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-5-1-first-load-fix.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  merge-refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Merge transcript refresh into primary brain and bump build
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+
+          const basePath = 'draft-brain-v6-5.json';
+          const layerPaths = [
+            'draft-corrections-v6-5-1.json',
+            'draft-news-v6-5-1.json',
+            'draft-mock-intel-v6-5-1.json'
+          ];
+
+          const base = JSON.parse(fs.readFileSync(basePath, 'utf8'));
+          const layers = layerPaths.map((path) => JSON.parse(fs.readFileSync(path, 'utf8')));
+
+          for (const layer of layers) {
+            const overrides = layer.player_overrides || {};
+            base.players = base.players.map((player) => ({
+              ...player,
+              ...(overrides[player.name] || {})
+            }));
+          }
+
+          base.version = '1.2.1-transcript-refresh';
+          base.as_of = '2026-08-29';
+          base.latest_intel_refresh = {
+            date: '2026-08-29',
+            type: 'TRANSCRIPT_RECONCILIATION',
+            sources: layers.map((layer) => layer.source),
+            rules: [
+              'Yahoo ADP is unchanged by transcript mock-draft positions.',
+              'our_rank and tier are unchanged in this refresh; rank-review flags are for Sept. 1 synthesis.',
+              'Resolved contract/holdout notes do not create an injury or recommendation penalty.'
+            ]
+          };
+
+          fs.writeFileSync(basePath, JSON.stringify(base, null, 2) + '\n');
+
+          let app = fs.readFileSync('app-v6-5.js', 'utf8');
+          app = app.replace('const BUILD_VERSION = "6.5.0-mobile-nav";', 'const BUILD_VERSION = "6.5.1-transcript-refresh";');
+          app = app.replace('const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.0";', 'const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.1";');
+          fs.writeFileSync('app-v6-5.js', app);
+
+          let index = fs.readFileSync('index.html', 'utf8');
+          index = index.replace('<title>Jewel City Draft Tool V6.5</title>', '<title>Jewel City Draft Tool V6.5.1</title>');
+          index = index.replaceAll('Draft Engine v6.5</button>', 'Draft Engine v6.5.1</button>');
+          index = index.replace('app-v6-5.js?v=6.5.0', 'app-v6-5.js?v=6.5.1');
+          fs.writeFileSync('index.html', index);
+
+          let versionedIndex = fs.readFileSync('index-v6-5.html', 'utf8');
+          versionedIndex = versionedIndex.replace('<title>Jewel City Draft Tool V6.5</title>', '<title>Jewel City Draft Tool V6.5.1</title>');
+          versionedIndex = versionedIndex.replaceAll('Draft Engine v6.5</button>', 'Draft Engine v6.5.1</button>');
+          versionedIndex = versionedIndex.replace('app-v6-5.js?v=6.5.0', 'app-v6-5.js?v=6.5.1');
+          fs.writeFileSync('index-v6-5.html', versionedIndex);
+
+          let sw = fs.readFileSync('service-worker-v6-5.js', 'utf8');
+          sw = sw.replace('fantasy-draft-tool-v6-5-1-intel-refresh', 'fantasy-draft-tool-v6-5-1-first-load-fix');
+          sw = sw.replaceAll('app-v6-5.js?v=6.5.0', 'app-v6-5.js?v=6.5.1');
+          sw = sw.replaceAll('draft-brain-v6-5.json?v=6.5.0', 'draft-brain-v6-5.json?v=6.5.1');
+          fs.writeFileSync('service-worker-v6-5.js', sw);
+
+          console.log(`Merged ${layers.length} transcript layers into ${base.players.length} players.`);
+          NODE
+
+      - name: Commit first-load fix
+        shell: bash
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add draft-brain-v6-5.json app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js
+          git commit -m "V6.5.1: make transcript refresh first-load safe"
+          git push
