@@ -73,7 +73,7 @@ jobs:
             addTags(p, ['DO_NOT_REACH','FADE','LOW_CEILING']);
             p.rank_review_flag = true;
             p.analyst_conviction = 'STRONG_FADE';
-            appendNote(p, 'risk_note', 'Boone called Sutton a no-fly zone at cost because Jaylen Waddle and Pat Bryant create more target competition and Sutton's ceiling may be limited even if he beats a low ADP.');
+            appendNote(p, 'risk_note', 'Boone called Sutton a no-fly zone at cost because Jaylen Waddle and Pat Bryant create more target competition and the ceiling may be limited even if he beats a low ADP.');
           });
 
           update('Matthew Stafford', p => {
