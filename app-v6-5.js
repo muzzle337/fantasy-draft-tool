@@ -1,5 +1,6 @@
-const BUILD_VERSION = "6.5.1-transcript-refresh";
+const BUILD_VERSION = "6.5.2-roster-completion";
 const TEAM_COUNT = 14;
+const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
@@ -541,6 +542,50 @@ function flexNeed(state = currentState()) {
   return flex && flex[1] ? 0 : 1;
 }
 
+function missingRequiredStarterPositions(state = currentState()) {
+  const assigned = assignRosterSlots(state);
+  const missing = [];
+
+  for (const [label, player] of assigned.starters) {
+    if (player) continue;
+    if (label === "QB") missing.push("QB");
+    else if (label === "RB1" || label === "RB2") missing.push("RB");
+    else if (label === "WR1" || label === "WR2") missing.push("WR");
+    else if (label === "TE") missing.push("TE");
+    else if (label === "K") missing.push("K");
+    else if (label === "DEF") missing.push("DEF");
+    else if (label === "FLEX") missing.push("FLEX");
+  }
+
+  return missing;
+}
+
+function rosterCompletionMode(state = currentState()) {
+  const missing = missingRequiredStarterPositions(state);
+  const rostered = getRoster(state).length;
+  const slotsRemaining = Math.max(0, DRAFTABLE_ROSTER_SIZE - rostered);
+  const requiredSlotsRemaining = missing.length;
+
+  return {
+    active: requiredSlotsRemaining > 0 && slotsRemaining <= requiredSlotsRemaining,
+    missing,
+    slotsRemaining,
+    requiredSlotsRemaining
+  };
+}
+
+function playerCanFillMissingStarter(player, missing) {
+  if (missing.includes(player.position)) return true;
+  return missing.includes("FLEX") && ["RB", "WR", "TE"].includes(player.position);
+}
+
+function recommendationCandidatePool(state = currentState()) {
+  const available = availablePlayers(state);
+  const completion = rosterCompletionMode(state);
+  if (!completion.active) return available;
+  return available.filter((player) => playerCanFillMissingStarter(player, completion.missing));
+}
+
 function availablePlayers(state = currentState()) {
   return players.filter((player) => !isDrafted(player.id, state));
 }
@@ -724,6 +769,10 @@ function recommendationLabel(player, state = currentState()) {
 function recommendationReason(player, state = currentState()) {
   const reasons = [];
   const round = currentRound(state);
+  const completion = rosterCompletionMode(state);
+  if (completion.active) {
+    reasons.push(`Roster Completion Mode: only ${[...new Set(completion.missing)].join(" / ")} can fill your remaining required starter slots.`);
+  }
   const remaining = tierRemaining(player, state);
 
   if (skillStarterNeed(player.position, state) > 0) {
@@ -910,7 +959,7 @@ function renderBestAvailable() {
     return;
   }
 
-  const list = availablePlayers(state)
+  const list = recommendationCandidatePool(state)
     .filter((p) => matchesPosition(p,state))
     .sort((a,b) => recommendationScore(b,state) - recommendationScore(a,state) || a.overallRank - b.overallRank)
     .slice(0,8);
@@ -961,12 +1010,15 @@ function renderRecommendations() {
     return;
   }
 
-  const recs = availablePlayers(state)
+  const recs = recommendationCandidatePool(state)
     .map((p) => ({...p, recommendationScore: recommendationScore(p,state)}))
     .sort((a,b) => b.recommendationScore - a.recommendationScore || a.overallRank - b.overallRank)
     .slice(0,3);
 
-  el("recommendationContext").textContent = `R${currentRound(state)} · #${currentOverallPick(state)}`;
+  const completion = rosterCompletionMode(state);
+  el("recommendationContext").textContent = completion.active
+    ? `COMPLETE ROSTER · ${[...new Set(completion.missing)].join(" / ")}`
+    : `R${currentRound(state)} · #${currentOverallPick(state)}`;
   el("recommendationPanel").innerHTML = recs.length ? recs.map((p,index) => {
     const label = recommendationLabel(p,state);
     const labelClass = label === "WAIT" || label === "DON'T REACH" ? "wait" : label.includes("TIER") ? "cliff" : "target";
@@ -1094,7 +1146,7 @@ function renderFocusMode() {
     return;
   }
 
-  const recs = availablePlayers(state)
+  const recs = recommendationCandidatePool(state)
     .map(p => ({...p,recommendationScore:recommendationScore(p,state)}))
     .sort((a,b) => b.recommendationScore-a.recommendationScore || a.overallRank-b.overallRank)
     .slice(0,3);
