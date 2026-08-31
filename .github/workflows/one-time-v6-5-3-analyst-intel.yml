@@ -1,0 +1,147 @@
+name: One-time V6.5.3 analyst intel ingest
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-5-3-analyst-intel.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ingest analyst drafting intelligence
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = 'draft-brain-v6-5.json';
+          const brain = JSON.parse(fs.readFileSync(path, 'utf8'));
+
+          const byName = new Map(brain.players.map(p => [p.name, p]));
+          const addTags = (p, tags) => {
+            p.tags = [...new Set([...(Array.isArray(p.tags) ? p.tags : []), ...tags])];
+          };
+          const appendNote = (p, field, text) => {
+            const current = (p[field] || '').trim();
+            if (!current.includes(text)) p[field] = current ? `${current} ${text}` : text;
+          };
+          const update = (name, fn) => {
+            const p = byName.get(name);
+            if (!p) throw new Error(`Missing player: ${name}`);
+            fn(p);
+            p.last_intel_update = '2026-08-31';
+            p.analyst_intel_source = 'FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31';
+          };
+
+          update('TreVeyon Henderson', p => {
+            p.stance = 'PRICE_SENSITIVE';
+            addTags(p, ['PRICE','RISK','ROLE_SPLIT']);
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'NEGATIVE_AT_COST';
+            appendNote(p, 'risk_note', 'Boone and Erickson both favored Rhamondre Stevenson at current cost; Henderson had not clearly won pass protection or between-the-tackles trust, making a full takeover uncertain without a Stevenson injury.');
+          });
+
+          update('Rhamondre Stevenson', p => {
+            if (!String(p.stance || '').includes('STRONG_TARGET')) p.stance = 'TARGET_AT_PRICE';
+            addTags(p, ['VALUE','ROLE_CONFIDENCE']);
+            p.analyst_conviction = 'POSITIVE_VALUE';
+            appendNote(p, 'news_note', 'Boone had Stevenson RB26 and Henderson RB27 and said New England still appears to trust Stevenson as the lead/1A, especially early in the season.');
+          });
+
+          update('Jonathon Brooks', p => {
+            addTags(p, ['TARGET','UPSIDE','PRICE']);
+            p.target_round = '5-6';
+            p.do_not_reach_before_round = '5';
+            p.analyst_conviction = 'POSITIVE_BUT_PRICE_SENSITIVE';
+            appendNote(p, 'risk_note', 'Brooks remains a target because of receiving ability and a path to the lead role, but the transcript warned his price was rising quickly. Treat Round 6 as comfortable value and avoid paying a Round 4 price.');
+          });
+
+          update('DJ Moore', p => {
+            p.stance = 'PRICE_SENSITIVE';
+            addTags(p, ['PRICE','FADE']);
+            p.analyst_conviction = 'CAUTIOUS';
+            appendNote(p, 'risk_note', 'This transcript reinforced the existing fade: analysts saw a wide range of outcomes and did not want to pay the WR22 market price despite acknowledging a plausible WR2 floor with Josh Allen.');
+          });
+
+          update('Courtland Sutton', p => {
+            p.stance = 'DO_NOT_REACH';
+            addTags(p, ['DO_NOT_REACH','FADE','LOW_CEILING']);
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'STRONG_FADE';
+            appendNote(p, 'risk_note', 'Boone called Sutton a no-fly zone at cost because Jaylen Waddle and Pat Bryant create more target competition and Sutton's ceiling may be limited even if he beats a low ADP.');
+          });
+
+          update('Matthew Stafford', p => {
+            p.stance = 'DO_NOT_REACH';
+            addTags(p, ['DO_NOT_REACH','QB_FADE','LOW_RUSHING_CEILING']);
+            p.analyst_conviction = 'STRONG_FADE';
+            appendNote(p, 'risk_note', 'Boone and Erickson preferred avoiding Stafford in a deep QB pool because he offers little rushing floor, is 38, and would need another unusually efficient passing season to justify a QB1 price.');
+          });
+
+          update('Isaiah Likely', p => {
+            p.stance = 'LATE_TE_TARGET';
+            addTags(p, ['TARGET','UPSIDE','LATE_TE']);
+            p.analyst_conviction = 'POSITIVE_LATE_TE';
+            appendNote(p, 'news_note', 'Erickson viewed Likely as having top-five ceiling and Boone grouped him with Goedert as one of the last tight ends he was comfortable drafting as a TE1.');
+          });
+
+          brain.version = '1.2.2-analyst-intel-refresh';
+          brain.latest_analyst_intel_ingest = {
+            ingested_on: '2026-08-31',
+            source_age: 'approximately 8 days old',
+            source: 'FantasyPros ECR vs ADP transcript with Justin Boone and Andrew Erickson',
+            rules: [
+              'Do not overwrite newer injury/status information from Aug. 29.',
+              'Do not change Yahoo ADP from this transcript.',
+              'Use this source for analyst conviction, price discipline, fade/target strength, and roster-construction strategy.'
+            ]
+          };
+
+          const cliff = 'Treat the end of Round 5 / early Round 6 as a major RB cliff; in 14-team full PPR, prioritize securing at least one strong RB before that cliff and often two when value supports it.';
+          brain.draft_logic = brain.draft_logic || {};
+          brain.draft_logic.core = Array.isArray(brain.draft_logic.core) ? brain.draft_logic.core : [];
+          if (!brain.draft_logic.core.includes(cliff)) brain.draft_logic.core.push(cliff);
+          brain.draft_logic.rb_cliff = {
+            range: 'END_R5_TO_EARLY_R6',
+            strength: 'HIGH',
+            note: cliff,
+            source: 'FantasyPros ECR vs ADP transcript, ingested 2026-08-31'
+          };
+
+          fs.writeFileSync(path, JSON.stringify(brain, null, 2) + '\n');
+
+          let app = fs.readFileSync('app-v6-5.js', 'utf8');
+          app = app.replace(/const BUILD_VERSION = "[^"]+";/, 'const BUILD_VERSION = "6.5.3-analyst-intel";');
+          app = app.replace(/const BRAIN_URL = "\.\/draft-brain-v6-5\.json\?v=[^"]+";/, 'const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.3";');
+          fs.writeFileSync('app-v6-5.js', app);
+
+          let index = fs.readFileSync('index.html', 'utf8');
+          index = index.replace(/app-v6-5\.js\?v=[^"]+/, 'app-v6-5.js?v=6.5.3');
+          fs.writeFileSync('index.html', index);
+
+          let versioned = fs.readFileSync('index-v6-5.html', 'utf8');
+          versioned = versioned.replace(/app-v6-5\.js\?v=[^"]+/, 'app-v6-5.js?v=6.5.3');
+          fs.writeFileSync('index-v6-5.html', versioned);
+
+          let sw = fs.readFileSync('service-worker-v6-5.js', 'utf8');
+          sw = sw.replace(/const CACHE_NAME = "[^"]+";/, 'const CACHE_NAME = "fantasy-draft-tool-v6-5-3-analyst-intel";');
+          sw = sw.replaceAll(/app-v6-5\.js\?v=[^"\n]+/g, 'app-v6-5.js?v=6.5.3');
+          sw = sw.replaceAll(/draft-brain-v6-5\.json\?v=[^"\n]+/g, 'draft-brain-v6-5.json?v=6.5.3');
+          fs.writeFileSync('service-worker-v6-5.js', sw);
+
+          console.log('Analyst intelligence ingested without changing Yahoo ADP or newer status fields.');
+          NODE
+
+      - name: Commit analyst intel refresh
+        shell: bash
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add draft-brain-v6-5.json app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js
+          git commit -m "V6.5.3: ingest Boone and Erickson draft intel"
+          git push
