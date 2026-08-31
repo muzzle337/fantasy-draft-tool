@@ -1,6 +1,6 @@
 {
   "dataset_name": "Jewel City League V Draft Brain",
-  "version": "1.2.1-transcript-refresh",
+  "version": "1.2.2-analyst-intel-refresh",
   "as_of": "2026-08-29",
   "draft_date": "2026-09-02",
   "market_rule": "Yahoo Draft Analysis is the market-price source. yahoo_adp contains only values captured from Yahoo/Yahoo-linked data supplied or verified in this project. Missing Yahoo values are null; no substitute, consensus substitution, or estimated ADP is used.",
@@ -34,7 +34,8 @@
       "Late bench picks should chase contingent RB and emerging WR ceiling.",
       "Schedule is a meaningful early-season tiebreaker, not a reason for large rank jumps.",
       "Weeks 15-17 schedule is a light tiebreaker only because preseason playoff-SOS forecasts are unstable.",
-      "Suppress K and DST until late."
+      "Suppress K and DST until late.",
+      "Treat the end of Round 5 / early Round 6 as a major RB cliff; in 14-team full PPR, prioritize securing at least one strong RB before that cliff and often two when value supports it."
     ],
     "slot_notes": {
       "early": "Long waits between turns increase tier-cliff urgency. Take the last player in a critical tier rather than assuming he returns.",
@@ -43,7 +44,13 @@
     },
     "yahoo_missing_rule": "If yahoo_adp is null, do not invent a market price. Recommend from our_rank, tier, roster need, scarcity, tags, and target_round. If a real Yahoo ADP is later entered, use it immediately for WAIT/TAKE value logic.",
     "k_dst_rule": "K and DST must always appear in search/availability and can be marked drafted by any team, but suppress them from normal Best Available recommendations until late rounds. Never draft multiple K or DST.",
-    "dst_priority": "Use early streaming first: LAC preferred for Weeks 1-2, JAC preferred for Week 1, BAL for a longer opening runway. Do not pay up for DEN early despite strong real-life defense."
+    "dst_priority": "Use early streaming first: LAC preferred for Weeks 1-2, JAC preferred for Week 1, BAL for a longer opening runway. Do not pay up for DEN early despite strong real-life defense.",
+    "rb_cliff": {
+      "range": "END_R5_TO_EARLY_R6",
+      "strength": "HIGH",
+      "note": "Treat the end of Round 5 / early Round 6 as a major RB cliff; in 14-team full PPR, prioritize securing at least one strong RB before that cliff and often two when value supports it.",
+      "source": "FantasyPros ECR vs ADP transcript, ingested 2026-08-31"
+    }
   },
   "strong_targets": [
     "Kenneth Walker III",
@@ -1883,18 +1890,21 @@
       "tier": "T4",
       "target_round": "4",
       "do_not_reach_before_round": "3",
-      "tags": [],
+      "tags": [
+        "PRICE",
+        "FADE"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "PRICE_SENSITIVE",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
-      "risk_note": "",
+      "risk_note": "This transcript reinforced the existing fade: analysts saw a wide range of outcomes and did not want to pay the WR22 market price despite acknowledging a plausible WR2 floor with Josh Allen.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -1902,7 +1912,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 4,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "CAUTIOUS",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Bhayshul Tuten",
@@ -2420,7 +2432,8 @@
         "SAFE",
         "VALUE",
         "GOAL_LINE",
-        "ROLE_UP"
+        "ROLE_UP",
+        "ROLE_CONFIDENCE"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -2431,8 +2444,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Current Patriots usage points to early-down, short-yardage and goal-line work in roughly a 50/50 split. Market had been too aggressive on Henderson.",
       "risk_note": "Brutal early schedule and Henderson still owns more explosive-play upside.",
-      "news_note": "",
-      "last_intel_update": "2026-08-29",
+      "news_note": "Boone had Stevenson RB26 and Henderson RB27 and said New England still appears to trust Stevenson as the lead/1A, especially early in the season.",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2442,8 +2455,9 @@
       "yahoo_adp_available": false,
       "boone_rank_available": false,
       "mock_draft_evidence": "Taken immediately after TreVeyon Henderson in Round 6; analyst cited strong camp performance.",
-      "analyst_conviction": "HIGH_AT_PRICE",
-      "draft_intel_note": "Fresh camp report was cited positively and one analyst said he was all-in at the current price; supports the existing role-up/value thesis."
+      "analyst_conviction": "POSITIVE_VALUE",
+      "draft_intel_note": "Fresh camp report was cited positively and one analyst said he was all-in at the current price; supports the existing role-up/value thesis.",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Jadarian Price",
@@ -2790,13 +2804,14 @@
       "our_rank": 79,
       "pos_rank": 29,
       "tier": "T5",
-      "target_round": "6-7",
-      "do_not_reach_before_round": "6",
+      "target_round": "5-6",
+      "do_not_reach_before_round": "5",
       "tags": [
         "UPSIDE",
         "VALUE",
         "TARGET",
-        "RISK"
+        "RISK",
+        "PRICE"
       ],
       "injury_status": "HEALTHY / PRIOR ACL HISTORY",
       "injury_severity_0_5": 0,
@@ -2806,9 +2821,9 @@
       "stance": "STRONG_TARGET",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "One of the strongest cross-source sleepers: receiving ability, explosiveness and a legitimate path to overtake Chuba.",
-      "risk_note": "",
+      "risk_note": "Brooks remains a target because of receiving ability and a path to the lead role, but the transcript warned his price was rising quickly. Treat Round 6 as comfortable value and avoid paying a Round 4 price.",
       "news_note": "Chuba Hubbard hamstring absence improves Brooks near-term opportunity, though analysts still expect a meaningful split when both are healthy.",
-      "last_intel_update": "2026-08-29",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": 98,
       "yahoo_adp_source": "Yahoo ADP via FantasyPros Yahoo feed, current Aug 2026",
       "boone_rank": null,
@@ -2817,8 +2832,9 @@
       "our_round_14team": 6,
       "yahoo_adp_available": true,
       "boone_rank_available": false,
-      "analyst_conviction": "POSITIVE_WITH_ROLE_SPLIT",
-      "draft_intel_note": "Preferred long-term Carolina back if healthy, but avoid assuming an immediate full workhorse split."
+      "analyst_conviction": "POSITIVE_BUT_PRICE_SENSITIVE",
+      "draft_intel_note": "Preferred long-term Carolina back if healthy, but avoid assuming an immediate full workhorse split.",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Brian Thomas Jr.",
@@ -2900,7 +2916,9 @@
       "tags": [
         "UPSIDE",
         "RISK",
-        "ROLE_DOWN"
+        "ROLE_DOWN",
+        "PRICE",
+        "ROLE_SPLIT"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -2910,9 +2928,9 @@
       "stance": "PRICE_SENSITIVE",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Explosive ceiling remains, but current evidence does not support an immediate takeover. Passing-down role may depend on pass protection.",
-      "risk_note": "",
+      "risk_note": "Boone and Erickson both favored Rhamondre Stevenson at current cost; Henderson had not clearly won pass protection or between-the-tackles trust, making a full takeover uncertain without a Stevenson injury.",
       "news_note": "",
-      "last_intel_update": "2026-08-29",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -2922,8 +2940,10 @@
       "yahoo_adp_available": false,
       "boone_rank_available": false,
       "mock_draft_evidence": "Selected at 6.02 as RB3 in the mock.",
-      "analyst_conviction": "UPSIDE_STASH",
-      "draft_intel_note": "Drafted as a sixth-round RB3 for upside rather than current depth-chart certainty. Analyst explicitly preferred ceiling because roster already had two RBs."
+      "analyst_conviction": "NEGATIVE_AT_COST",
+      "draft_intel_note": "Drafted as a sixth-round RB3 for upside rather than current depth-chart certainty. Analyst explicitly preferred ceiling because roster already had two RBs.",
+      "rank_review_flag": true,
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Harold Fannin Jr.",
@@ -3415,7 +3435,9 @@
       "target_round": "7",
       "do_not_reach_before_round": "6",
       "tags": [
-        "UPSIDE"
+        "UPSIDE",
+        "TARGET",
+        "LATE_TE"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
@@ -3426,8 +3448,8 @@
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "Repeated breakout/late-TE signal in our digest; attractive if role remains substantial.",
       "risk_note": "",
-      "news_note": "",
-      "last_intel_update": "2026-08-29",
+      "news_note": "Erickson viewed Likely as having top-five ceiling and Boone grouped him with Goedert as one of the last tight ends he was comfortable drafting as a TE1.",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3437,7 +3459,8 @@
       "yahoo_adp_available": false,
       "boone_rank_available": false,
       "analyst_conviction": "POSITIVE_LATE_TE",
-      "draft_intel_note": "Named as a late-TE rip-cord option; supports waiting at tight end when the preferred premium tier is gone."
+      "draft_intel_note": "Named as a late-TE rip-cord option; supports waiting at tight end when the preferred premium tier is gone.",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Dallas Goedert",
@@ -3674,19 +3697,22 @@
       "do_not_reach_before_round": "7",
       "tags": [
         "SAFE",
-        "VALUE"
+        "VALUE",
+        "DO_NOT_REACH",
+        "QB_FADE",
+        "LOW_RUSHING_CEILING"
       ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 9,
-      "stance": "LATE_QB_TARGET",
+      "stance": "DO_NOT_REACH",
       "intel_level": "TRANSCRIPT_RESEARCH",
       "short_thesis": "High passing-volume/TD environment gives a cheap floor if rushing QBs are gone.",
-      "risk_note": "",
+      "risk_note": "Boone and Erickson preferred avoiding Stafford in a deep QB pool because he offers little rushing floor, is 38, and would need another unusually efficient passing season to justify a QB1 price.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -3694,7 +3720,9 @@
       "yahoo_round_14team": null,
       "our_round_14team": 8,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "analyst_conviction": "STRONG_FADE",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Patrick Mahomes II",
@@ -4067,18 +4095,22 @@
       "tier": "T6",
       "target_round": "9",
       "do_not_reach_before_round": "8",
-      "tags": [],
+      "tags": [
+        "DO_NOT_REACH",
+        "FADE",
+        "LOW_CEILING"
+      ],
       "injury_status": "NO_SPECIFIC_ISSUE_TRACKED",
       "injury_severity_0_5": 0,
       "week1_availability": "EXPECTED_UNLESS_UPDATED",
       "durability_risk_1_5": 2,
       "role_confidence_1_10": 6,
-      "stance": "BASELINE",
+      "stance": "DO_NOT_REACH",
       "intel_level": "RANKING_BASELINE",
       "short_thesis": "Current top-200 baseline player. No strong transcript override has been applied yet; use rank/tier as provisional until the Sept. 1 research .",
-      "risk_note": "",
+      "risk_note": "Boone called Sutton a no-fly zone at cost because Jaylen Waddle and Pat Bryant create more target competition and the ceiling may be limited even if he beats a low ADP.",
       "news_note": "",
-      "last_intel_update": "2026-08-26",
+      "last_intel_update": "2026-08-31",
       "yahoo_adp": null,
       "yahoo_adp_source": null,
       "boone_rank": null,
@@ -4086,7 +4118,10 @@
       "yahoo_round_14team": null,
       "our_round_14team": 9,
       "yahoo_adp_available": false,
-      "boone_rank_available": false
+      "boone_rank_available": false,
+      "rank_review_flag": true,
+      "analyst_conviction": "STRONG_FADE",
+      "analyst_intel_source": "FantasyPros ECR vs ADP transcript, ~2026-08-23, ingested 2026-08-31"
     },
     {
       "name": "Jordan Addison",
@@ -7985,6 +8020,16 @@
       "Yahoo ADP is unchanged by transcript mock-draft positions.",
       "our_rank and tier are unchanged in this refresh; rank-review flags are for Sept. 1 synthesis.",
       "Resolved contract/holdout notes do not create an injury or recommendation penalty."
+    ]
+  },
+  "latest_analyst_intel_ingest": {
+    "ingested_on": "2026-08-31",
+    "source_age": "approximately 8 days old",
+    "source": "FantasyPros ECR vs ADP transcript with Justin Boone and Andrew Erickson",
+    "rules": [
+      "Do not overwrite newer injury/status information from Aug. 29.",
+      "Do not change Yahoo ADP from this transcript.",
+      "Use this source for analyst conviction, price discipline, fade/target strength, and roster-construction strategy."
     ]
   }
 }
