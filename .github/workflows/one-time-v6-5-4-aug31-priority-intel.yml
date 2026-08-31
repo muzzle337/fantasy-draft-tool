@@ -1,0 +1,321 @@
+name: One-time V6.5.4 Aug 31 priority intel ingest
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-5-4-aug31-priority-intel.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ingest Aug 31 priority transcript intelligence
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = 'draft-brain-v6-5.json';
+          const brain = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const byName = new Map(brain.players.map(p => [p.name, p]));
+
+          const addTags = (p, tags) => {
+            p.tags = [...new Set([...(Array.isArray(p.tags) ? p.tags : []), ...tags])];
+          };
+          const appendNote = (p, field, text) => {
+            const current = (p[field] || '').trim();
+            if (!current.includes(text)) p[field] = current ? `${current} ${text}` : text;
+          };
+          const update = (name, fn) => {
+            const p = byName.get(name);
+            if (!p) throw new Error(`Missing player: ${name}`);
+            fn(p);
+            p.last_intel_update = '2026-08-31';
+            p.analyst_intel_source = 'Fantasy Football Today Aug. 31, 2026 morning risers/fallers transcript';
+          };
+          const maybeUpdate = (name, fn) => {
+            const p = byName.get(name);
+            if (!p) return false;
+            fn(p);
+            p.last_intel_update = '2026-08-31';
+            p.analyst_intel_source = 'Fantasy Football Today Aug. 31, 2026 morning risers/fallers transcript';
+            return true;
+          };
+
+          update('Josh Jacobs', p => {
+            p.injury_status = 'COMMISSIONERS_EXEMPT_LIST';
+            p.injury_severity_0_5 = Math.max(Number(p.injury_severity_0_5 || 0), 5);
+            p.week1_availability = 'UNAVAILABLE_WHILE_ON_EXEMPT_LIST';
+            p.status_active = true;
+            p.status_verified_date = '2026-08-31';
+            p.status_source = 'FFT_AUG31_TRANSCRIPT';
+            p.stance = 'AVOID_UNTIL_LATE';
+            p.target_round = '10+';
+            p.rank_review_flag = true;
+            p.rank_review_reason = 'Major availability change: transcript reports Jacobs placed on the Commissioner’s Exempt List; analysts would only consider him as a late lottery ticket.';
+            p.analyst_conviction = 'MAJOR_FALLER';
+            addTags(p, ['STATUS_ALERT','EXEMPT_LIST','MAJOR_FALLER','DO_NOT_REACH']);
+            appendNote(p, 'news_note', 'Aug. 31 Fantasy Football Today transcript reports Josh Jacobs was placed on the NFL Commissioner’s Exempt List. Analysts moved him out of normal starter-price consideration and discussed only a double-digit-round lottery-ticket price because return timing is uncertain.');
+          });
+
+          update('MarShawn Lloyd', p => {
+            p.stance = 'STRONG_TARGET_AT_PRICE';
+            p.target_round = '6-8';
+            p.role_confidence_1_10 = Math.max(Number(p.role_confidence_1_10 || 0), 7);
+            p.analyst_conviction = 'MAJOR_RISER';
+            p.rank_review_flag = true;
+            p.rank_review_reason = 'Jacobs exempt-list status creates immediate lead-back opportunity; transcript consensus places Lloyd in the Round 6-8 range.';
+            addTags(p, ['MAJOR_RISER','OPPORTUNITY','TARGET','ROLE_UP']);
+            appendNote(p, 'news_note', 'With Jacobs on the exempt list, the Aug. 31 FFT panel treated Lloyd as the preferred Packers back. Heath would begin considering him in Round 6; others were more comfortable around Rounds 7-8. Opportunity is strong, but injury history remains a material risk.');
+          });
+
+          maybeUpdate('Chris Brooks', p => {
+            p.stance = 'LATE_RB_TARGET';
+            p.analyst_conviction = 'DEEP_SLEEPER';
+            addTags(p, ['LATE_RB_TARGET','PASS_DOWN_ROLE','CONTINGENT_UPSIDE']);
+            appendNote(p, 'news_note', 'FFT identified Chris Brooks as a late-round Packers sleeper because of his passing-down background and potential to gain rushing work if Lloyd misses time.');
+          });
+
+          update('Rhamondre Stevenson', p => {
+            p.stance = 'TARGET_AT_PRICE';
+            p.target_round = '6';
+            p.role_confidence_1_10 = Math.max(Number(p.role_confidence_1_10 || 0), 8);
+            p.analyst_conviction = 'HIGH_POSITIVE_VALUE';
+            addTags(p, ['ROLE_LEADER','VALUE','RB2_TARGET']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT reinforced Stevenson as New England’s likely 1A and an acceptable early-Round-6 RB2 in full PPR. This is a second independent transcript reinforcing Stevenson over Henderson at cost.');
+          });
+
+          update('TreVeyon Henderson', p => {
+            p.stance = 'PRICE_SENSITIVE';
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'NEGATIVE_AT_COST';
+            addTags(p, ['ROLE_SPLIT','PRICE','FALLER']);
+            appendNote(p, 'risk_note', 'Aug. 31 FFT again described Henderson as a faller, the inverse of Stevenson’s rise, with insufficient evidence that he has taken the 1A role.');
+          });
+
+          update('Luther Burden III', p => {
+            p.rank_review_flag = true;
+            p.rank_review_reason = 'Fresh Aug. 31 transcript materially conflicts with current price-sensitive/fade stance: one analyst moved Burden to WR18 and would draft him starting Round 4; another preferred him to Egbuka after Burden returned to practice.';
+            p.analyst_conviction = 'STRONG_POSITIVE_CONFLICT_WITH_BASE';
+            addTags(p, ['RANK_REVIEW','RISING','PRACTICE_RETURN','ANALYST_CONFLICT']);
+            appendNote(p, 'news_note', 'Burden was back at practice and moving well. FFT analysts became substantially more bullish, including a WR18 ranking and Round-4 willingness from one analyst. Do not auto-rerank yet; reconcile with existing price-sensitive stance during final synthesis.');
+          });
+
+          update('Chris Godwin Jr.', p => {
+            p.stance = 'TARGET_AT_PRICE';
+            p.target_round = '5-6';
+            p.role_confidence_1_10 = Math.max(Number(p.role_confidence_1_10 || 0), 8);
+            p.analyst_conviction = 'HIGH_POSITIVE';
+            addTags(p, ['TARGET','PPR','HEALTH_TRENDING_UP','VALUE']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT strongly reinforced Godwin as healthy-looking with established Baker Mayfield chemistry. Panel pricing centered around Rounds 5-6 and viewed his market cost as attractive.');
+          });
+
+          update('Emeka Egbuka', p => {
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'CAUTIOUS_EARLY_SEASON';
+            addTags(p, ['TOE_MONITOR','EARLY_SEASON_RISK','RANK_REVIEW']);
+            appendNote(p, 'risk_note', 'Aug. 31 FFT remained hopeful for Week 1 but increased concern about early-season fitness and target competition with Godwin healthy. One analyst moved Egbuka down to WR21.');
+          });
+
+          update('Alec Pierce', p => {
+            p.injury_status = 'BACK_AT_PRACTICE';
+            p.injury_severity_0_5 = Math.min(Number(p.injury_severity_0_5 || 0), 1);
+            p.week1_availability = 'EXPECTED';
+            p.status_active = false;
+            p.status_verified_date = '2026-08-31';
+            p.status_source = 'FFT_AUG31_TRANSCRIPT';
+            p.analyst_conviction = 'POSITIVE_HEALTH_RETURN';
+            addTags(p, ['HEALTHY_RETURN','TOP100_RISER']);
+            appendNote(p, 'news_note', 'Fresh Aug. 31 FFT update: Pierce is back at practice and was described as healthy enough to move firmly back into the top-100 discussion.');
+          });
+
+          update('Quentin Johnston', p => {
+            p.analyst_conviction = 'HIGH_POSITIVE';
+            addTags(p, ['TARGET','ROLE_SIGNAL','RISING']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT added a positive usage signal: Johnston was the wide receiver on the field in 13 personnel with Justin Herbert, reinforcing that he remains part of the Chargers’ core plan.');
+          });
+
+          update('Parker Washington', p => {
+            p.stance = 'STRONG_TARGET';
+            p.target_round = '5-6';
+            p.role_confidence_1_10 = Math.max(Number(p.role_confidence_1_10 || 0), 9);
+            p.analyst_conviction = 'VERY_HIGH';
+            addTags(p, ['STRONG_TARGET','RISING','TARGET_LEADER_UPSIDE']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT provided another strong Parker Washington signal: one analyst expects him to lead Jacksonville in targets, catches and yards and is trying to draft him in Round 5, ideally Round 6. Travis Hunter playing mostly defense recently was cited as additional support.');
+          });
+
+          update('Tucker Kraft', p => {
+            p.stance = 'TARGET_AT_PRICE';
+            p.target_round = '5-6';
+            p.analyst_conviction = 'POSITIVE_PACKERS_PASS_SHIFT';
+            addTags(p, ['TE_TARGET','ROLE_UP','PACKERS_PASS_SHIFT']);
+            appendNote(p, 'news_note', 'With Green Bay’s run game less certain, FFT expects more passing and moved Kraft into the Round-5 range, citing his short-area role, efficiency and expectation of no major early snap limitation.');
+          });
+
+          update('Jaden Reed', p => {
+            p.stance = 'LATE_WR_TARGET';
+            p.target_round = '8-9';
+            p.analyst_conviction = 'VERY_HIGH_SLEEPER';
+            addTags(p, ['SLEEPER','TARGET','PACKERS_PASS_SHIFT','RUSHING_UPSIDE']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT called Reed a favorite sleeper because a weaker run-game outlook could increase Green Bay pass volume and Reed’s designed carries/targets. Analysts preferred him to several similarly priced receivers.');
+          });
+
+          update('Christian Watson', p => {
+            p.analyst_conviction = 'POSITIVE_PACKERS_PASS_SHIFT';
+            addTags(p, ['RISING','PACKERS_PASS_SHIFT','UPSIDE']);
+            appendNote(p, 'news_note', 'FFT viewed Watson as a riser if healthy because Green Bay may throw more without normal Jacobs-driven rushing volume. His efficiency and explosive profile remain central to the upside case.');
+          });
+
+          maybeUpdate('Matthew Golden', p => {
+            p.stance = 'LATE_WR_TARGET';
+            p.target_round = '8';
+            p.analyst_conviction = 'POSITIVE_OPPORTUNITY';
+            addTags(p, ['RISING','PACKERS_PASS_SHIFT','ROOKIE_UPSIDE']);
+            appendNote(p, 'news_note', 'FFT viewed Golden as a Round-8 type target with opportunity to absorb part of the vacated Packers receiving role in a potentially more pass-heavy offense.');
+          });
+
+          update('Jordan Love', p => {
+            p.analyst_conviction = 'POSITIVE_LATE_QB';
+            addTags(p, ['LATE_QB_TARGET','PACKERS_PASS_SHIFT','UPSIDE']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT discussed moving Jordan Love up because Green Bay may need to throw more. One analyst said he would take Love over Patrick Mahomes at current cost.');
+          });
+
+          update('Jared Goff', p => {
+            p.stance = 'LATE_QB_TARGET';
+            p.analyst_conviction = 'POSITIVE_LATE_QB';
+            addTags(p, ['LATE_QB_TARGET','VALUE','SHOOTOUT_UPSIDE']);
+            appendNote(p, 'news_note', 'FFT moved Goff into the top-12 QB range, citing Detroit’s offensive environment, indoor schedule and shootout potential. Preferred over Matthew Stafford at cost.');
+          });
+
+          update('Jayden Daniels', p => {
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'BUY_DIP_WITH_OL_RISK';
+            addTags(p, ['OL_RISK','PRICE_SENSITIVE','BUY_DIP']);
+            appendNote(p, 'risk_note', 'Aug. 31 FFT increased concern about Washington’s offensive line and left tackle, but multiple analysts still framed Daniels as a buy-the-dip upside QB rather than a player to avoid entirely.');
+          });
+
+          update('Harold Fannin Jr.', p => {
+            p.stance = 'DO_NOT_REACH';
+            p.analyst_conviction = 'STRONG_FADE_AT_COST';
+            addTags(p, ['DO_NOT_REACH','PRICE_FADE']);
+            appendNote(p, 'risk_note', 'FFT explicitly rejected Fannin at his rising market price, citing added competition from KC Concepcion and Denzel Boston.');
+          });
+
+          update('KC Concepcion', p => {
+            p.stance = 'STRONG_TARGET';
+            p.target_round = '8';
+            p.analyst_conviction = 'VERY_HIGH';
+            addTags(p, ['STRONG_TARGET','ROUND8_TARGET','RISING']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT added another independent bullish signal on Concepcion, with one analyst comfortable taking him in Round 8 well ahead of market price.');
+          });
+
+          update('Keenan Allen', p => {
+            p.status_active = true;
+            p.status_verified_date = '2026-08-31';
+            p.status_source = 'FFT_AUG31_TRANSCRIPT';
+            p.week1_availability = 'EXPECTED_BUT_OFF_FIELD_MONITOR';
+            p.stance = 'LATE_ONLY';
+            p.target_round = '12+';
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'NEGATIVE_RISK_REWARD';
+            addTags(p, ['OFF_FIELD_MONITOR','SUSPENSION_MONITOR','LATE_ONLY']);
+            appendNote(p, 'news_note', 'Aug. 31 FFT reported Keenan Allen was arrested for DWI. The panel was skeptical of immediate league discipline before resolution but no longer viewed him as an attractive normal late-round target; full-PPR discussion moved to roughly Round 12-plus.');
+          });
+
+          update('Bucky Irving', p => {
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'CAUTIOUS_TOUCHDOWN_ROLE';
+            addTags(p, ['GOAL_LINE_RISK','PRICE_SENSITIVE']);
+            appendNote(p, 'risk_note', 'Sean Tucker re-signing reinforces concern that Irving may not dominate goal-line work; FFT noted Tucker and Kenneth Gainwell had more inside-the-five carries than Irving last season.');
+          });
+
+          update('Ashton Jeanty', p => {
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'FALLER_WORKLOAD_CONCERN';
+            addTags(p, ['WORKLOAD_RISK','RANK_REVIEW']);
+            appendNote(p, 'risk_note', 'Aug. 31 FFT moved Jeanty down because Mike Washington showed enough to reduce confidence in a true workhorse role. This is a rank-review signal, not an automatic final-rank move.');
+          });
+
+          maybeUpdate('Chris Olave', p => {
+            p.analyst_conviction = 'HIGH_POSITIVE';
+            addTags(p, ['TARGET','ALPHA_VOLUME','RISING']);
+            appendNote(p, 'news_note', 'FFT ranked Olave as a top-12 WR and Round-2 caliber target based on expected target dominance, pace and offensive environment, with Jordan Tyson’s return as the main uncertainty.');
+          });
+
+          maybeUpdate('Najee Harris', p => {
+            p.stance = 'LATE_RB_FLYER';
+            p.analyst_conviction = 'DEEP_VALUE';
+            addTags(p, ['LATE_RB_TARGET','BENCH_STASH']);
+            appendNote(p, 'news_note', 'FFT described Harris as a very late Giants RB flyer after positive practice/preseason reports, while still expecting a potentially muddled backfield.');
+          });
+
+          maybeUpdate('Cam Skattebo', p => {
+            p.rank_review_flag = true;
+            p.analyst_conviction = 'CAUTIOUS_ROLE_SPLIT';
+            addTags(p, ['ROLE_RISK','RANK_REVIEW']);
+            appendNote(p, 'risk_note', 'Aug. 31 FFT expressed more concern about a multi-back Giants rotation and possible loss of third-down work, creating downside versus prior Round-4 pricing.');
+          });
+
+          maybeUpdate('Jordyn Tyson', p => {
+            p.analyst_conviction = 'FALLER_INJURY_STASH';
+            addTags(p, ['IR_STASH','FALLER']);
+            appendNote(p, 'risk_note', 'FFT moved Tyson behind some healthier late-round receivers, while noting his IR eligibility preserves stash value.');
+          });
+
+          brain.version = '1.2.3-aug31-priority-intel';
+          brain.as_of = '2026-08-31';
+          brain.latest_priority_intel_ingest = {
+            ingested_on: '2026-08-31',
+            source: 'Fantasy Football Today Aug. 31 morning risers/fallers transcript',
+            source_priority: 'HIGH_CURRENT',
+            rules: [
+              'Yahoo ADP is unchanged; NFC/CBS/FantasyPros market references are evidence only.',
+              'Major current-status changes can affect recommendations immediately.',
+              'Subjective riser/faller takes update conviction and rank-review flags; final our_rank/tier synthesis remains a separate step.',
+              'Avoid ingesting transcript passages with obvious team/player-context inconsistencies as factual updates.'
+            ]
+          };
+
+          brain.draft_logic = brain.draft_logic || {};
+          brain.draft_logic.packers_post_jacobs = {
+            status: 'ACTIVE_REVIEW',
+            note: 'With Jacobs reported on the Commissioner’s Exempt List, increase Packers passing-volume expectations and boost Lloyd opportunity while preserving uncertainty around backfield distribution.',
+            source: 'Fantasy Football Today Aug. 31 transcript'
+          };
+
+          fs.writeFileSync(path, JSON.stringify(brain, null, 2) + '\n');
+
+          let app = fs.readFileSync('app-v6-5.js', 'utf8');
+          app = app.replace(/const BUILD_VERSION = "[^"]+";/, 'const BUILD_VERSION = "6.5.4-aug31-priority-intel";');
+          app = app.replace(/const BRAIN_URL = "\.\/draft-brain-v6-5\.json\?v=[^"]+";/, 'const BRAIN_URL = "./draft-brain-v6-5.json?v=6.5.4";');
+          fs.writeFileSync('app-v6-5.js', app);
+
+          let index = fs.readFileSync('index.html', 'utf8');
+          index = index.replace(/app-v6-5\.js\?v=[^"]+/, 'app-v6-5.js?v=6.5.4');
+          fs.writeFileSync('index.html', index);
+
+          let versioned = fs.readFileSync('index-v6-5.html', 'utf8');
+          versioned = versioned.replace(/app-v6-5\.js\?v=[^"]+/, 'app-v6-5.js?v=6.5.4');
+          fs.writeFileSync('index-v6-5.html', versioned);
+
+          let sw = fs.readFileSync('service-worker-v6-5.js', 'utf8');
+          sw = sw.replace(/const CACHE_NAME = "[^"]+";/, 'const CACHE_NAME = "fantasy-draft-tool-v6-5-4-aug31-priority-intel";');
+          sw = sw.replaceAll(/app-v6-5\.js\?v=[^"\n]+/g, 'app-v6-5.js?v=6.5.4');
+          sw = sw.replaceAll(/draft-brain-v6-5\.json\?v=[^"\n]+/g, 'draft-brain-v6-5.json?v=6.5.4');
+          fs.writeFileSync('service-worker-v6-5.js', sw);
+
+          console.log('Aug. 31 priority intel ingested. Yahoo ADP and our_rank/tier preserved.');
+          NODE
+
+      - name: Commit Aug 31 priority intel refresh
+        shell: bash
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add draft-brain-v6-5.json app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js
+          git commit -m "V6.5.4: ingest Aug 31 priority fantasy intel"
+          git push
