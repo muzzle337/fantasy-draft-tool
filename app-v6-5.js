@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.0-draft-room-intel";
+const BUILD_VERSION = "6.6.1-room-intel-debug";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.0";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.1";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -1966,3 +1966,79 @@ function realisticMockCandidate(state){const round=currentRound(state),pick=curr
 function simulateToMyPick(){const state=currentState();if(activeMode()!=='mock'||!state.draftSlot)return;let safety=0;while(safety<300){const nextMine=nextMyPick(state);if(nextMine===null||currentOverallPick(state)>=nextMine)break;const player=realisticMockCandidate(state);if(!player)break;const overallPick=currentOverallPick(state),teamSlot=teamSlotForOverallPick(overallPick);state.draftedByOthers.push(player.id);state.history.push({type:'draftedByOther',playerId:player.id,recordedAt:new Date().toISOString(),simulated:true,teamSlot,overallPick});safety++;}saveState('mock');renderAll();renderDraftRoom();}
 document.addEventListener('click',event=>{if(event.target.closest('#viewAllPicksButton')){openDraftHistoryModal();return;}const team=event.target.closest('[data-team-slot]');if(team){openTeamRosterModal(Number(team.dataset.teamSlot));return;}if(event.target.closest('[data-close-draft-history]'))el('draftHistoryModal')?.classList.add('hidden');if(event.target.closest('[data-close-team-roster]'))el('teamRosterModal')?.classList.add('hidden');setTimeout(renderDraftRoom,0);});
 setTimeout(renderDraftRoom,400);
+
+
+// === V6.6.1 ROOM INTEL TRANSPARENCY ===
+
+function roomNeedSummaryForTeam(slot,state=currentState()) {
+  return ['QB','RB','WR','TE','K','DEF'].filter(pos=>teamNeedsPosition(slot,pos,state));
+}
+function whyNowText(player,state=currentState()) {
+  const r=survivalRiskInfo(player,state);
+  const bits=[];
+  bits.push('Survival '+r.level);
+  if(r.teams>0) bits.push(r.demand+' of '+r.teams+' teams need '+player.position);
+  if(r.tier!=null) bits.push(r.tier+' left in tier');
+  if(r.run>=3) bits.push(r.run+' '+player.position+' in last 7');
+  if(r.cliffGap>=10) bits.push('cliff +'+r.cliffGap+' ranks');
+  return bits.join(' · ');
+}
+function renderWhyNow() {
+  const state=currentState();
+  document.querySelectorAll('#recommendationPanel .recommendation-row').forEach(row=>{
+    row.querySelector('.why-now-line')?.remove();
+    const pick=row.querySelector('[data-my-pick-direct]');
+    if(!pick) return;
+    const player=getPlayer(pick.dataset.myPickDirect);
+    if(!player) return;
+    const line=document.createElement('div');
+    const risk=survivalRiskInfo(player,state);
+    line.className='why-now-line risk-'+String(risk.level||'low').toLowerCase();
+    line.innerHTML='<strong>Why Now:</strong> '+whyNowText(player,state);
+    const details=row.querySelector('.recommendation-details');
+    if(details) details.insertAdjacentElement('afterend',line);
+    else row.prepend(line);
+  });
+}
+function renderDraftRoomDebug() {
+  const host=el('draftRoomDebugContent');
+  if(!host) return;
+  const state=currentState();
+  const pick=currentOverallPick(state);
+  const currentSlot=teamSlotForOverallPick(pick);
+  const needs=roomNeedSummaryForTeam(currentSlot,state);
+  const next=nextMyPick(state);
+  const topRun=['RB','WR','TE','QB'].map(pos=>({pos,count:recentPositionRun(pos,state)})).sort((a,b)=>b.count-a.count)[0];
+  const topRec=isMyTurn(state)?recommendationCandidatePool(state).map(p=>({p,score:recommendationScore(p,state)})).sort((a,b)=>b.score-a.score||a.p.overallRank-b.p.overallRank)[0]?.p:null;
+  const lastMock=[...enrichedHistory(state)].reverse().find(x=>x.simulated&&x.mockWhy);
+  host.innerHTML=
+    '<div class="intel-debug-grid">'+
+      '<div><span>Current pick</span><strong>#'+pick+' · Team '+currentSlot+'</strong></div>'+
+      '<div><span>Team needs</span><strong>'+(needs.join(' / ')||'No urgent starter need')+'</strong></div>'+
+      '<div><span>Your next pick</span><strong>'+(next||'—')+'</strong></div>'+
+      '<div><span>Recent run</span><strong>'+topRun.pos+' ×'+topRun.count+' / last 7</strong></div>'+
+    '</div>'+
+    (topRec?'<div class="intel-debug-callout"><span>Top recommendation</span><strong>'+topRec.name+'</strong><small>'+whyNowText(topRec,state)+'</small></div>':'')+
+    (lastMock?'<div class="intel-debug-callout"><span>Last simulated pick</span><strong>Team '+lastMock.teamSlot+' → '+(lastMock.player?.name||'Unknown')+'</strong><small>'+lastMock.mockWhy+'</small></div>':'<p class="muted intel-debug-empty">Run a mock simulation to see the last simulated decision here.</p>');
+}
+function simulateToMyPick(){
+  const state=currentState();if(activeMode()!=='mock'||!state.draftSlot)return;
+  let safety=0;
+  while(safety<300){
+    const nextMine=nextMyPick(state);if(nextMine===null||currentOverallPick(state)>=nextMine)break;
+    const overallPick=currentOverallPick(state),teamSlot=teamSlotForOverallPick(overallPick);
+    const beforeNeeds=roomNeedSummaryForTeam(teamSlot,state);
+    const player=realisticMockCandidate(state);if(!player)break;
+    const run=recentPositionRun(player.position,state);
+    const matched=beforeNeeds.includes(player.position);
+    const market=yahooAdpAvailable(player)?'Yahoo '+player.yahooAdp:'Our #'+player.overallRank;
+    const mockWhy=(matched?'Matched team '+player.position+' need':'Best market/tier fit')+(run>=3?' · '+player.position+' run ×'+run:'')+' · '+market;
+    state.draftedByOthers.push(player.id);
+    state.history.push({type:'draftedByOther',playerId:player.id,recordedAt:new Date().toISOString(),simulated:true,teamSlot,overallPick,mockWhy});
+    safety++;
+  }
+  saveState('mock');renderAll();renderDraftRoom();renderWhyNow();renderDraftRoomDebug();
+}
+const originalRenderAllV661=renderAll;
+renderAll=function(){originalRenderAllV661();renderWhyNow();renderDraftRoomDebug();};
+setTimeout(()=>{renderWhyNow();renderDraftRoomDebug();},500);

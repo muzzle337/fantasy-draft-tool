@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>Jewel City Draft Tool V6.6</title>
-  <link rel="stylesheet" href="styles-v6-5.css?v=6.6.0" />
+  <link rel="stylesheet" href="styles-v6-5.css?v=6.6.1" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
@@ -151,7 +151,7 @@
 
     <section id="teamView" class="app-view">
       <div class="status-line">
-        <button class="engine-status ready static-status" type="button" data-view="draftView">Draft Engine v6.5.2</button>
+        <button class="engine-status ready static-status" type="button" data-view="draftView">Draft Engine v6.6.1</button>
         <span id="teamModeStatus" class="dataset-status">LIVE</span>
       </div>
 
@@ -190,7 +190,7 @@
 
     <section id="toolsView" class="app-view">
       <div class="status-line">
-        <button class="engine-status ready static-status" type="button" data-view="draftView">Draft Engine v6.5.2</button>
+        <button class="engine-status ready static-status" type="button" data-view="draftView">Draft Engine v6.6.1</button>
         <span class="dataset-status">LOCAL</span>
       </div>
 
@@ -201,7 +201,12 @@
         </div>
       </header>
 
-      <section class="card draft-room-card"><div class="section-heading"><div><p class="eyebrow">Room Intelligence</p><h2>Draft Room</h2></div><span id="draftRoomNote" class="section-note">0 picks tracked</span></div><p class="modal-copy compact-room-copy">Tap a team to see its roster. Team assignment is automatic from the 14-team snake order.</p><div id="draftRoomList" class="draft-room-list"></div></section><section class="card tools-card">
+      <section class="card draft-room-card"><div class="section-heading"><div><p class="eyebrow">Room Intelligence</p><h2>Draft Room</h2></div><span id="draftRoomNote" class="section-note">0 picks tracked</span></div><p class="modal-copy compact-room-copy">Tap a team to see its roster. Team assignment is automatic from the 14-team snake order.</p><div id="draftRoomList" class="draft-room-list"></div></section><section id="draftRoomDebugCard" class="card room-intel-debug-card">
+        <div class="section-heading"><div><p class="eyebrow">Verification</p><h2>Draft Room Debug</h2></div><span class="section-note">Live logic</span></div>
+        <div id="draftRoomDebugContent"><p class="muted">Waiting for draft state...</p></div>
+      </section>
+
+      <section class="card tools-card">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Safety</p>
@@ -340,6 +345,6 @@
     </div>
   </div>
 
-  <script src="app-v6-5.js?v=6.6.0"></script>
+  <script src="app-v6-5.js?v=6.6.1"></script>
 </body>
 </html>
