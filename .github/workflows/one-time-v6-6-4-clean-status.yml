@@ -1,0 +1,31 @@
+name: Run V6.6.4 Clean Status Build
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-v6-6-4-clean-status.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply clean status build
+        run: node build-v6-6-4-clean-status.js
+      - name: Validate JavaScript
+        run: node --check app-v6-5.js
+      - name: Commit changes
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "V6.6.4: clean user-facing engine status"
+            git push
+          fi
