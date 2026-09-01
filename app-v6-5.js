@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.1-room-intel-debug";
+const BUILD_VERSION = "6.6.2-compact-view";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.1";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.2";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -2042,3 +2042,12 @@ function simulateToMyPick(){
 const originalRenderAllV661=renderAll;
 renderAll=function(){originalRenderAllV661();renderWhyNow();renderDraftRoomDebug();};
 setTimeout(()=>{renderWhyNow();renderDraftRoomDebug();},500);
+
+
+// === V6.6.2 COMPACT VIEW ===
+const COMPACT_VIEW_KEY = 'fantasyDraftCompactViewV1';
+function compactViewEnabled(){try{return localStorage.getItem(COMPACT_VIEW_KEY)==='1';}catch(_){return false;}}
+function applyCompactView(){const on=compactViewEnabled();document.body.classList.toggle('compact-view',on);const btn=el('compactViewButton');if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',on?'true':'false');}}
+function toggleCompactView(){try{localStorage.setItem(COMPACT_VIEW_KEY,compactViewEnabled()?'0':'1');}catch(_){}applyCompactView();window.scrollTo({top:0,behavior:'auto'});}
+document.addEventListener('click',event=>{const btn=event.target.closest('#compactViewButton');if(!btn)return;event.preventDefault();event.stopPropagation();toggleCompactView();});
+setTimeout(applyCompactView,0);

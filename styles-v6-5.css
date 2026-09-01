@@ -1350,3 +1350,32 @@ h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
 
 /* V6.6.1 room intel transparency */
 .why-now-line{margin:0 12px 10px;padding:8px 10px;border-radius:10px;background:rgba(0,0,0,.035);font-size:12px;line-height:1.35}.why-now-line strong{font-weight:800}.why-now-line.risk-high{border-left:4px solid currentColor;font-weight:650}.why-now-line.risk-medium{border-left:3px solid currentColor}.room-intel-debug-card{margin-bottom:14px}.intel-debug-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.intel-debug-grid>div,.intel-debug-callout{padding:10px;border-radius:12px;background:rgba(0,0,0,.035)}.intel-debug-grid span,.intel-debug-callout span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;opacity:.62;margin-bottom:3px}.intel-debug-grid strong,.intel-debug-callout strong{display:block;font-size:13px}.intel-debug-callout{margin-top:8px}.intel-debug-callout small{display:block;margin-top:4px;line-height:1.35;opacity:.78}.intel-debug-empty{margin:10px 0 0}
+
+
+/* === V6.6.2 COMPACT VIEW === */
+.bottom-nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;}
+#compactViewButton.active{background:#151515;color:#fff;}
+body.compact-view .recommendation-card,
+body.compact-view #focusCard,
+body.compact-view #cliffCard,
+body.compact-view #bestAvailableCard,
+body.compact-view .needs-card,
+body.compact-view #draftRoomDebugCard{display:none!important;}
+body.compact-view .player-thesis,
+body.compact-view .recommendation-thesis,
+body.compact-view .recommendation-reason,
+body.compact-view .injury-line,
+body.compact-view .player-tags,
+body.compact-view .player-price,
+body.compact-view .why-now-strip,
+body.compact-view .room-intel-strip,
+body.compact-view .room-intel-debug,
+body.compact-view .detail-grid,
+body.compact-view .note-box{display:none!important;}
+body.compact-view .player-card{padding:0;}
+body.compact-view .player-details-button{padding:10px 12px;}
+body.compact-view .player-card-top{margin-bottom:0;}
+body.compact-view .player-meta{margin-top:2px;}
+body.compact-view .player-quick-actions{border-top:1px solid var(--border);}
+body.compact-view #playerModal .modal-copy,
+body.compact-view #playerModal .eyebrow{display:none!important;}
