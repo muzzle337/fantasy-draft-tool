@@ -1,0 +1,31 @@
+name: Run V6.6 Draft Room Build
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-6-run-build-script.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: node scripts/v6-6-draft-room-build.js
+      - name: Validate
+        run: |
+          node --check app-v6-5.js
+          grep -q '6.6.0-draft-room-intel' app-v6-5.js
+          grep -q 'id="draftRoomList"' index.html
+          grep -q 'id="draftHistoryModal"' index.html
+          git diff --check
+      - name: Commit
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html styles-v6-5.css service-worker-v6-5.js
+          git commit -m "V6.6: add draft room intelligence" || exit 0
+          git push
