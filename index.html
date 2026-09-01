@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#111111" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <title>Jewel City Draft Tool V6.5.2</title>
-  <link rel="stylesheet" href="styles-v6-5.css?v=6.5.0" />
+  <title>Jewel City Draft Tool V6.6</title>
+  <link rel="stylesheet" href="styles-v6-5.css?v=6.6.0" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
@@ -201,7 +201,7 @@
         </div>
       </header>
 
-      <section class="card tools-card">
+      <section class="card draft-room-card"><div class="section-heading"><div><p class="eyebrow">Room Intelligence</p><h2>Draft Room</h2></div><span id="draftRoomNote" class="section-note">0 picks tracked</span></div><p class="modal-copy compact-room-copy">Tap a team to see its roster. Team assignment is automatic from the 14-team snake order.</p><div id="draftRoomList" class="draft-room-list"></div></section><section class="card tools-card">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Safety</p>
@@ -254,7 +254,7 @@
   </nav>
 
 
-  <div id="playerModal" class="modal hidden">
+  <div id="draftHistoryModal" class="modal hidden"><div class="modal-backdrop" data-close-draft-history></div><div class="modal-sheet tall-modal-sheet"><button class="modal-close" data-close-draft-history aria-label="Close" type="button">×</button><p class="eyebrow">Full Draft</p><h2>All Picks</h2><div id="draftHistoryContent" class="full-history-list"></div></div></div><div id="teamRosterModal" class="modal hidden"><div class="modal-backdrop" data-close-team-roster></div><div class="modal-sheet tall-modal-sheet"><button class="modal-close" data-close-team-roster aria-label="Close" type="button">×</button><p class="eyebrow">Draft Room</p><h2 id="teamRosterTitle">Team</h2><div id="teamRosterContent" class="full-history-list"></div></div></div><div id="playerModal" class="modal hidden">
     <div class="modal-backdrop" data-close-player-modal></div>
     <div class="modal-sheet">
       <button class="modal-close" data-close-player-modal aria-label="Close" type="button">×</button>
@@ -340,6 +340,6 @@
     </div>
   </div>
 
-  <script src="app-v6-5.js?v=6.5.4"></script>
+  <script src="app-v6-5.js?v=6.6.0"></script>
 </body>
 </html>
