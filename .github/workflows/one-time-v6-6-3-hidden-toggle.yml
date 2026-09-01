@@ -1,0 +1,35 @@
+name: Run V6.6.3 Hidden Toggle Build
+
+on:
+  push:
+    paths:
+      - 'scripts/build-v6-6-3-hidden-toggle.py'
+      - '.github/workflows/one-time-v6-6-3-hidden-toggle.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Apply hidden toggle build
+        run: python scripts/build-v6-6-3-hidden-toggle.py
+      - name: Validate JavaScript syntax
+        run: node --check app-v6-5.js
+      - name: Validate hidden toggle
+        run: |
+          grep -q '6.6.3-hidden-view-toggle' app-v6-5.js
+          grep -q "closest('#modeDisplay')" app-v6-5.js
+          ! grep -q 'id="compactViewButton"' index.html
+      - name: Commit build
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js
+          git commit -m "V6.6.3: hide view toggle behind mode label" || exit 0
+          git push
