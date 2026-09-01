@@ -1,0 +1,31 @@
+name: Run V6.6.2 Compact View Build
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-6-2-compact-view.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build compact view
+        run: node scripts/build-v6-6-2-compact.js
+      - name: Validate JavaScript
+        run: node --check app-v6-5.js
+      - name: Validate compact UI markers
+        run: |
+          grep -q 'compactViewButton' index.html
+          grep -q '6.6.2-compact-view' app-v6-5.js
+          grep -q 'body.compact-view .recommendation-card' styles-v6-5.css
+      - name: Commit build
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html styles-v6-5.css service-worker-v6-5.js
+          git commit -m "V6.6.2: add compact draft board view" || exit 0
+          git push
