@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.3-hidden-view-toggle";
+const BUILD_VERSION = "6.6.4-clean-status";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.3";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.4";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -1910,7 +1910,7 @@ function bindStaticEvents() {
 }
 
 async function init() {
-  setEngineStatus("loading",`Engine loading v${BUILD_VERSION}…`);
+  setEngineStatus("loading","Engine loading…");
   loadStates();
   await loadBrain();
   runSelfCheck();
@@ -1918,7 +1918,7 @@ async function init() {
   renderAll();
 
   el("datasetStatus").textContent = `${players.length} PLAYERS · ${safeText(brainMeta.version)} · ${safeText(brainMeta.asOf)}`;
-  setEngineStatus("ready",`Engine Ready v${BUILD_VERSION}`);
+  setEngineStatus("ready","Engine Ready");
 }
 
 init().catch((error) => {
