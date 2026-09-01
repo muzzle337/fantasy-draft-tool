@@ -1,0 +1,389 @@
+name: One-time V6.6 Draft Room Intelligence
+
+on:
+  push:
+    paths:
+      - ".github/workflows/one-time-v6-6-draft-room-intelligence.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Draft Room Intelligence
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const appPath = 'app-v6-5.js';
+          const htmlFiles = ['index.html','index-v6-5.html'];
+          const cssPath = 'styles-v6-5.css';
+          const swPath = 'service-worker-v6-5.js';
+          let app = fs.readFileSync(appPath,'utf8');
+
+          // Version/cache identifiers only; player brain remains untouched.
+          app = app.replace(/const BUILD_VERSION = "[^"]+";/, 'const BUILD_VERSION = "6.6.0-draft-room-intel";');
+          app = app.replace(/const BRAIN_URL = "\.\/draft-brain-v6-5\.json\?v=[^"]+";/, 'const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.0";');
+
+          const marker = '// === V6.6 DRAFT ROOM INTELLIGENCE ===';
+          if (!app.includes(marker)) {
+            app += `\n\n${marker}\n
+function teamSlotForOverallPick(overallPick) {
+  const round = Math.floor((overallPick - 1) / TEAM_COUNT) + 1;
+  const inRound = pickInRound(overallPick);
+  return round % 2 === 1 ? inRound : (TEAM_COUNT + 1 - inRound);
+}
+
+function enrichedHistory(state = currentState()) {
+  return state.history.map((action, index) => {
+    const overallPick = index + 1;
+    return {
+      ...action,
+      overallPick,
+      round: Math.floor((overallPick - 1) / TEAM_COUNT) + 1,
+      roundPick: pickInRound(overallPick),
+      teamSlot: Number(action.teamSlot || teamSlotForOverallPick(overallPick)),
+      player: getPlayer(action.playerId)
+    };
+  });
+}
+
+function historyDetails(action,index) {
+  return enrichedHistory({ history:[action] })[0] || {
+    ...action,
+    overallPick:index+1,
+    round:Math.floor(index/TEAM_COUNT)+1,
+    roundPick:pickInRound(index+1),
+    teamSlot:teamSlotForOverallPick(index+1),
+    player:getPlayer(action.playerId)
+  };
+}
+
+function teamDraftedPlayers(slot, state = currentState()) {
+  return enrichedHistory(state)
+    .filter(item => item.teamSlot === Number(slot) && item.player)
+    .map(item => item.player);
+}
+
+function opponentRosterCounts(slot, state = currentState()) {
+  return teamDraftedPlayers(slot,state).reduce((acc,p) => {
+    acc[p.position] = (acc[p.position] || 0) + 1;
+    return acc;
+  },{});
+}
+
+function teamNeedsPosition(slot, position, state = currentState()) {
+  const c = opponentRosterCounts(slot,state);
+  const total = Object.values(c).reduce((a,b)=>a+b,0);
+  const round = currentRound(state);
+  if (position === 'QB') return (c.QB || 0) < 1 && round >= 4;
+  if (position === 'RB') return (c.RB || 0) < 2 || (total >= 5 && (c.RB || 0) < 3);
+  if (position === 'WR') return (c.WR || 0) < 2 || (total >= 5 && (c.WR || 0) < 4);
+  if (position === 'TE') return (c.TE || 0) < 1 && round >= 4;
+  if (position === 'K') return round >= 13 && (c.K || 0) < 1;
+  if (position === 'DEF') return round >= 13 && (c.DEF || 0) < 1;
+  return false;
+}
+
+function teamsBeforeMyNextPick(state = currentState()) {
+  const next = nextMyPick(state);
+  const now = currentOverallPick(state);
+  if (next === null || next <= now) return [];
+  const slots = [];
+  for (let pick = now; pick < next; pick += 1) {
+    const slot = teamSlotForOverallPick(pick);
+    if (slot !== state.draftSlot) slots.push(slot);
+  }
+  return [...new Set(slots)];
+}
+
+function positionDemandBeforeNextPick(position, state = currentState()) {
+  const teams = teamsBeforeMyNextPick(state);
+  return {
+    teams: teams.length,
+    need: teams.filter(slot => teamNeedsPosition(slot,position,state)).length
+  };
+}
+
+function recentPositionRun(position, state = currentState(), windowSize = 7) {
+  return enrichedHistory(state).slice(-windowSize).filter(item => item.player?.position === position).length;
+}
+
+function replacementCliff(player, state = currentState()) {
+  if (!['RB','WR','TE','QB'].includes(player.position)) return {gap:0,nextTier:null};
+  const same = availablePlayers(state)
+    .filter(p => p.position === player.position && p.id !== player.id)
+    .sort((a,b) => a.overallRank - b.overallRank);
+  const nextTier = same.find(p => p.tierNumber > player.tierNumber);
+  if (!nextTier) return {gap:0,nextTier:null};
+  return { gap: Math.max(0, Number(nextTier.overallRank) - Number(player.overallRank)), nextTier };
+}
+
+function survivalRiskInfo(player, state = currentState()) {
+  const next = nextMyPick(state);
+  const away = picksUntilMyTurn(state);
+  if (next === null || away === null || away === 0) return {level:'NOW',score:0,demand:0,teams:0,tier:tierRemaining(player,state)};
+  const demand = positionDemandBeforeNextPick(player.position,state);
+  const tier = tierRemaining(player,state);
+  const run = recentPositionRun(player.position,state);
+  const expected = marketExpectedPick(player);
+  const likelyBeforeNext = Number.isFinite(expected) && expected <= next + 2;
+  let score = 0;
+  if (likelyBeforeNext) score += 3;
+  if (expected <= currentOverallPick(state) + Math.max(4,away * 0.6)) score += 2;
+  if (demand.need >= 3) score += 2;
+  if (demand.need >= tier && tier <= 4) score += 3;
+  if (run >= 3) score += 2;
+  const cliff = replacementCliff(player,state);
+  if (cliff.gap >= 12) score += 2;
+  const level = score >= 7 ? 'HIGH' : score >= 4 ? 'MEDIUM' : 'LOW';
+  return {level,score,demand:demand.need,teams:demand.teams,tier,run,expected,cliffGap:cliff.gap};
+}
+
+function roomUrgencyAdjustment(player,state=currentState()) {
+  const risk = survivalRiskInfo(player,state);
+  let score = risk.level === 'HIGH' ? 18 : risk.level === 'MEDIUM' ? 8 : 0;
+  if (risk.run >= 4) score += 8;
+  if (risk.cliffGap >= 16) score += 8;
+  else if (risk.cliffGap >= 10) score += 4;
+  return score;
+}
+
+function recommendationScore(player, state = currentState()) {
+  const round = currentRound(state);
+  let score = 340 - Number(player.overallRank || 300);
+  score += stanceAdjustment(player.stance);
+  score += tagAdjustment(player.tags, round);
+  score += rosterAdjustment(player, round, state);
+  score += priceDisciplineAdjustment(player, round, state);
+  score += injuryAdjustment(player, round);
+  score += tierAdjustment(player, state);
+  score += positionStrategyAdjustment(player, round, state);
+  score += roomUrgencyAdjustment(player,state);
+  score += (player.roleConfidence - 5) * (round <= 6 ? 2.4 : 1.3);
+  if (player.intelLevel === 'TRANSCRIPT_RESEARCH') score += 5;
+  return score;
+}
+
+function likelyNextScore(player, state = currentState()) {
+  const pick = currentOverallPick(state);
+  const expected = marketExpectedPick(player);
+  const overdue = Math.max(0, pick - expected);
+  const upcoming = Math.max(0, expected - pick);
+  const teamSlot = teamSlotForOverallPick(pick);
+  let score = 260 - upcoming * 4 + overdue * 12;
+  if (yahooAdpAvailable(player)) score += 18;
+  if (player.overallRank <= pick + 8) score += 8;
+  if (teamNeedsPosition(teamSlot,player.position,state)) score += 18;
+  const run = recentPositionRun(player.position,state);
+  if (run >= 3) score += Math.min(12,run * 2);
+  if (player.position === 'K' || player.position === 'DEF') score -= currentRound(state) < 12 ? 120 : 0;
+  return score;
+}
+
+function recommendationLabel(player, state = currentState()) {
+  const round = currentRound(state);
+  const remaining = tierRemaining(player,state);
+  const risk = survivalRiskInfo(player,state);
+  if (player.doNotReachStart && round < player.doNotReachStart) return "DON'T REACH";
+  if (remaining === 1 && ['RB','WR','TE','QB'].includes(player.position)) return 'LAST OF TIER';
+  if (risk.level === 'HIGH' && !['DO_NOT_REACH','INJURY_DISCOUNT_ONLY'].includes(player.stance)) return 'TAKE NOW';
+  if (player.injurySeverity >= 3 || player.stance === 'INJURY_DISCOUNT_ONLY') return 'WAIT';
+  if (player.targetRoundStart && round < player.targetRoundStart) return 'WAIT';
+  if (['STRONG_TARGET','STRONG_TARGET_AT_DISCOUNT'].includes(player.stance) && (!player.targetRoundStart || round >= player.targetRoundStart)) return 'TAKE NOW';
+  return 'GOOD PICK';
+}
+
+function recommendationReason(player, state = currentState()) {
+  const reasons = [];
+  const completion = rosterCompletionMode(state);
+  const risk = survivalRiskInfo(player,state);
+  if (completion.active) reasons.push(`Roster Completion Mode: ${[...new Set(completion.missing)].join(' / ')} must be filled.`);
+  if (risk.level === 'HIGH') reasons.push(`High survival risk: ${risk.demand} of ${risk.teams} teams before your next turn still need ${player.position}; ${risk.tier} remain in ${player.tierLabel}.`);
+  else if (risk.level === 'MEDIUM') reasons.push(`Medium survival risk before your next turn (${risk.demand} intervening teams need ${player.position}).`);
+  if (risk.run >= 3) reasons.push(`${risk.run} ${player.position}s went in the last 7 picks — position run detected.`);
+  if (risk.cliffGap >= 10) reasons.push(`Replacement cliff: next tier is roughly ${risk.cliffGap} ranks lower on our board.`);
+  if (skillStarterNeed(player.position,state) > 0) reasons.push(`Fills a starting ${player.position} need.`);
+  if (tierRemaining(player,state) <= 2 && ['RB','WR','TE','QB'].includes(player.position)) reasons.push(`Only ${tierRemaining(player,state)} remain in ${player.tierLabel}.`);
+  if (player.stance === 'STRONG_TARGET') reasons.push('One of our strongest research-backed targets.');
+  else if (player.stance === 'TARGET_AT_PRICE') reasons.push('Good target at the right price.');
+  else if (player.stance === 'PRICE_SENSITIVE') reasons.push('Price discipline still matters.');
+  if (!reasons.length) reasons.push(player.thesis || 'Strong combination of rank, tier, roster fit and market price.');
+  return reasons.slice(0,2).join(' ');
+}
+
+function renderRecentPicks() {
+  const state = currentState();
+  const detailed = enrichedHistory(state);
+  const last = detailed[detailed.length - 1];
+  if (el('lastPickDisplay')) el('lastPickDisplay').textContent = !last || !last.player ? 'No picks recorded yet' : `#${last.overallPick} · T${last.teamSlot} · ${last.player.name} (${last.player.position})`;
+  const list = el('recentPicksList');
+  if (!list) return;
+  const latest = detailed.slice(-10).reverse();
+  list.innerHTML = latest.length ? latest.map(item => `
+    <div class="recent-pick-row">
+      <span>#${item.overallPick} · R${item.round}</span>
+      <strong>${item.player?.name || 'Unknown'}</strong>
+      <small>T${item.teamSlot}${item.teamSlot===state.draftSlot ? ' · YOU' : ''} · ${item.player?.position || ''}</small>
+    </div>`).join('') + (detailed.length > 10 ? `<button id="viewAllPicksButton" class="mini-action-button full-history-button" type="button">View All ${detailed.length} Picks</button>` : '') : '<p class="muted">No picks recorded.</p>';
+  list.classList.toggle('hidden',!state.recentOpen);
+  if (el('recentChevron')) el('recentChevron').textContent = state.recentOpen ? '⌃' : '⌄';
+}
+
+function renderDraftRoom() {
+  const host = el('draftRoomList');
+  if (!host) return;
+  const state = currentState();
+  host.innerHTML = Array.from({length:TEAM_COUNT},(_,i) => i+1).map(slot => {
+    const roster = teamDraftedPlayers(slot,state);
+    const counts = opponentRosterCounts(slot,state);
+    const summary = ['QB','RB','WR','TE','K','DEF'].filter(pos => counts[pos]).map(pos => `${pos}${counts[pos]}`).join(' · ') || 'No picks yet';
+    return `<button type="button" class="draft-room-team" data-team-slot="${slot}">
+      <span class="draft-room-team-name">Team ${slot}${slot===state.draftSlot ? ' · YOU' : ''}</span>
+      <span class="draft-room-team-summary">${summary}</span>
+      <span class="draft-room-team-count">${roster.length}</span>
+    </button>`;
+  }).join('');
+  if (el('draftRoomNote')) el('draftRoomNote').textContent = `${state.history.length} picks tracked automatically`;
+}
+
+function openDraftHistoryModal() {
+  const state = currentState();
+  const detailed = enrichedHistory(state).slice().reverse();
+  const body = el('draftHistoryContent');
+  if (!body) return;
+  body.innerHTML = detailed.length ? detailed.map(item => `<div class="full-history-row"><span>#${item.overallPick}</span><strong>${item.player?.name || 'Unknown'}</strong><small>T${item.teamSlot}${item.teamSlot===state.draftSlot ? ' · YOU' : ''} · ${item.player?.position || ''} · R${item.round}</small></div>`).join('') : '<p class="muted">No picks recorded.</p>';
+  el('draftHistoryModal')?.classList.remove('hidden');
+}
+
+function openTeamRosterModal(slot) {
+  const state = currentState();
+  const roster = teamDraftedPlayers(slot,state);
+  if (el('teamRosterTitle')) el('teamRosterTitle').textContent = `Team ${slot}${Number(slot)===state.draftSlot ? ' · YOU' : ''}`;
+  const body = el('teamRosterContent');
+  if (body) body.innerHTML = roster.length ? roster.map((p,i)=>`<div class="full-history-row"><span>${i+1}</span><strong>${p.name}</strong><small>${p.position} · ${p.team} · ${p.tierLabel}</small></div>`).join('') : '<p class="muted">No players drafted yet.</p>';
+  el('teamRosterModal')?.classList.remove('hidden');
+}
+
+function recordAction(type,playerId,{simulated=false}={}) {
+  const state = currentState();
+  const player = getPlayer(playerId);
+  if (!player || isDrafted(playerId,state)) return;
+  const overallPick = currentOverallPick(state);
+  const teamSlot = teamSlotForOverallPick(overallPick);
+  if (type === 'draftedByOther') state.draftedByOthers.push(playerId);
+  if (type === 'myPick') state.myPlayers.push(playerId);
+  state.history.push({type,playerId,recordedAt:new Date().toISOString(),simulated,teamSlot,overallPick});
+  saveState();
+  closePlayerModal();
+  renderAll();
+  renderDraftRoom();
+}
+
+function realisticMockCandidate(state) {
+  const round = currentRound(state);
+  const pick = currentOverallPick(state);
+  const draftingSlot = teamSlotForOverallPick(pick);
+  const available = availablePlayers(state).filter(p => !((p.position==='DEF'||p.position==='K') && round<12));
+  if (!available.length) return null;
+  const ranked = available.map(p => {
+    const market = yahooAdpAvailable(p) ? Number(p.yahooAdp)*0.78 + Number(p.overallRank)*0.22 : Number(p.overallRank);
+    let expected = market;
+    if (teamNeedsPosition(draftingSlot,p.position,state)) expected -= 8;
+    const counts = opponentRosterCounts(draftingSlot,state);
+    if (p.position==='QB' && (counts.QB||0)>=1) expected += 22;
+    if (p.position==='TE' && (counts.TE||0)>=1) expected += 12;
+    if ((p.position==='K'||p.position==='DEF') && (counts[p.position]||0)>=1) expected += 80;
+    const run = recentPositionRun(p.position,state);
+    if (run>=3) expected -= Math.min(5,run);
+    return {player:p,expected};
+  }).sort((a,b)=>a.expected-b.expected);
+  let windowSize = round===1 ? 4 : round<=3 ? 6 : round<=6 ? 8 : round<=10 ? 10 : 14;
+  const urgent = ranked.filter(item=>item.expected<=pick-3);
+  const pool = urgent.length ? urgent.slice(0,Math.min(3,urgent.length)) : ranked.slice(0,Math.min(windowSize,ranked.length));
+  const weighted = pool.map((item,index)=>({ ...item, weight:Math.exp(-0.62*index)/(1+Math.abs(item.expected-pick)*0.22) }));
+  const total = weighted.reduce((s,x)=>s+x.weight,0); let roll=Math.random()*total;
+  for (const item of weighted) { roll-=item.weight; if (roll<=0) return item.player; }
+  return weighted[0]?.player || null;
+}
+
+function simulateToMyPick() {
+  const state = currentState();
+  if (activeMode() !== 'mock' || !state.draftSlot) return;
+  let safety=0;
+  while (safety<300) {
+    const nextMine=nextMyPick(state);
+    if (nextMine===null || currentOverallPick(state)>=nextMine) break;
+    const player=realisticMockCandidate(state); if (!player) break;
+    const overallPick=currentOverallPick(state); const teamSlot=teamSlotForOverallPick(overallPick);
+    state.draftedByOthers.push(player.id);
+    state.history.push({type:'draftedByOther',playerId:player.id,recordedAt:new Date().toISOString(),simulated:true,teamSlot,overallPick});
+    safety+=1;
+  }
+  saveState('mock'); renderAll(); renderDraftRoom();
+}
+
+// Supplemental UI listeners. Existing draft controls are unchanged.
+document.addEventListener('click', (event) => {
+  const all = event.target.closest('#viewAllPicksButton');
+  if (all) { openDraftHistoryModal(); return; }
+  const team = event.target.closest('[data-team-slot]');
+  if (team) { openTeamRosterModal(Number(team.dataset.teamSlot)); return; }
+  if (event.target.closest('[data-close-draft-history]')) el('draftHistoryModal')?.classList.add('hidden');
+  if (event.target.closest('[data-close-team-roster]')) el('teamRosterModal')?.classList.add('hidden');
+  setTimeout(renderDraftRoom,0);
+});
+
+setTimeout(renderDraftRoom,400);
+`;
+          }
+          fs.writeFileSync(appPath,app);
+
+          for (const f of htmlFiles) {
+            let html = fs.readFileSync(f,'utf8');
+            html = html.replace(/V6\.5\.2/g,'V6.6');
+            html = html.replace(/styles-v6-5\.css\?v=[^"]+/g,'styles-v6-5.css?v=6.6.0');
+            html = html.replace(/app-v6-5\.js\?v=[^"]+/g,'app-v6-5.js?v=6.6.0');
+            if (!html.includes('id="draftRoomList"')) {
+              const toolsAnchor = '<section class="card tools-card">';
+              const roomCard = `<section class="card draft-room-card">\n        <div class="section-heading">\n          <div><p class="eyebrow">Room Intelligence</p><h2>Draft Room</h2></div>\n          <span id="draftRoomNote" class="section-note">0 picks tracked</span>\n        </div>\n        <p class="modal-copy compact-room-copy">Tap a team to see its roster. Team assignment is automatic from the 14-team snake order.</p>\n        <div id="draftRoomList" class="draft-room-list"></div>\n      </section>\n\n      `;
+              html = html.replace(toolsAnchor, roomCard + toolsAnchor);
+            }
+            if (!html.includes('id="draftHistoryModal"')) {
+              const modalAnchor = '<div id="playerModal" class="modal hidden">';
+              const modals = `<div id="draftHistoryModal" class="modal hidden">\n    <div class="modal-backdrop" data-close-draft-history></div>\n    <div class="modal-sheet tall-modal-sheet">\n      <button class="modal-close" data-close-draft-history aria-label="Close" type="button">×</button>\n      <p class="eyebrow">Full Draft</p><h2>All Picks</h2>\n      <div id="draftHistoryContent" class="full-history-list"></div>\n    </div>\n  </div>\n\n  <div id="teamRosterModal" class="modal hidden">\n    <div class="modal-backdrop" data-close-team-roster></div>\n    <div class="modal-sheet tall-modal-sheet">\n      <button class="modal-close" data-close-team-roster aria-label="Close" type="button">×</button>\n      <p class="eyebrow">Draft Room</p><h2 id="teamRosterTitle">Team</h2>\n      <div id="teamRosterContent" class="full-history-list"></div>\n    </div>\n  </div>\n\n  `;
+              html = html.replace(modalAnchor, modals + modalAnchor);
+            }
+            fs.writeFileSync(f,html);
+          }
+
+          let css = fs.readFileSync(cssPath,'utf8');
+          const cssMarker='/* V6.6 Draft Room Intelligence */';
+          if (!css.includes(cssMarker)) css += `\n\n${cssMarker}\n.draft-room-card{margin-bottom:14px}.compact-room-copy{margin-top:0}.draft-room-list{display:grid;gap:7px}.draft-room-team{width:100%;display:grid;grid-template-columns:minmax(82px,.8fr) minmax(0,2fr) 28px;align-items:center;gap:8px;padding:11px 12px;border:1px solid var(--border,#ddd);border-radius:12px;background:var(--card,#fff);text-align:left;color:inherit}.draft-room-team-name{font-weight:800}.draft-room-team-summary{font-size:12px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.draft-room-team-count{font-size:12px;font-weight:800;text-align:right;opacity:.65}.full-history-button{width:100%;margin-top:9px;padding:10px}.tall-modal-sheet{max-height:82vh;display:flex;flex-direction:column}.full-history-list{overflow-y:auto;display:grid;gap:7px;padding-right:2px}.full-history-row{display:grid;grid-template-columns:42px minmax(0,1fr);gap:2px 9px;padding:10px 4px;border-bottom:1px solid var(--border,#e5e5e5)}.full-history-row>span{grid-row:1/3;font-weight:800;opacity:.65}.full-history-row>strong{font-size:14px}.full-history-row>small{opacity:.65}.recent-pick-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:2px 8px;padding:8px 0;border-bottom:1px solid var(--border,#e5e5e5)}.recent-pick-row>span{grid-row:1/3;font-size:12px;opacity:.6}.recent-pick-row>strong{font-size:13px}.recent-pick-row>small{font-size:11px;opacity:.65}@media(max-width:480px){.draft-room-team{grid-template-columns:75px minmax(0,1fr) 24px;padding:10px}.draft-room-team-summary{font-size:11px}.tall-modal-sheet{max-height:88vh}}`;
+          fs.writeFileSync(cssPath,css);
+
+          let sw = fs.readFileSync(swPath,'utf8');
+          sw = sw.replace(/const CACHE_NAME = "[^"]+";/,'const CACHE_NAME = "fantasy-draft-tool-v6-6-draft-room-intel";');
+          sw = sw.replaceAll(/app-v6-5\.js\?v=[^"\n]+/g,'app-v6-5.js?v=6.6.0');
+          sw = sw.replaceAll(/draft-brain-v6-5\.json\?v=[^"\n]+/g,'draft-brain-v6-5.json?v=6.6.0');
+          sw = sw.replaceAll(/styles-v6-5\.css\?v=[^"\n]+/g,'styles-v6-5.css?v=6.6.0');
+          fs.writeFileSync(swPath,sw);
+          NODE
+
+          node --check app-v6-5.js
+          grep -q '6.6.0-draft-room-intel' app-v6-5.js
+          grep -q 'id="draftRoomList"' index.html
+          grep -q 'id="draftHistoryModal"' index.html
+          git diff --check
+
+      - name: Commit Draft Room Intelligence
+        shell: bash
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html styles-v6-5.css service-worker-v6-5.js
+          git commit -m "V6.6: add draft room intelligence" || exit 0
+          git push
