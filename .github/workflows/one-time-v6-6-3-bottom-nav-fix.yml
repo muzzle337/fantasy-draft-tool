@@ -1,0 +1,31 @@
+name: Run V6.6.3 Bottom Nav Fix
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-v6-6-3-bottom-nav-fix.yml'
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/fix-v6-6-3-bottom-nav.js
+      - name: Verify 3-button nav
+        run: |
+          grep -q 'grid-template-columns:repeat(3,minmax(0,1fr))' styles-v6-5.css
+          ! grep -q 'grid-template-columns:repeat(4,minmax(0,1fr))' styles-v6-5.css
+          grep -q 'data-view="draftView"' index.html
+          grep -q 'data-view="teamView"' index.html
+          grep -q 'data-view="toolsView"' index.html
+          ! grep -q 'compactViewButton' index.html
+      - name: Commit repair
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add styles-v6-5.css
+          git commit -m "V6.6.3: restore three-button bottom navigation"
+          git push
