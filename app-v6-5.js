@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.4-clean-status";
+const BUILD_VERSION = "6.6.5-draft-chime";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.4";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.5";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -2051,3 +2051,29 @@ function applyCompactView(){const on=compactViewEnabled();document.body.classLis
 function toggleCompactView(){try{localStorage.setItem(COMPACT_VIEW_KEY,compactViewEnabled()?'0':'1');}catch(_){}applyCompactView();window.scrollTo({top:0,behavior:'auto'});}
 document.addEventListener('click',event=>{const mode=event.target.closest('#modeDisplay');if(!mode)return;event.preventDefault();event.stopPropagation();toggleCompactView();});
 setTimeout(applyCompactView,0);
+
+
+// === V6.6.5 DRAFT CHIME ===
+const DRAFT_CHIME_URL = './assets/nfl-draft-chime.mp3';
+let draftChimeAudio = null;
+function playDraftChime() {
+  try {
+    if (!draftChimeAudio) {
+      draftChimeAudio = new Audio(DRAFT_CHIME_URL);
+      draftChimeAudio.preload = 'auto';
+      draftChimeAudio.volume = 1;
+    }
+    draftChimeAudio.pause();
+    draftChimeAudio.currentTime = 0;
+    const playPromise = draftChimeAudio.play();
+    if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
+  } catch (_) {}
+}
+const recordActionBeforeDraftChime = recordAction;
+recordAction = function(type, playerId, options = {}) {
+  const before = currentState().history.length;
+  const result = recordActionBeforeDraftChime(type, playerId, options);
+  const recorded = currentState().history.length > before;
+  if (recorded && (type === 'draftedByOther' || type === 'myPick')) playDraftChime();
+  return result;
+};
