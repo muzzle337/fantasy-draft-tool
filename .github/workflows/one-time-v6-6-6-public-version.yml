@@ -1,0 +1,43 @@
+name: Run V6.6.6 Public Version Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-v6-6-6-public-version.js'
+      - '.github/workflows/one-time-v6-6-6-public-version.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build public version status
+        run: node scripts/build-v6-6-6-public-version.js
+      - name: Validate JavaScript
+        run: node --check app-v6-5.js
+      - name: Validate visible version
+        run: |
+          grep -q 'const BUILD_VERSION = "6.6.6";' app-v6-5.js
+          grep -q 'Engine Ready · v' app-v6-5.js
+          grep -q 'repeat(3,minmax(0,1fr))' styles-v6-5.css
+      - name: Commit generated update
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "V6.6.6: show public version in engine status"
+            git push
+          fi
