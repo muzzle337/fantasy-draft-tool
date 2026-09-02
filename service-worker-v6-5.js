@@ -1,20 +1,22 @@
-const CACHE_NAME = "fantasy-draft-tool-v6-6-7-mode-toggle";
+const CACHE_NAME = "fantasy-draft-tool-v6-6-8-sep2-edge-intel";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./index-v6-5.html",
-  "./styles-v6-5.css?v=6.6.7",
-  "./app-v6-5.js?v=6.6.7",
-  "./draft-brain-v6-5.json?v=6.6.7",
+  "./styles-v6-5.css?v=6.6.8",
+  "./app-v6-5.js?v=6.6.8",
+  "./draft-brain-v6-5.json?v=6.6.8",
   "./draft-corrections-v6-5-1.json?v=20260829-1",
   "./draft-news-v6-5-1.json?v=20260829-1",
   "./draft-mock-intel-v6-5-1.json?v=20260829-1",
   "./manifest.json",
+  "./draft-sep2-edge-intel.json?v=20260902-1",
   "./assets/nfl-draft-chime.mp3"
 ];
 
 const REFRESH_URLS = [
+  "./draft-sep2-edge-intel.json?v=20260902-1",
   "./draft-corrections-v6-5-1.json?v=20260829-1",
   "./draft-news-v6-5-1.json?v=20260829-1",
   "./draft-mock-intel-v6-5-1.json?v=20260829-1"
@@ -66,16 +68,17 @@ async function mergedBrainResponse(request) {
       base.players = base.players.map((player) => ({ ...player, ...(overrides[player.name] || {}) }));
     }
 
-    base.version = "1.2.1-transcript-refresh";
-    base.as_of = "2026-08-29";
+    base.version = "1.2.4-sep2-edge-intel";
+    base.as_of = "2026-09-02";
     base.latest_intel_refresh = {
-      date: "2026-08-29",
-      type: "TRANSCRIPT_RECONCILIATION",
+      date: "2026-09-02",
+      type: "DRAFT_DAY_EDGE_INGEST",
       sources: layers.map((layer) => layer.source),
       rules: [
-        "Yahoo ADP is unchanged by transcript mock-draft positions.",
-        "our_rank and tier are unchanged in this refresh; rank-review flags are for Sept. 1 synthesis.",
-        "Resolved contract/holdout notes do not create an injury or recommendation penalty."
+        "Yahoo ADP is unchanged by transcript ECR or mock-draft positions.",
+        "Only actionable role, injury, conviction, price-discipline and conflict signals are retained.",
+        "Rank-review flags do not automatically change our_rank or tier.",
+        "Multi-week camp injuries receive extra caution at premium cost; cheap asymmetric upside remains draftable."
       ]
     };
 
