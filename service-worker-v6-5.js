@@ -1,12 +1,12 @@
-const CACHE_NAME = "fantasy-draft-tool-v6-6-5-draft-chime";
+const CACHE_NAME = "fantasy-draft-tool-v6-6-6-public-version";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./index-v6-5.html",
-  "./styles-v6-5.css?v=6.6.5",
-  "./app-v6-5.js?v=6.6.5",
-  "./draft-brain-v6-5.json?v=6.6.5",
+  "./styles-v6-5.css?v=6.6.6",
+  "./app-v6-5.js?v=6.6.6",
+  "./draft-brain-v6-5.json?v=6.6.6",
   "./draft-corrections-v6-5-1.json?v=20260829-1",
   "./draft-news-v6-5-1.json?v=20260829-1",
   "./draft-mock-intel-v6-5-1.json?v=20260829-1",

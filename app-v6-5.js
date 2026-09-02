@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.5-draft-chime";
+const BUILD_VERSION = "6.6.6";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.5";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.6";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -163,7 +163,8 @@ function setEngineStatus(kind, message) {
   const status = el("engineStatus");
   if (!status) return;
   status.className = `engine-status ${kind}`;
-  status.textContent = message;
+  const publicVersion = String(BUILD_VERSION).match(/^\d+(?:\.\d+)+/)?.[0] || BUILD_VERSION;
+  status.textContent = kind === "ready" ? `Engine Ready · v${publicVersion}` : message;
 }
 
 function captureError(label, error) {
