@@ -1,0 +1,40 @@
+name: Run V6.6.5 Draft Chime Build
+
+on:
+  push:
+    paths:
+      - 'scripts/build-v6-6-5-draft-chime.py'
+      - '.github/workflows/one-time-v6-6-5-draft-chime.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build draft chime update
+        run: python scripts/build-v6-6-5-draft-chime.py
+      - name: Validate JavaScript
+        run: node --check app-v6-5.js
+      - name: Validate audio
+        run: |
+          test -s assets/nfl-draft-chime.mp3
+          file assets/nfl-draft-chime.mp3
+      - name: Commit generated update
+        run: |
+          git config user.name "muzzle337"
+          git config user.email "sanro4@gmail.com"
+          git add app-v6-5.js index.html index-v6-5.html service-worker-v6-5.js assets/nfl-draft-chime.mp3
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "V6.6.5: add NFL draft chime on picks"
+          git push
