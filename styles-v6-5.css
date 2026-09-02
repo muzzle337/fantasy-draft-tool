@@ -1379,3 +1379,7 @@ body.compact-view .player-meta{margin-top:2px;}
 body.compact-view .player-quick-actions{border-top:1px solid var(--border);}
 body.compact-view #playerModal .modal-copy,
 body.compact-view #playerModal .eyebrow{display:none!important;}
+
+
+/* V6.6.7 mode toggle reliability */
+#modeBanner > div{touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:44px;display:flex;flex-direction:column;justify-content:center;flex:1;}

@@ -1,11 +1,11 @@
-const BUILD_VERSION = "6.6.6";
+const BUILD_VERSION = "6.6.7";
 const TEAM_COUNT = 14;
 const DRAFTABLE_ROSTER_SIZE = 15;
 const STORAGE_PREFIX = "fantasyDraftToolStateV5";
 const BACKUP_PREFIX = "fantasyDraftBackupsV6";
 const MAX_BACKUPS = 10;
 const LAST_SAVE_KEY = "fantasyDraftLastSaveV6";
-const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.6";
+const BRAIN_URL = "./draft-brain-v6-5.json?v=6.6.7";
 
 let brainMeta = {};
 let leagueStrategy = {};
@@ -2050,7 +2050,16 @@ const COMPACT_VIEW_KEY = 'fantasyDraftCompactViewV1';
 function compactViewEnabled(){try{return localStorage.getItem(COMPACT_VIEW_KEY)==='1';}catch(_){return false;}}
 function applyCompactView(){const on=compactViewEnabled();document.body.classList.toggle('compact-view',on);}
 function toggleCompactView(){try{localStorage.setItem(COMPACT_VIEW_KEY,compactViewEnabled()?'0':'1');}catch(_){}applyCompactView();window.scrollTo({top:0,behavior:'auto'});}
-document.addEventListener('click',event=>{const mode=event.target.closest('#modeDisplay');if(!mode)return;event.preventDefault();event.stopPropagation();toggleCompactView();});
+const modeToggleTarget = el('modeBanner');
+if (modeToggleTarget) {
+  modeToggleTarget.addEventListener('pointerup', event => {
+    if (event.target.closest('button')) return;
+    if (!event.target.closest('#modeBanner > div')) return;
+    event.preventDefault();
+    event.stopPropagation();
+    toggleCompactView();
+  });
+}
 setTimeout(applyCompactView,0);
 
 
