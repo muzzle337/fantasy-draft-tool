@@ -1,0 +1,114 @@
+{
+  "source": "User-supplied Sep. 2 transcripts: FantasyPros RB rank movement + FootballGuys Sigmund Bloom price discipline",
+  "as_of": "2026-09-02",
+  "ingest_rule": "Only actionable draft-day edge is retained. Yahoo ADP is untouched. Generic ECR movement, unsupported speculation, and redundant commentary are excluded.",
+  "decision_framework": {
+    "price_vs_player": "Do not confuse a good player with a good pick. Treat ADP as market price, not truth, and prefer players whose ceiling materially exceeds the cost.",
+    "injury_asymmetry": "Multi-week camp/preseason injuries deserve more caution at premium prices even when Week 1 is expected; discount risk more aggressively when the player is cheap enough to preserve asymmetric upside.",
+    "ceiling_test": "At each price, ask whether passing creates meaningful fear of missing the player's best-case outcome. Avoid paying ceiling prices for players whose realistic ceiling is capped by role, environment, or health."
+  },
+  "player_overrides": {
+    "MarShawn Lloyd": {
+      "tags": ["UPSIDE", "VALUE", "ROLE_UP", "CONTINGENT_RB", "HEALTH_TRENDING_UP"],
+      "stance": "STRONG_TARGET_AT_DISCOUNT",
+      "analyst_conviction": "STRONG_POSITIVE_CONFIRMATION",
+      "draft_intel_note": "Multiple late sources now converge on Lloyd as one of the best upside RB bets in his tier. Clear early-season runway is possible while Josh Jacobs is unavailable, and independent reporting on offseason biomechanics work weakens the lazy 'injury-prone' dismissal without eliminating durability risk.",
+      "news_note": "FantasyPros moved Lloyd near the top of the next RB tier and viewed him as the likely early Green Bay lead. Bloom separately highlighted extensive offseason movement/biomechanics work intended to address recurring soft-tissue issues.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Repeated independent positive conviction plus immediate opportunity warrants final upward rank/tier review; do not auto-rank solely from ECR movement.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Rhamondre Stevenson": {
+      "tags": ["VALUE", "PPR", "ROLE_STABILITY"],
+      "analyst_conviction": "POSITIVE_CONFIRMATION",
+      "draft_intel_note": "Repeated independent evidence says the market may be overpricing TreVeyon Henderson's takeover odds. Stevenson remains a meaningful part of the backfield and is the cheaper way to access the same offense.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Multiple recent sources reinforce Stevenson as undervalued relative to Henderson's cost.",
+      "last_intel_update": "2026-09-02"
+    },
+    "TreVeyon Henderson": {
+      "tags": ["UPSIDE", "PRICE_SENSITIVE", "ROLE_RISK"],
+      "stance": "PRICE_SENSITIVE",
+      "analyst_conviction": "FADE_AT_COST_CONFIRMATION",
+      "draft_intel_note": "Talent and explosiveness remain attractive, but repeated late-draft analysis says his price assumes too much takeover certainty. Rhamondre Stevenson is still a real role obstacle, so do not pay for a clean bell-cow outcome that is not established.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Repeated independent price fade; preserve upside but strengthen do-not-reach discipline.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Ashton Jeanty": {
+      "tags": ["UPSIDE", "INJURY_WATCH", "PRICE_SENSITIVE", "ROLE_RISK"],
+      "stance": "INJURY_DISCOUNT_ONLY",
+      "analyst_conviction": "CAUTION_AT_PREMIUM_COST",
+      "injury_status": "ANKLE - WEEK 1 STATUS / RAMP-UP MONITOR",
+      "week1_availability": "VERIFY",
+      "draft_intel_note": "The actionable risk is the combination of an unresolved ankle issue and a credible secondary-back role, not either concern in isolation. Still draftable for ceiling when the market discounts him, but no longer worth paying a clean-workhorse price.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Premium price plus multi-week injury uncertainty and possible platoon raises downside; buy only after meaningful discount.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Bucky Irving": {
+      "analyst_conviction": "POSITIVE_ROLE_REASSESSMENT",
+      "draft_intel_note": "New evidence directly challenges the prior Sean Tucker goal-line concern: Tucker's role appears less threatening than feared. Kenneth Gainwell can still cap some receiving/ceiling outcomes, but Bucky's talent, receiving ability and offense keep him viable at the right price.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Fresh role evidence conflicts with our Aug. 31 negative assumption. Re-review price-sensitive/fade status rather than carrying the old Sean Tucker penalty forward unchanged.",
+      "last_intel_update": "2026-09-02"
+    },
+    "RJ Harvey": {
+      "tags": ["VALUE", "PPR", "RED_ZONE_ROLE", "POST_HYPE"],
+      "stance": "TARGET_AT_PRICE",
+      "analyst_conviction": "POSITIVE_VALUE_SIGNAL",
+      "draft_intel_note": "Two separate discussions point to Harvey as a potential post-hype value. Even if he does not dominate low-value early-down volume, receiving work and red-zone usage can preserve fantasy value while the market discounts him.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Repeated independent value signal centered on high-value touches rather than raw carry share.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Kenneth Walker III": {
+      "analyst_conviction": "STRONG_POSITIVE_CONFIRMATION",
+      "draft_intel_note": "Late analyst conviction remains unusually strong despite market/rank softness. The case is ceiling-driven: three-down upside and potential to be the defining skill player in the offense. Treat dips as buying opportunities if health checks remain acceptable.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Luther Burden III": {
+      "tags": ["UPSIDE", "VALUE", "RISK", "HEALTH_TRENDING_UP"],
+      "analyst_conviction": "POSITIVE_HEALTH_CONFIRMATION",
+      "draft_intel_note": "Returned to practice and reconditioning is underway. This supports removing excess injury discount, but does not erase prior role/price concerns; keep as a review rather than an automatic rank jump.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Alec Pierce": {
+      "analyst_conviction": "UPSIDE_WITH_HEALTH_CONFLICT",
+      "draft_intel_note": "Bloom still sees asymmetric WR4-level upside at cost, but separately raised visual conditioning concerns. This conflicts with our more recent positive status trend, so keep the upside thesis while requiring final health confidence before upgrading.",
+      "rank_review_flag": true,
+      "rank_review_reason": "Conflicting health evidence; no blind upgrade or downgrade.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Justin Jefferson": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE",
+      "draft_intel_note": "Still an elite player, but Bloom's objection is price rather than talent: structural offensive/quarterback uncertainty can make a first-round ceiling price fragile. Use as a tiebreaker against similarly elite options with cleaner environments.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Saquon Barkley": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE",
+      "draft_intel_note": "Do not pay for a repeat of the prior peak season by default. Offensive transition and role/environment uncertainty reduce the margin for error at a premium price.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Jalen Hurts": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE_QB",
+      "draft_intel_note": "Elite fantasy ceiling remains, but the premium is harder to justify if passing environment weakens and much of the rushing edge remains touchdown-driven. Do not force him ahead of cheaper preferred QB value simply for name safety.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Lamar Jackson": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE_QB",
+      "draft_intel_note": "Ceiling is still league-winning, but cost plus durability/age-of-rushing profile creates opportunity-cost risk versus late QB value. Preserve as an upside pick only when the room price is reasonable.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Jayden Daniels": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE_QB",
+      "draft_intel_note": "High confidence in talent, but early schedule/offensive-line concerns and the injury exposure inherent in designed rushing make him less automatic at a premium. Buy dips; do not chase the ceiling price.",
+      "last_intel_update": "2026-09-02"
+    },
+    "Trey McBride": {
+      "analyst_conviction": "PRICE_SENSITIVE_ELITE_TE",
+      "draft_intel_note": "The concern is historic/premium cost, not talent. Prefer similarly strong top-tier tight ends when they come materially cheaper; avoid paying for a ceiling that leaves little room for profit.",
+      "last_intel_update": "2026-09-02"
+    }
+  }
+}
